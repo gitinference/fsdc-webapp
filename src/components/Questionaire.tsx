@@ -36,6 +36,43 @@ const Questionnaire: React.FC = () => {
       alert("¡Cuestionario completado! Revisa la consola para ver las respuestas.");
     };
 
+
+      
+    if (!questions.length) return <p>Cargando preguntas...</p>;
+  
+    const question = questions[currentIndex];
+  
+    if (!question) {
+      return (
+        <div>
+          <h2>Cuestionario Completado</h2>
+          <button onClick={handleSubmit}>Enviar Respuestas</button>
+        </div>
+      );
+    }
+  
+    return (
+      <div>
+        <h2>{question.question}</h2>
+        {question.type === "radio" &&
+          question.options?.map((option) => {
+            const value = typeof option === "string" ? option : option.value;
+            const next = typeof option === "object" ? option.next : undefined;
+  
+            return (
+              <label key={value}>
+                <input
+                  type="radio"
+                  name={question.id}
+                  value={value}
+                  onChange={() => handleChange(question.id, value, next)}
+                />
+                {value}
+              </label>
+            );
+          })}
+      </div>
+    );
   };
   
   export default Questionnaire;
