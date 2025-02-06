@@ -20,6 +20,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Cambria", serif;
+  font-weight: bold;
 }
 
 .header-container {
@@ -51,6 +53,7 @@ body {
 /* Title Styles */
 .title-container {
   margin-top: 20px;
+  font-family: "Arial Narrow", serif;
 }
 
 .main-title {
@@ -64,6 +67,7 @@ body {
   margin-top: 40px;
   font-size: 14px;
   font-weight: bold;
+  font-family: "Arial Narrow", serif;
 }
 
 .adaptation {
