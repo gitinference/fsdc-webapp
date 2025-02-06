@@ -1,68 +1,85 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
 
 body {
+  font-family: "Arial", sans-serif;
+  text-align: center;
   margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.header {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 900px; /* Adjust width as needed */
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.logo-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.logos {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+/* Title Styles */
+.title-container {
+  margin-top: 20px;
+}
+
+.main-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Footer Styles */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.adaptation {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.dept, .authors, .school, .year {
+  margin-top: 5px;
+}
+
+.app-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes footer to bottom */
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  width: 100%;
 }
