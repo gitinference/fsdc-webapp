@@ -1,6 +1,5 @@
 import React from "react";
-import logo1 from "../assets/CienciasMedicasUPR.png";
-import logo2 from "../assets/UCienciasPublicas.png";
+
 
 
 const Header: React.FC = () => {
@@ -9,7 +8,7 @@ const Header: React.FC = () => {
       <div className="header-container">
         {/* Left Logo */}
         <div className="logo-container">
-          <img src={logo1} alt="University Logo 1" className="logo" />
+        <img src="/CienciasMedicasUPR.png" alt="University Logo 1" className="logo" />
         </div>
 
         {/* Centered Title & Subtitle */}
@@ -23,7 +22,7 @@ const Header: React.FC = () => {
 
         {/* Right Logo */}
         <div className="logo-container">
-          <img src={logo2} alt="University Logo 2" className="logo" />
+        <img src="/UCienciasPublicas.png" alt="University Logo 2" className="logo" />
         </div>
       </div>
     </header>

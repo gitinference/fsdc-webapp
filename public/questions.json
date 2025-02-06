@@ -1,18 +1,181 @@
 [
   {
+    "id": "A1",
+    "question": "En algún momento durante los pasados 3 meses, ¿Le preocupó que se acabara la compra y no poder ir a comprar más alimentos, por falta de dinero?",
+    "type": "radio",
+    "options": [
+      "Ocurrió con frecuencia (muchas veces)",
+      "Ocurrió a veces",
+      "Nunca ocurrió",
+      "No recuerdo",
+      "Prefiero no contestar"
+    ]
+  },
+  {
+    "id": "A2",
+    "question": "En algún momento durante los pasados 3 meses, ¿Se acabó la compra antes del mes y no pudo comprar más alimentos por falta de dinero?",
+    "type": "radio",
+    "options": [
+      "Ocurrió con frecuencia (muchas veces)",
+      "Ocurrió a veces",
+      "Nunca ocurrió",
+      "No recuerdo",
+      "Prefiero no contestar"
+    ]
+  },
+  {
+    "id": "A3",
+    "question": "En algún momento durante los pasados 3 meses, ¿No pudo comer saludablemente/nutritivamente por falta de dinero?",
+    "type": "radio",
+    "options": [
+      "Ocurrió con frecuencia (muchas veces)",
+      "Ocurrió a veces",
+      "Nunca ocurrió",
+      "No recuerdo",
+      "Prefiero no contestar"
+    ]
+  },
+  {
+    "id": "A4",
+    "question": "¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, se sirvió menos cantidad de alimentos de lo que debía comer, por falta de dinero para comprar más?",
+    "type": "radio",
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
+    ]
+  },
+  {
+    "id": "A5",
+    "question": "¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, no pudo hacer o comer alguna de las comidas principales del día (desayuno, almuerzo o cena) por falta de dinero?",
+    "type": "radio",
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
+    ]
+  },
+  {
+    "id": "A6",
+    "question": "¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, tuvo hambre pero no comió por falta de dinero para comprar alimentos/comida?",
+    "type": "radio",
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
+    ]
+  },
+  {
+    "id": "A7",
+    "question": "¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, bajó de peso por falta de dinero para comprar alimentos/comida?",
+    "type": "radio",
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
+    ]
+  },
+  {
+    "id": "A8",
+    "question": "¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, no comió durante todo un día por falta de dinero para comprar alimentos/comida?",
+    "type": "radio",
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
+    ]
+  },
+  {
+    "id": "A9",
+    "question": "¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, tuvo que ir a comer a casa de algún familiar por falta de dinero para comprar alimentos/comida?",
+    "type": "radio",
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
+    ]
+  },
+  {
+    "id": "A10",
+    "question": "¿En su hogar viven niños o jóvenes menores de 18 años?",
+    "type": "radio",
+    "options": [
+      { "value": "Sí", "next": "Parte 3" },
+      { "value": "No", "next": "Parte 4" }
+    ]
+  },
+  {
+    "id": "N1",
+    "question": "¿En algún momento durante los pasados 3 meses, tuvo que darle a sus hijos un menú poco variado (el mismo tipo de comida) por falta de dinero?",
+    "type": "radio",
+    "options": [
+      "Ocurrió con frecuencia (muchas veces)",
+      "Ocurrió a veces",
+      "Nunca ocurrió",
+      "No recuerdo",
+      "Prefiero no contestar"
+    ]
+  },
+  {
+    "id": "N2",
+    "question": "¿En algún momento durante los pasados 3 meses, tuvo que prepararles a sus hijos comidas no balanceadas/no nutritivas por falta de dinero?",
+    "type": "radio",
+    "options": [
+      "Ocurrió con frecuencia",
+      "Ocurrió a veces",
+      "Nunca ocurrió",
+      "No recuerdo",
+      "Prefiero no contestar"
+    ]
+  },
+  {
     "id": "N3",
     "question": "¿En algún momento durante los pasados 3 meses, tuvo que servirle menos cantidad de comida a sus hijos porque no había suficiente comida en la casa y no había dinero para comprar más alimentos/comida?",
     "type": "radio",
-    "options": ["Sí", "No", "No recuerdo"]
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
+    ]
   },
   {
     "id": "N4",
     "question": "¿En algún momento durante los pasados 3 meses, no le pudo dar alguna de las comidas principales del día (desayuno, almuerzo o cena) a sus hijos por falta de dinero?",
     "type": "radio",
     "options": [
-      { "value": "Sí", "next": "N4a" },
+      { "value": "Sí", "next": "N4" },
       { "value": "No", "next": "N5" },
       { "value": "No recuerdo", "next": "N5" }
+    ]
+  },
+  {
+    "id": "N5",
+    "question": "¿En algún momento durante los pasados 3 meses, tuvo que llevar a sus hijos a comer a casa de algún familiar por falta de dinero?",
+    "type": "radio",
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
+    ]
+  },
+  {
+    "id": "N6",
+    "question": "¿En algún momento durante los pasados 3 meses, sus hijos tuvieron hambre y no tenía dinero para comprar algo de comer?",
+    "type": "radio",
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
+    ]
+  },
+  {
+    "id": "N7",
+    "question": "¿En algún momento durante los pasados 3 meses, sus hijos no comieron por todo un día porque no hubo dinero para comprar alimentos/comida?",
+    "type": "radio",
+    "options": [
+      "Sí",
+      "No",
+      "No recuerdo"
     ]
   }
 ]
