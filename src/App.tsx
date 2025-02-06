@@ -15,8 +15,7 @@ function App() {
     <Header/>
     <Title/>
     <Footer/>
-     {/* <h1> Escala de seguridad alimentaria</h1>
-     <Questionnaire/> */}
+     <Questionnaire/>
     </div>
   )
 }
