@@ -39,12 +39,225 @@ const CoffeeQuestionnaire: React.FC = () => {
         <div style= {{display:"block", textAlign:"left"}}>
           <label>
           <table>
-              
+              <tr>
+                <th>
+                  ¿Cuál es el número de teléfono del administrador de la finca?&emsp;&emsp;&emsp;
+                </th>
+                <th>
+                  <input type="string" placeholder="Teléfono" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                </th>
+              </tr>
+            
+
+            <br/><br/><br/>
+
+              <tr>
+                <th>
+                  ¿Cuál es la edad del administrador de la finca?&emsp;&emsp;
+                </th>
+                <th>
+                  <input type="number" placeholder="Edad" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                </th>
+              </tr>
             </table>
 
             <br/><br/><br/>
 
             <table>
+            <tr>
+              <th>
+                ¿Cuál es la fuente principal de ingreso del administrador de la finca?
+              </th>
+            </tr>
+            <tr>
+              <th>
+                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
+                &emsp;&emsp;&emsp;<label htmlFor="agricola">Agrícola</label><br/>
+                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
+                &emsp;&emsp;&emsp;<label htmlFor="empresa_privada">Trabaja en empresa privada</label><br/>
+                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
+                &emsp;&emsp;&emsp;<label htmlFor="gobierno">Trabaja en el gobierno</label><br/>
+                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
+                &emsp;&emsp;&emsp;<label htmlFor="seguro_social">Seguro social y/o retiro</label><br/>
+                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
+                &emsp;&emsp;&emsp;<label htmlFor="cupones">Cupones y transferencias del gobierno</label><br/>
+                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
+                &emsp;&emsp;&emsp;<label htmlFor="otra">Otra</label>
+                &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+              </th>
+            </tr>
+
+          <br/><br/><br/>
+
+            <table>
+              <tr>
+                <th>
+                  ¿Cuál es el género del administrador de la finca?
+                </th>
+                <th>
+                  &emsp;&emsp;<input type="radio" name="genero"/>
+                  &emsp;<label style={{marginRight:"30px"}} htmlFor="masculino">Masculino</label>
+                  &emsp;&emsp;<input type="radio" name="genero"/>
+                  &emsp;<label style={{marginRight:"30px"}} htmlFor="femenino">Femenino</label>
+                  &emsp;&emsp;<input type="radio" name="genero" />
+                  &emsp;<label style={{marginRight:"30px"}} htmlFor="autodefinido">Autodefinido</label>
+                </th>
+              </tr>
+            </table>
+
+            <br/><br/><br/>
+
+              <tr>
+                <th>
+                  ¿Cuál es el estatus marital del administrador de la finca?
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  &emsp;&emsp;&emsp;<input type="radio" name="estatus" className="radio-spacing" />
+                  &emsp;&emsp;&emsp;<label htmlFor="casado">Casado</label><br/>
+                  &emsp;&emsp;&emsp;<input type="radio" name="estatus" className="radio-spacing" />
+                  &emsp;&emsp;&emsp;<label htmlFor="divorciado">Divorciado</label><br/>
+                  &emsp;&emsp;&emsp;<input type="radio" name="estatus" className="radio-spacing" />
+                  &emsp;&emsp;&emsp;<label htmlFor="nunca_casado">Nunca Casado</label><br/>
+                  &emsp;&emsp;&emsp;<input type="radio" name="estatus" className="radio-spacing" />
+                  &emsp;&emsp;&emsp;<label htmlFor="viudo">Viudo</label><br/>
+                </th>
+              </tr>
+
+            <br/><br/><br/>
+
+              <tr>
+                <th>
+                  ¿Hasta qué grado estudió el administrador de la finca?
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
+                  &emsp;&emsp;&emsp;<label htmlFor="sexto">Sexto grado o menos</label><br/>
+                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
+                  &emsp;&emsp;&emsp;<label htmlFor="septimo">Séptimo a noveno grado</label><br/>
+                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
+                  &emsp;&emsp;&emsp;<label htmlFor="decimo">Décimo a cuarto año</label><br/>
+                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
+                  &emsp;&emsp;&emsp;<label htmlFor="asociado">Grado asociado</label><br/>
+                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
+                  &emsp;&emsp;&emsp;<label htmlFor="universitario">Grado universitario</label>
+                </th>
+              </tr>
+
+            <br/><br/><br/>
+
+              <tr>
+                <th>
+                  ¿Cuáles enfermedades o condiciones tiene el administrador de la finca? Marque los que apliquen.
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}} />
+                  &emsp;&emsp;&emsp;<label htmlFor="diabetes">Diabetes</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="alta_presion">Alta Presión</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="cancer">Cáncer</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="enfermedades_corazon">Enfermedades del Corazón</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="cerebrovasculares">Enfermedades Cerebrovasculares</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="asma">Asma</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="covid19">COVID-19</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="incapacidad">Incapacidad Física</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="otra">Otra</label>
+                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="ninguna">Ninguna</label><br/>
+                </th>
+              </tr>
+
+              <br/><br/><br/>
+
+              <tr>
+                <th>
+                  ¿Cuántas personas viven en el hogar del administrador de la finca? 
+                  (incluyendo a usted)&emsp;&emsp;&emsp;
+                </th>
+                <th>
+                  <input type="number" placeholder="Total personas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                </th>
+              </tr>
+
+            <br/><br/><br/>
+
+              <tr>
+                <th>
+                  ¿Cuáles son los programas de gobierno en los que usted participó en el {new Date().getFullYear() - 1}?
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}} />
+                  &emsp;&emsp;&emsp;<label htmlFor="bonafide">Agricultor bonafide</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="subsidio_salarial">Subsidio Salarial</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="abonos">Programa de Abonos</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="regrow">Regrow (Renacer Agrícola)</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="alquiler_tierra_autoridad">Alquiler de tierra de la Autoridad de Tierras</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="analisis_suelo">Análisis de suelo-Laboratorio Agrológico</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="semilla_cafe">Semilla de Café</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="educativas">Actividades educativas del Servicio de Extensión Agrícola</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="visita_servicio_extension_agrícola">Visitas del Servicio de Extensión Agrícola</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="otro_adea">Otro programa de ADEA</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="otro_dep_agricola">Otro programa del Departamento de Agricultura</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="otro_ddec">Otro programa del DDEC</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="prestamos_fida">Préstamos del FIDA</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="prestamos_banco_desarrollo_economico">Préstamos del Banco de Desarrollo Económico</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="seguros_agricolas">Seguros Agrícolas</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="programa_nrcs">Programas NRCS (Natural Resouce and Conservation Service)</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="programas_fsa">Programas FSA (Farm Service Agency)</label><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="otra">Otro</label>
+                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique"></input><br/>
+                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
+                  &emsp;&emsp;&emsp;<label htmlFor="ninguna">Ninguna</label><br/>
+                </th>
+              </tr>
+            </table>
+
+            <br/><br/><br/>
+
+            <table>
+              <tr>
+                <th>
+                  ¿Cuál es el zipcode de la residencia del administrador de la finca?&emsp;&emsp;&emsp;
+                </th>
+                <th>
+                  <input type="number" placeholder="Zipcode administrador" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                </th>
+              </tr>
+
+            <br/><br/><br/>
+
               <tr>
                 <th>
                   ¿Cuál es la dirección física o postal de la finca?&emsp;&emsp;&emsp;
@@ -130,6 +343,9 @@ const CoffeeQuestionnaire: React.FC = () => {
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
+
+              <br/><br/><br/>
+
 
             <br/><br/><br/>
 
@@ -1306,59 +1522,6 @@ const CoffeeQuestionnaire: React.FC = () => {
             <br/><br/><br/>
 
             <table>
-            <tr>
-                <th>
-                  ¿Cuáles son los programas de gobierno en los que usted participó en el {new Date().getFullYear() - 1}?
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}} />
-                  &emsp;&emsp;&emsp;<label htmlFor="bonafide">Agricultor bonafide</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="subsidio_salarial">Subsidio Salarial</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="abonos">Programa de Abonos</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="regrow">Regrow (Renacer Agrícola)</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="alquiler_tierra_autoridad">Alquiler de tierra de la Autoridad de Tierras</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="analisis_suelo">Análisis de suelo-Laboratorio Agrológico</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="semilla_cafe">Semilla de Café</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="educativas">Actividades educativas del Servicio de Extensión Agrícola</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="visita_servicio_extension_agrícola">Visitas del Servicio de Extensión Agrícola</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="otro_adea">Otro programa de ADEA</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="otro_dep_agricola">Otro programa del Departamento de Agricultura</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="otro_ddec">Otro programa del DDEC</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="prestamos_fida">Préstamos del FIDA</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="prestamos_banco_desarrollo_economico">Préstamos del Banco de Desarrollo Económico</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="seguros_agricolas">Seguros Agrícolas</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="programa_nrcs">Programas NRCS (Natural Resouce and Conservation Service)</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="programas_fsa">Programas FSA (Farm Service Agency)</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="otra">Otro</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique"></input><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="ninguna">Ninguna</label><br/>
-                </th>
-              </tr>
-            </table>
-
-            <br/><br/><br/>
-
-            <table>
               <tr>
                 <th>
                   En el año {new Date().getFullYear() - 1} ¿Cuántos almudes de su cosecha de café perdió por las siguientes razones?
@@ -1495,14 +1658,6 @@ const CoffeeQuestionnaire: React.FC = () => {
 
 
             <table>
-            <tr>
-                <th>
-                  ¿Cuál es el zipcode de la residencia del administrador de la finca?&emsp;&emsp;&emsp;
-                </th>
-                <th>
-                  <input type="number" placeholder="Zipcode administrador" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
             <br/><br/><br/>
 
             <tr>
@@ -1563,165 +1718,6 @@ const CoffeeQuestionnaire: React.FC = () => {
             </table>
 
             </table>
-
-            <table>
-              <tr>
-                <th>
-                  ¿Cuál es el número de teléfono del administrador de la finca?&emsp;&emsp;&emsp;
-                </th>
-                <th>
-                  <input type="string" placeholder="Teléfono" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
-            
-
-            <br/><br/><br/>
-
-              <tr>
-                <th>
-                  ¿Cuál es la edad del administrador de la finca?&emsp;&emsp;
-                </th>
-                <th>
-                  <input type="number" placeholder="Edad" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
-            </table>
-
-            <br/><br/><br/>
-
-            <table>
-            <tr>
-              <th>
-                ¿Cuál es la fuente principal de ingreso del administrador de la finca?
-              </th>
-            </tr>
-            <tr>
-              <th>
-                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
-                &emsp;&emsp;&emsp;<label htmlFor="agricola">Agrícola</label><br/>
-                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
-                &emsp;&emsp;&emsp;<label htmlFor="empresa_privada">Trabaja en empresa privada</label><br/>
-                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
-                &emsp;&emsp;&emsp;<label htmlFor="gobierno">Trabaja en el gobierno</label><br/>
-                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
-                &emsp;&emsp;&emsp;<label htmlFor="seguro_social">Seguro social y/o retiro</label><br/>
-                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
-                &emsp;&emsp;&emsp;<label htmlFor="cupones">Cupones y transferencias del gobierno</label><br/>
-                &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
-                &emsp;&emsp;&emsp;<label htmlFor="otra">Otra</label>
-                &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
-              </th>
-            </tr>
-
-          <br/><br/><br/>
-
-            <table>
-              <tr>
-                <th>
-                  ¿Cuál es el género del administrador de la finca?
-                </th>
-                <th>
-                  &emsp;&emsp;<input type="radio" name="genero"/>
-                  &emsp;<label style={{marginRight:"30px"}} htmlFor="masculino">Masculino</label>
-                  &emsp;&emsp;<input type="radio" name="genero"/>
-                  &emsp;<label style={{marginRight:"30px"}} htmlFor="femenino">Femenino</label>
-                  &emsp;&emsp;<input type="radio" name="genero" />
-                  &emsp;<label style={{marginRight:"30px"}} htmlFor="autodefinido">Autodefinido</label>
-                </th>
-              </tr>
-            </table>
-
-            <br/><br/><br/>
-
-              <tr>
-                <th>
-                  ¿Cuál es el estatus marital del administrador de la finca?
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  &emsp;&emsp;&emsp;<input type="radio" name="estatus" className="radio-spacing" />
-                  &emsp;&emsp;&emsp;<label htmlFor="casado">Casado</label><br/>
-                  &emsp;&emsp;&emsp;<input type="radio" name="estatus" className="radio-spacing" />
-                  &emsp;&emsp;&emsp;<label htmlFor="divorciado">Divorciado</label><br/>
-                  &emsp;&emsp;&emsp;<input type="radio" name="estatus" className="radio-spacing" />
-                  &emsp;&emsp;&emsp;<label htmlFor="nunca_casado">Nunca Casado</label><br/>
-                  &emsp;&emsp;&emsp;<input type="radio" name="estatus" className="radio-spacing" />
-                  &emsp;&emsp;&emsp;<label htmlFor="viudo">Viudo</label><br/>
-                </th>
-              </tr>
-
-            <br/><br/><br/>
-
-              <tr>
-                <th>
-                  ¿Hasta qué grado estudió el administrador de la finca?
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
-                  &emsp;&emsp;&emsp;<label htmlFor="sexto">Sexto grado o menos</label><br/>
-                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
-                  &emsp;&emsp;&emsp;<label htmlFor="septimo">Séptimo a noveno grado</label><br/>
-                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
-                  &emsp;&emsp;&emsp;<label htmlFor="decimo">Décimo a cuarto año</label><br/>
-                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
-                  &emsp;&emsp;&emsp;<label htmlFor="asociado">Grado asociado</label><br/>
-                  &emsp;&emsp;&emsp;<input type="radio" name="grado" className="radio-spacing" />
-                  &emsp;&emsp;&emsp;<label htmlFor="universitario">Grado universitario</label>
-                </th>
-              </tr>
-
-            <br/><br/><br/>
-
-              <tr>
-                <th>
-                  ¿Cuáles enfermedades o condiciones tiene el administrador de la finca? Marque los que apliquen.
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}} />
-                  &emsp;&emsp;&emsp;<label htmlFor="diabetes">Diabetes</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="alta_presion">Alta Presión</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="cancer">Cáncer</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="enfermedades_corazon">Enfermedades del Corazón</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="cerebrovasculares">Enfermedades Cerebrovasculares</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="asma">Asma</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="covid19">COVID-19</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="incapacidad">Incapacidad Física</label><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="otra">Otra</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
-                  &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="ninguna">Ninguna</label><br/>
-                </th>
-              </tr>
-
-              <br/><br/><br/>
-
-              <tr>
-                <th>
-                  ¿Cuántas personas viven en el hogar del administrador de la finca? 
-                  (incluyendo a usted)&emsp;&emsp;&emsp;
-                </th>
-                <th>
-                  <input type="number" placeholder="Total personas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
-
-            <br/><br/><br/>
-
-            </table>
-
             
           </label>
         </div>

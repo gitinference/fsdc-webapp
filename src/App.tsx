@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -54,10 +53,6 @@ function App() {
 </div>
 
       
-
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
