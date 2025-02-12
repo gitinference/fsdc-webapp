@@ -13,45 +13,46 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-        <h1>Click below to find the coffee questionnaire</h1>
-        <Router>
-      <Routes>
-        {/* Coffee Questionnaire Route */}
-        <Route path="/coffee" element={<CoffeeQuestionnaire />} />
-        
-        {/* Home Route */}
-        <Route
-          path="/"
-          element={
-            <div style={{ textAlign: "center", padding: "20px" }}>
-              <h1>Vite + React</h1>
-              <p>Click below to find the coffee questionnaire</p>
-              <Link to="/coffee">
-                <img src="/vite.svg" className="logo" alt="Vite logo" />
-              </Link>
-            </div>
-          }
-        />
-      </Routes>
-    </Router>
-        {/* <Route path="/coffeeQuestionare" element={<CoffeeQuestionnaire />} /> */}
-      </div>
+      <h1>Click below to find the coffee questionnaire</h1>
+
+<div className="card" style={{
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100vh', // Ensures the content is centered vertically in the viewport
+  padding: '20px'
+}}>
+  <Router>
+    <Routes>
+      {/* Coffee Questionnaire Route */}
+      <Route path="/coffee" element={<CoffeeQuestionnaire />} />
+
+      {/* Home Route */}
+      <Route
+        path="/"
+        element={
+          <div style={{ textAlign: 'center' }}>
+            <p>Click below to find the coffee questionnaire</p>
+            <Link to="/coffee">
+              <button style={{
+                backgroundColor: '#4CAF50', // You can customize the button style
+                color: 'white',
+                padding: '10px 20px',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '16px',
+                borderRadius: '5px',
+              }}>
+                Go to Coffee Questionnaire
+              </button>
+            </Link>
+          </div>
+        }
+      />
+    </Routes>
+  </Router>
+</div>
+
       
 
       <p className="read-the-docs">
