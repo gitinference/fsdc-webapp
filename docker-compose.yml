@@ -1,0 +1,8 @@
+services:
+  fsdc-webapp:
+    container_name: webapp
+    build:
+      context: .
+    restart: always
+    ports:
+      - 5559:3000
