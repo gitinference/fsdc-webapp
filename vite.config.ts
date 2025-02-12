@@ -15,5 +15,8 @@ export default defineConfig({
     strictPort: true,
     host: true,
     origin: "http://0.0.0.0:3000",
+    allowedHosts: [
+      "coffee.econlabs.net"
+    ],
   },
 })
