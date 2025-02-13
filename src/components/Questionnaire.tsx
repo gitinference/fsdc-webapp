@@ -61,6 +61,25 @@ const Questionnaire: React.FC = () => {
     );
   }
 
+    // Si el usuario completó todas las preguntas, mostrar mensaje de finalización
+    if (currentIndex >= questions.length) {
+      return (
+        <div className="flex flex-col items-center justify-center h-screen">
+          <h2 className="text-2xl font-bold mb-4">✅ ¡Cuestionario Completado!</h2>
+          <button
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg text-lg"
+            onClick={() => {
+              console.log("Respuestas enviadas:", responses);
+              localStorage.removeItem("responses"); // Limpiar localStorage al finalizar
+              localStorage.removeItem("currentIndex");
+            }}
+          >
+            Enviar Respuestas
+          </button>
+        </div>
+      );
+    }
+
   const question = questions[currentIndex];
 
   return (
