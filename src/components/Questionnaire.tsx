@@ -25,16 +25,30 @@ const Questionnaire: React.FC = () => {
   
       if (next) {
         const nextIndex = questions.findIndex((q) => q.id === next);
-        if (nextIndex !== -1) setCurrentIndex(nextIndex);
-      } else {
-        setCurrentIndex((prevIndex) => prevIndex + 1);
+        if (nextIndex !== -1){
+          setCurrentIndex(nextIndex);
+          return;
+        }
       }
+
+      // if there is no next, go to the next question:
+      setCurrentIndex((prev) => prev + 1);
     };
   
     const handleSubmit = () => {
       console.log("Respuestas enviadas:", responses);
       alert("¡Cuestionario completado! Revisa la consola para ver las respuestas.");
     };
+
+    const handleNext = () => {
+      const currentQuestion = questions[currentIndex];
+      if (!responses[currentQuestion.id]) {
+        alert("Debes seleccionar una opción antes de continuar.");
+        return;
+      }
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    };
+    
 
 
       
