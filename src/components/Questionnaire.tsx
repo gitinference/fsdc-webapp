@@ -8,85 +8,85 @@ interface Question {
 }
 
 const Questionnaire: React.FC = () => {
-    const [questions, setQuestions] = useState<Question[]>([]);
-    const [responses, setResponses] = useState<{ [key: string]: string }>({});
-    const [currentIndex, setCurrentIndex] = useState(0);
-  
-    // Fetch questions
-    useEffect(() => {
-      fetch("/questions.json")
-        .then((res) => res.json()) // Parse JSON
-        .then((data) => setQuestions(data))     // Set questions
-        .catch((error) => console.error("Error loading questions:", error)); 
-    }, []);
-  
-    const handleChange = (questionId: string, answer: string, next?: string) => {
-      setResponses((prev) => ({ ...prev, [questionId]: answer }));
-  
-      if (next) {
-        const nextIndex = questions.findIndex((q) => q.id === next);
-        if (nextIndex !== -1){
-          setCurrentIndex(nextIndex);
-          return;
-        }
-      }
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [responses, setResponses] = useState<{ [key: string]: string }>({});
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-      // if there is no next, go to the next question:
-      setCurrentIndex((prev) => prev + 1);
-    };
-  
-    const handleSubmit = () => {
-      console.log("Respuestas enviadas:", responses);
-      alert("¡Cuestionario completado! Revisa la consola para ver las respuestas.");
-    };
+  // Cargar preguntas desde JSON
+  useEffect(() => {
+    fetch("/questions.json")
+      .then((res) => res.json())
+      .then((data) => setQuestions(data))
+      .catch((error) => console.error("Error cargando preguntas:", error));
+  }, []);
 
-    const handleNext = () => {
-      const currentQuestion = questions[currentIndex];
-      if (!responses[currentQuestion.id]) {
-        alert("Debes seleccionar una opción antes de continuar.");
+  // Manejo de respuestas
+  const handleChange = (questionId: string, answer: string, next?: string) => {
+    setResponses((prev) => ({ ...prev, [questionId]: answer }));
+
+    if (next) {
+      const nextIndex = questions.findIndex((q) => q.id === next);
+      if (nextIndex !== -1) {
+        setCurrentIndex(nextIndex);
         return;
       }
-      setCurrentIndex((prevIndex) => prevIndex + 1);
-    };
-    
-
-
-      
-    if (!questions.length) return <p>Cargando preguntas...</p>;
-  
-    const question = questions[currentIndex];
-  
-    if (!question) {
-      return (
-        <div>
-          <h2>Cuestionario Completado</h2>
-          <button onClick={handleSubmit}>Enviar Respuestas</button>
-        </div>
-      );
     }
-  
+
+    // Si no hay "next", pasa a la siguiente pregunta
+    setCurrentIndex((prevIndex) => prevIndex + 1);
+  };
+
+  // Manejo de validación para que el usuario no avance sin responder
+  const handleNext = () => {
+    const currentQuestion = questions[currentIndex];
+    if (!responses[currentQuestion.id]) {
+      alert("Debes seleccionar una opción antes de continuar.");
+      return;
+    }
+    setCurrentIndex((prevIndex) => prevIndex + 1);
+  };
+
+  // Mensaje de carga mientras se obtiene el JSON
+  if (!questions.length) return <p className="text-center text-lg">Cargando preguntas...</p>;
+
+  // Si ya no hay más preguntas, mostrar mensaje de finalización
+  if (currentIndex >= questions.length) {
     return (
       <div>
-        <h2>{question.question}</h2>
-        {question.type === "radio" &&
-          question.options?.map((option) => {
-            const value = typeof option === "string" ? option : option.value;
-            const next = typeof option === "object" ? option.next : undefined;
-  
-            return (
-              <label key={value}>
-                <input
-                  type="radio"
-                  name={question.id}
-                  value={value}
-                  onChange={() => handleChange(question.id, value, next)}
-                />
-                {value}
-              </label>
-            );
-          })}
+        <h2>¡Cuestionario Completado!</h2>
+        <button onClick={() => console.log("Respuestas enviadas:", responses)}>
+          Enviar Respuestas
+        </button>
       </div>
     );
-  };
-  
-  export default Questionnaire;
+  }
+
+  const question = questions[currentIndex];
+
+  return (
+    <div>
+      <h2>{question.question}</h2>
+      {question.type === "radio" &&
+        question.options?.map((option) => {
+          const value = typeof option === "string" ? option : option.value;
+          const next = typeof option === "object" ? option.next : undefined;
+
+          return (
+            <label key={value}>
+              <input
+                type="radio"
+                name={question.id}
+                value={value}
+                onChange={() => handleChange(question.id, value, next)}
+              />
+              {value}
+            </label>
+          );
+        })}
+
+      <button onClick={handleNext}>Siguiente</button>
+    </div>
+  );
+};
+
+export default Questionnaire;
