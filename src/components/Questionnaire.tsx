@@ -36,16 +36,6 @@ const Questionnaire: React.FC = () => {
     setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
-  // Manejo de validación para que el usuario no avance sin responder
-  const handleNext = () => {
-    const currentQuestion = questions[currentIndex];
-    if (!responses[currentQuestion.id]) {
-      alert("Debes seleccionar una opción antes de continuar.");
-      return;
-    }
-    setCurrentIndex((prevIndex) => prevIndex + 1);
-  };
-
   // Mensaje de carga mientras se obtiene el JSON
   if (!questions.length) return <p className="text-center text-lg">Cargando preguntas...</p>;
 
@@ -64,19 +54,34 @@ const Questionnaire: React.FC = () => {
   const question = questions[currentIndex];
 
   return (
-    <div>
-      <h2>{question.question}</h2>
+    <div className="flex flex-col items-center justify-center h-screen p-6">
+      {/* Barra de progreso */}
+      <div className="w-full max-w-lg bg-gray-200 rounded-full h-2 mt-4 mb-6">
+        <div
+          className="bg-blue-600 h-2 rounded-full"
+          style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+        ></div>
+      </div>
+
+      {/* Pregunta actual */}
+      <h2 className="text-2xl font-bold text-center mb-4">{question.question}</h2>
+
+      {/* Opciones de respuesta */}
       {question.type === "radio" &&
         question.options?.map((option) => {
           const value = typeof option === "string" ? option : option.value;
           const next = typeof option === "object" ? option.next : undefined;
 
           return (
-            <label key={value}>
+            <label
+              key={value}
+              className="block w-full max-w-md text-left bg-gray-100 hover:bg-gray-200 rounded-lg p-3 mb-2 cursor-pointer"
+            >
               <input
                 type="radio"
                 name={question.id}
                 value={value}
+                className="mr-2"
                 onChange={() => handleChange(question.id, value, next)}
               />
               {value}
@@ -84,7 +89,7 @@ const Questionnaire: React.FC = () => {
           );
         })}
 
-      <button onClick={handleNext}>Siguiente</button>
+     
     </div>
   );
 };
