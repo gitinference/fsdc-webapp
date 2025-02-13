@@ -9,8 +9,12 @@ interface Question {
 
 const Questionnaire: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [responses, setResponses] = useState<{ [key: string]: string }>({});
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [responses, setResponses] = useState<{ [key: string]: string }>(
+    JSON.parse(localStorage.getItem("responses") || "{}")
+  );
+  const [currentIndex, setCurrentIndex] = useState(
+    Number(localStorage.getItem("currentIndex")) || 0
+  );
 
   // Cargar preguntas desde JSON
   useEffect(() => {
@@ -19,6 +23,12 @@ const Questionnaire: React.FC = () => {
       .then((data) => setQuestions(data))
       .catch((error) => console.error("Error cargando preguntas:", error));
   }, []);
+
+    // Guardar respuestas y progreso en localStorage
+    useEffect(() => {
+      localStorage.setItem("responses", JSON.stringify(responses));
+      localStorage.setItem("currentIndex", currentIndex.toString());
+    }, [responses, currentIndex]);
 
   // Manejo de respuestas
   const handleChange = (questionId: string, answer: string, next?: string) => {
