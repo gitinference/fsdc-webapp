@@ -49,17 +49,6 @@ const Questionnaire: React.FC = () => {
   // Mensaje de carga mientras se obtiene el JSON
   if (!questions.length) return <p className="text-center text-lg">Cargando preguntas...</p>;
 
-  // Si ya no hay más preguntas, mostrar mensaje de finalización
-  if (currentIndex >= questions.length) {
-    return (
-      <div>
-        <h2>¡Cuestionario Completado!</h2>
-        <button onClick={() => console.log("Respuestas enviadas:", responses)}>
-          Enviar Respuestas
-        </button>
-      </div>
-    );
-  }
 
     // Si el usuario completó todas las preguntas, mostrar mensaje de finalización
     if (currentIndex >= questions.length) {
@@ -108,8 +97,9 @@ const Questionnaire: React.FC = () => {
             >
               <input
                 type="radio"
-                name={question.id}
+                name={`question-${question.id}`} 
                 value={value}
+                checked={responses[question.id] === value}
                 className="mr-2"
                 onChange={() => handleChange(question.id, value, next)}
               />
