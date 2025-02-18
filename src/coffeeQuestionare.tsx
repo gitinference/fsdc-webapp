@@ -50,7 +50,14 @@ const CoffeeQuestionnaire: React.FC = () => {
                   ¿Cuál es la dirección física o postal de la finca?&emsp;&emsp;&emsp;
                 </th>
                 <th>
-                  <input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "550px"}}/>
+                </th>
+              </tr>
+              <br/>
+              <tr>
+                <th></th>
+                <th>
+                <input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "550px"}}/>
                 </th>
               </tr>
 
@@ -61,7 +68,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 ¿Cuál es zipcode de la finca?&emsp;&emsp;&emsp;
               </th>
               <th>
-                <input type="number" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                <input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/>
               </th>
             </tr>
           </table>
@@ -97,14 +104,21 @@ const CoffeeQuestionnaire: React.FC = () => {
           <br/><br/><br/>
 
           <table>
-            <tr>
-              <th>
-                ¿En qué año comenzó operaciones en la finca?&emsp;&emsp;&emsp;
-              </th>
-              <th>
-                <input type="number" placeholder="Año" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-              </th>
-            </tr>
+          <tr>
+            <th>
+              ¿En qué año comenzó operaciones en la finca?&emsp;&emsp;&emsp;
+            </th>
+            <th>
+              <select style={{ border: "1px solid black", marginRight: "10px", padding: "5px", fontSize: "16px" }}>
+                <option value="">Seleccione un año</option>
+                {Array.from({ length: 2050 - 1920 + 1 }, (_, i) => 1920 + i).map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </th>
+          </tr>
 
           <br/><br/><br/>
 
@@ -113,7 +127,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 ¿Cuántas cuerdas tiene la finca en total?&emsp;&emsp;&emsp;
               </th>
               <th>
-                <input type="number" placeholder="Total cuerdas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                <input type="number" min="0" placeholder="Total cuerdas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
               </th>
             </tr>
 
@@ -125,7 +139,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total Cuerdas"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -141,13 +155,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
-                  placeholder="Total $"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                  <input
-                  type="text"
-                  placeholder="Especifique pago"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    type="number"
+                    min="0"
+                    placeholder="Total $"
+                    style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px" }}
+                  />
+                  <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px" }}>
+                    <option value="">Seleccione un período</option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Mensual">Mensual</option>
+                    <option value="Trimestral">Trimestral</option>
+                    <option value="Anual">Anual</option>
+                    <option value="Otro">Otro</option>
+                  </select>
                 </th>
               </tr>
 
@@ -161,14 +181,20 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
-                  placeholder="Total $"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                  <input
-                  type="text"
-                  placeholder="Especifique pago"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                  </th>
+                    type="number"
+                    min="0"
+                    placeholder="Total $"
+                    style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px" }}
+                  />
+                  <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px" }}>
+                    <option value="">Seleccione un período</option>
+                    <option value="Semanal">Semanal</option>
+                    <option value="Mensual">Mensual</option>
+                    <option value="Trimestral">Trimestral</option>
+                    <option value="Anual">Anual</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </th>
               </tr>
               
               <br/><br/><br/>
@@ -181,13 +207,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                     alquiler? Por favor, especifique si el pago es mensual, anual u otra unidad de tiempo.</th>
                 <th>
                   <input
-                  type="number"
-                  placeholder="Total $"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                  <input
-                  type="text"
-                  placeholder="Especifique pago"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    type="number"
+                    min="0"
+                    placeholder="Total $"
+                    style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px" }}
+                    />
+                    <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px" }}>
+                    <option value="">Seleccione un período</option>
+                      <option value="Semanal">Semanal</option>
+                      <option value="Mensual">Mensual</option>
+                      <option value="Trimestral">Trimestral</option>
+                      <option value="Anual">Anual</option>
+                      <option value="Otro">Otro</option>
+                  </select>
                 </th>
               </tr> 
 
@@ -205,7 +237,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total empleados"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -216,7 +248,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total empleados"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -236,7 +268,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total horas"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -258,7 +290,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -269,7 +301,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total $"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -289,7 +321,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total $"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -300,7 +332,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total $"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -332,7 +364,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total árboles"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -352,7 +384,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total $"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -385,7 +417,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total $"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -396,7 +428,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almud"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -407,7 +439,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total $"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -418,7 +450,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almud"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -451,18 +483,18 @@ const CoffeeQuestionnaire: React.FC = () => {
                     &emsp;&emsp;&emsp;Abono
                   </th>
                   <th>
-                    <input type="number" placeholder="Total $"
+                    <input type="number" min="0" placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -472,14 +504,14 @@ const CoffeeQuestionnaire: React.FC = () => {
                     &emsp;&emsp;&emsp;Cal
                   </th>
                   <th>
-                    <input type="number" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input type="number" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -489,19 +521,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                     &emsp;&emsp;&emsp;Superfosfato Triple
                   </th>
                   <th>
-                    <input type="number"
+                    <input type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -512,19 +544,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -535,19 +567,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -558,19 +590,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -581,19 +613,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -604,19 +636,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -627,19 +659,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -650,19 +682,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -673,19 +705,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
@@ -720,19 +752,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black"}}/>
                   </th>
@@ -743,19 +775,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -766,19 +798,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -789,19 +821,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -812,19 +844,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -835,19 +867,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -858,19 +890,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -881,19 +913,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -904,19 +936,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -927,19 +959,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -973,19 +1005,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -996,19 +1028,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1019,19 +1051,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1042,19 +1074,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1065,19 +1097,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1088,19 +1120,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1111,19 +1143,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1134,19 +1166,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
+                    placeholder="Total $"
+                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  </th>
+                  <th>
+                    <input 
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                  </th>
-                  <th>
-                    <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1157,19 +1189,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1180,19 +1212,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1203,19 +1235,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1226,19 +1258,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1249,19 +1281,19 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number"
+                    type="number" min="0"
                     placeholder="Total $"
                     style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
@@ -1370,7 +1402,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almudes"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -1381,7 +1413,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almudes"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -1392,7 +1424,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almudes"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -1403,7 +1435,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almudes"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -1414,7 +1446,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almudes"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -1425,7 +1457,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almudes"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -1436,7 +1468,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almudes"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -1458,7 +1490,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </th>
                 <th>
                   <input
-                  type="number"
+                  type="number" min="0"
                   placeholder="Total almudes"
                   style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
@@ -1500,7 +1532,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   ¿Cuál es el zipcode de la residencia del administrador de la finca?&emsp;&emsp;&emsp;
                 </th>
                 <th>
-                  <input type="number" placeholder="Zipcode administrador" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Zipcode administrador" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
             <br/><br/><br/>
@@ -1582,7 +1614,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   ¿Cuál es la edad del administrador de la finca?&emsp;&emsp;
                 </th>
                 <th>
-                  <input type="number" placeholder="Edad" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Edad" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
             </table>
@@ -1714,7 +1746,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   (incluyendo a usted)&emsp;&emsp;&emsp;
                 </th>
                 <th>
-                  <input type="number" placeholder="Total personas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Total personas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
 
