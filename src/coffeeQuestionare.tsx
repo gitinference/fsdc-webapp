@@ -475,13 +475,13 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </tr>
                 <tr>
                   <th></th>
-                  <th>
+                  <th style={{textAlign:"center"}}>
                     <strong>Primer año</strong>
                   </th>
-                  <th>
+                  <th style={{textAlign:"center"}}>
                     <strong>Segundo año</strong>
                   </th>
-                  <th>
+                  <th style={{textAlign:"center"}}>
                     <strong>Tercer año</strong>
                   </th>
                 </tr>
@@ -743,13 +743,13 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </tr>
                 <tr>
                   <th></th>
-                  <th>
+                  <th style={{textAlign:"center"}}>
                     <strong>Primer año</strong>
                   </th>
-                  <th>
+                  <th style={{textAlign:"center"}}>
                     <strong>Segundo año</strong>
                   </th>
-                  <th>
+                  <th style={{textAlign:"center"}}>
                     <strong>Tercer año</strong>
                   </th>
                 </tr>
@@ -996,13 +996,13 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </tr>
                 <tr>
                   <th></th>
-                  <th>
+                  <th style={{textAlign:"center"}}>
                     <strong>{new Date().getFullYear() - 3}</strong>
                   </th>
-                  <th>
+                  <th style={{textAlign:"center"}}>
                     <strong>{new Date().getFullYear() - 2}</strong>
                   </th>
-                  <th>
+                  <th style={{textAlign:"center"}}>
                     <strong>{new Date().getFullYear() - 1}</strong>
                   </th>
                 </tr>
@@ -1536,11 +1536,14 @@ const CoffeeQuestionnaire: React.FC = () => {
             <table>
             <tr>
                 <th>
-                  ¿Cuál es el zipcode de la residencia del administrador de la finca?&emsp;&emsp;&emsp;
+                  ¿Cuál es el zipcode de la residencia del administrador de la finca?&emsp;&emsp;&emsp;&emsp;
+                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                  <input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/>
+
                 </th>
-                <th>
-                <input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/>
-                </th>
+                {/* <th> */}
+                {/* <input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/> */}
+                {/* </th> */}
               </tr>
             <br/><br/><br/>
 
