@@ -45,19 +45,19 @@ const CoffeeQuestionnaire: React.FC = () => {
             <br/><br/><br/>
 
             <table>
-              <tr>
+              <tr style={{}}>
                 <th>
                   ¿Cuál es la dirección física o postal de la finca?&emsp;&emsp;&emsp;
                 </th>
                 <th>
-                  <input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "550px"}}/>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "550px"}}/>
                 </th>
               </tr>
               <br/>
               <tr>
                 <th></th>
                 <th>
-                <input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "550px"}}/>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "550px"}}/>
                 </th>
               </tr>
 
@@ -68,7 +68,10 @@ const CoffeeQuestionnaire: React.FC = () => {
                 ¿Cuál es zipcode de la finca?&emsp;&emsp;&emsp;
               </th>
               <th>
-                <input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              &emsp;&emsp;&emsp;&emsp;&emsp;<input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/>
               </th>
             </tr>
           </table>
@@ -99,6 +102,10 @@ const CoffeeQuestionnaire: React.FC = () => {
                   &emsp;&emsp;&emsp;<label htmlFor="obrero_estudiante_sin">Obrero(a) estudiante (sin sueldo)</label>
                 </th>
               </tr>
+
+              <br/><br/><br/>
+
+
             </table>
 
           <br/><br/><br/>
@@ -108,8 +115,8 @@ const CoffeeQuestionnaire: React.FC = () => {
             <th>
               ¿En qué año comenzó operaciones en la finca?&emsp;&emsp;&emsp;
             </th>
-            <th>
-              <select style={{ border: "1px solid black", marginRight: "10px", padding: "5px", fontSize: "16px" }}>
+            <th style={{justifyContent:"right"}}>
+              <select style={{ border: "1px solid black", marginRight: "10px", fontSize: "16px" }}>
                 <option value="">Seleccione un año</option>
                 {Array.from({ length: 2050 - 1920 + 1 }, (_, i) => 1920 + i).map((year) => (
                   <option key={year} value={year}>
@@ -127,7 +134,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 ¿Cuántas cuerdas tiene la finca en total?&emsp;&emsp;&emsp;
               </th>
               <th>
-                <input type="number" min="0" placeholder="Total cuerdas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+              &emsp;&emsp;&emsp;&emsp;<input type="number" min="0" placeholder="Total cuerdas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
               </th>
             </tr>
 
@@ -1532,7 +1539,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   ¿Cuál es el zipcode de la residencia del administrador de la finca?&emsp;&emsp;&emsp;
                 </th>
                 <th>
-                  <input type="number" min="0" placeholder="Zipcode administrador" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                <input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/>
                 </th>
               </tr>
             <br/><br/><br/>
