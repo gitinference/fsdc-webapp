@@ -134,7 +134,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 ¿Cuántas cuerdas tiene la finca en total?&emsp;&emsp;&emsp;
               </th>
               <th>
-              &emsp;&emsp;&emsp;&emsp;<input type="number" min="0" placeholder="Total cuerdas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+              <input type="number" min="0" placeholder="Total cuerdas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
               </th>
             </tr>
 
