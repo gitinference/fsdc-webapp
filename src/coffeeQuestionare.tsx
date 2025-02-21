@@ -158,18 +158,10 @@ const CoffeeQuestionnaire: React.FC = () => {
                 <th>
                   Si usted es propietario de su finca y fuera alquilar
                   <strong>una cuerda</strong> de su finca, ¿Cuánto usted hubiese cobrado en el {new Date().getFullYear() - 1} ($) 
-                  por el alquiler? Por favor, especifique si el pago es mensual, anual u otra unidad de tiempo.
+                  por el alquiler anual?
                 </th>
                 <th>
                   <input type="number" min="0" placeholder="Total $" style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px", color: "gray" }}/>
-                  <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px", color: "gray" }}>
-                    <option value="">Seleccione un período</option>
-                    <option value="Semanal">Semanal</option>
-                    <option value="Mensual">Mensual</option>
-                    <option value="Trimestral">Trimestral</option>
-                    <option value="Anual">Anual</option>
-                    <option value="Otro">Otro</option>
-                  </select>
                 </th>
               </tr>
               
@@ -179,143 +171,96 @@ const CoffeeQuestionnaire: React.FC = () => {
                 <th>
                     Si usted es propietario de su finca y fuera alquilar <strong>una cuerda</strong> 
                     de su finca, ¿Cuánto usted hubiese cobrado en el {new Date().getFullYear() - 1} ($) por el 
-                    alquiler? Por favor, especifique si el pago es mensual, anual u otra unidad de tiempo.</th>
+                    alquiler anual? 
+                </th>
                 <th>
                   <input type="number" min="0" placeholder="Total $" style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px" }} />
-                    <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px", color: "gray" }}>
-                    <option value="">Seleccione un período</option>
-                      <option value="Semanal">Semanal</option>
-                      <option value="Mensual">Mensual</option>
-                      <option value="Trimestral">Trimestral</option>
-                      <option value="Anual">Anual</option>
-                      <option value="Otro">Otro</option>
-                  </select>
                 </th>
               </tr> 
 
               <br/> <br/>
               
-              <tr>  {/* Nueva pregunta */}
-                <th>
-                  ¿Cuántos epmleados trabajaron en el 
-                  {new Date().getFullYear() - 1} en la producción de café en la finca?
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  &emsp;&emsp;&emsp;Siembra a maduración (los primeros dos años y medio)
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total empleados"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  &emsp;&emsp;&emsp;Cosecha (últimos 5 a 6 meses)
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total empleados"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
-
-              <br/> <br/><br/> 
-
-              <tr>
-                <th>
-                  ¿Cuánto es el total de horas trabajadas 
-                  al día en el {new Date().getFullYear() - 1} por obrero agrícola?
-                </th>
-              </tr>
-              <tr>
-                <th>
-                &emsp;&emsp;&emsp;Siembra a maduración (los primeros dos años y medio)
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total horas"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
-
-              
-              <br/><br/><br/>
-
-
-              <tr>
-                <th>
-                  ¿Cuánto pagó ($) la hora en el 
-                  {new Date().getFullYear() - 1} a un obrero agrícola?
-                </th>
-              </tr>
-              <tr>
+              <table>
+                <tr>  {/* Nueva pregunta */}
                   <th>
-                  &emsp;&emsp;&emsp;Siembra a maduración (los primeros dos años y medio)
+                    ¿Cuántos empleados trabajaron en el {new Date().getFullYear() - 1} en la producción de café en la finca?
                   </th>
+                </tr>
+                <tr>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    &emsp;&emsp;&emsp;Siembra a maduración (los primeros dos años y medio)&emsp;
+                    <input type="number" min="0" placeholder="Total empleados" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
-              </tr>
-              <tr>
-                <th>
-                &emsp;&emsp;&emsp;Cosecha (últimos 5 a 6 meses)
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total $"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
+                </tr>
+                <tr>
+                  <th>
+                    &emsp;&emsp;&emsp;Cosecha (últimos 5 a 6 meses)&emsp;
+                    <input type="number" min="0" placeholder="Total empleados" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  </th>
+                </tr>
 
-              <br/><br/><br/>
+                <br/> <br/><br/> 
+
+                <tr>
+                  <th>
+                    ¿Cuánto es el total de horas trabajadas 
+                    al día en el {new Date().getFullYear() - 1} por obrero agrícola?
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                  &emsp;&emsp;&emsp;Siembra a maduración (los primeros dos años y medio)&emsp;
+                    <input type="number" min="0" placeholder="Total horas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  </th>
+                </tr>
+
+                <br/><br/><br/>
+
+                <tr>
+                  <th>
+                    ¿Cuánto pagó ($) la hora en el 
+                    {new Date().getFullYear() - 1} a un obrero agrícola?
+                  </th>
+                </tr>
+                <tr>
+                    <th>
+                    &emsp;&emsp;&emsp;Siembra a maduración (los primeros dos años y medio)&emsp;
+                      <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    </th>
+                </tr>
+                <tr>
+                  <th>
+                  &emsp;&emsp;&emsp;Cosecha (últimos 5 a 6 meses)&emsp;
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  </th>
+                </tr>
+
+                <br/><br/><br/>
+
+                <tr>
+                  <th>
+                    ¿Cuánto se pagó en el {new Date().getFullYear() - 1} por el 
+                    recogido de café arábigo <strong>por almud</strong>?
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                  &emsp;&emsp;&emsp;Siembra a maduración (los primeros dos años y medio)&emsp;
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    &emsp;&emsp;&emsp;Cosecha (últimos 5 a 6 meses)&emsp;
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  </th>
+                </tr>
+              </table>
 
               <tr>
                 <th>
-                  ¿Cuánto se pagó en el {new Date().getFullYear() - 1} por el 
-                  recogido de café arábigo <strong>por almud</strong>?
-                </th>
-              </tr>
-              <tr>
-                <th>
-                &emsp;&emsp;&emsp;Siembra a maduración (los primeros dos años y medio)
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total $"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
-              <tr>
-                <th>
-                &emsp;&emsp;&emsp;Cosecha (últimos 5 a 6 meses)
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total $"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
-              <tr>
-                <th>
-                &emsp;&emsp;&emsp;Si en la cosecha se le paga por almud por favor especifíque.
-                </th>
-                <th>
-                  <input
-                  type="text"
-                  placeholder="Especifique pago"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  &emsp;&emsp;&emsp;Si en la cosecha se le paga por almud por favor especifíque.&emsp;
+                  <input type="text" placeholder="Especifique pago" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
 
@@ -330,18 +275,12 @@ const CoffeeQuestionnaire: React.FC = () => {
               </tr>
               <tr>
                 <th>
-                &emsp;&emsp;&emsp;Café arábigo
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total árboles"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  &emsp;&emsp;&emsp;Café arábigo&emsp;
+                  <input type="number" min="0" placeholder="Total árboles" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
 
               <br/><br/><br/>
-
 
               <tr>
                 <th>
@@ -350,13 +289,8 @@ const CoffeeQuestionnaire: React.FC = () => {
               </tr>
               <tr>
                 <th>
-                &emsp;&emsp;&emsp;Café arábigo
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total $"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  &emsp;&emsp;&emsp;Café arábigo&emsp;
+                  <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
 
@@ -364,9 +298,7 @@ const CoffeeQuestionnaire: React.FC = () => {
 
               <tr>
                 <th>
-                  ¿Utilizó vale para la compra de arbolitos de café arábigo?
-                </th>
-                <th>
+                  ¿Utilizó vale para la compra de arbolitos de café arábigo?&emsp;
                   <input type="radio" id="si" name="vale" value="si" />
                   <label style={{marginRight:"30px"}} htmlFor="si">Sí</label>
                   <input type="radio" id="no" name="vale" value="no" />
@@ -383,46 +315,26 @@ const CoffeeQuestionnaire: React.FC = () => {
               </tr>
               <tr>
                 <th>
-                &emsp;&emsp;&emsp;Precio de venta por almud del café arábigo maduro ($)
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total $"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  &emsp;&emsp;&emsp;Precio de venta por almud del café arábigo maduro ($)&emsp;
+                  <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                &emsp;&emsp;&emsp;Cantidad de almud de café arábigo maduro
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almud"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  &emsp;&emsp;&emsp;Cantidad de almud de café arábigo maduro&emsp;
+                  <input type="number" min="0" placeholder="Total almud" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                &emsp;&emsp;&emsp;Precio de venta por almud del café arábigo verde-maduro
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total $"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  &emsp;&emsp;&emsp;Precio de venta por almud del café arábigo verde-maduro&emsp;
+                  <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                &emsp;&emsp;&emsp;Cantidad de almud de café arábigo verde-maduro
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almud"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  &emsp;&emsp;&emsp;Cantidad de almud de café arábigo verde-maduro&emsp;
+                  <input type="number" min="0" placeholder="Total almud" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               
@@ -449,29 +361,8 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                 </tr>
                 <tr>
-                  <th>
-                    &emsp;&emsp;&emsp;Abono
-                  </th>
-                  <th>
-                    <input type="number" min="0" placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
-                  </th>
-                  <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
-                  </th>
-                  <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
-                  </th>
-                </tr>
-                <tr>
-                  <th>
-                    &emsp;&emsp;&emsp;Cal
+                  <th style={{textAlign:"right"}}>
+                    Abono&emsp;
                   </th>
                   <th>
                     <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
@@ -480,129 +371,96 @@ const CoffeeQuestionnaire: React.FC = () => {
                     <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
                 <tr>
-                  <th>
-                    &emsp;&emsp;&emsp;Superfosfato Triple
+                  <th style={{textAlign:"right"}}>
+                    Cal&emsp;
                   </th>
                   <th>
-                    <input type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
                 <tr>
-                  <th>
-                    &emsp;&emsp;&emsp;Insecticida
+                  <th style={{textAlign:"right"}}>
+                    Superfosfato Triple&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
                 <tr>
-                  <th>
-                    &emsp;&emsp;&emsp;Fungicida
+                  <th style={{textAlign:"right"}}>
+                    Insecticida&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
                 <tr>
-                  <th>
-                    &emsp;&emsp;&emsp;Herbicida
+                  <th style={{textAlign:"right"}}>
+                    Fungicida&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
                 <tr>
-                  <th>
-                    &emsp;&emsp;&emsp;Micotrol
+                  <th style={{textAlign:"right"}}>
+                    Herbicida&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
                 <tr>
+                  <th style={{textAlign:"right"}}>
+                    Micotrol&emsp;
+                  </th>
                   <th>
-                    &emsp;&emsp;&emsp;Trampas/Alcohol
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
+                  </th>
+                  <th>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
+                  </th>
+                  <th>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
+                  </th>
+                </tr>
+                <tr>
+                  <th style={{textAlign:"right"}}>
+                    Trampas/Alcohol&emsp;
                   </th>
                   <th>
                     <input
