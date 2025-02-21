@@ -45,33 +45,24 @@ const CoffeeQuestionnaire: React.FC = () => {
             <br/><br/><br/>
 
             <table>
+              {/* Fix here la direccion, cambiar el formato */}
               <tr style={{}}>
                 <th>
-                  ¿Cuál es la dirección física o postal de la finca?&emsp;&emsp;&emsp;
+                  ¿Cuál es la dirección física o postal de la finca?&emsp;
                 </th>
                 <th>
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "550px"}}/>
+                <input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "550px"}}/>
                 </th>
               </tr>
               <br/>
-              <tr>
-                <th></th>
-                <th>
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="text" placeholder="Dirección" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "550px"}}/>
-                </th>
-              </tr>
+
 
             <br/><br/><br/>
 
             <tr>
               <th>
-                ¿Cuál es zipcode de la finca?&emsp;&emsp;&emsp;
-              </th>
-              <th>
-              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              &emsp;&emsp;&emsp;&emsp;&emsp;<input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/>
+                ¿Cuál es zipcode de la finca?&emsp;
+                <input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/>
               </th>
             </tr>
           </table>
@@ -105,18 +96,13 @@ const CoffeeQuestionnaire: React.FC = () => {
 
               <br/><br/><br/>
 
-
             </table>
-
-          <br/><br/><br/>
 
           <table>
           <tr>
             <th>
-              ¿En qué año comenzó operaciones en la finca?&emsp;&emsp;&emsp;
-            </th>
-            <th style={{justifyContent:"right"}}>
-              <select style={{ border: "1px solid black", marginRight: "10px", fontSize: "16px" }}>
+              ¿En qué año comenzó operaciones en la finca?&emsp;
+              <select style={{ border: "1px solid black", marginRight: "10px", fontSize: "16px", color: "gray" }}>
                 <option value="">Seleccione un año</option>
                 {Array.from({ length: 2050 - 1920 + 1 }, (_, i) => 1920 + i).map((year) => (
                   <option key={year} value={year}>
@@ -131,9 +117,7 @@ const CoffeeQuestionnaire: React.FC = () => {
 
             <tr>
               <th>
-                ¿Cuántas cuerdas tiene la finca en total?&emsp;&emsp;&emsp;
-              </th>
-              <th>
+                ¿Cuántas cuerdas tiene la finca en total?&emsp;
               <input type="number" min="0" placeholder="Total cuerdas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
               </th>
             </tr>
@@ -142,13 +126,8 @@ const CoffeeQuestionnaire: React.FC = () => {
 
             <tr>
                 <th>
-                  ¿Cuál fue el total de cuerdas sembradas de café arábigo para el {new Date().getFullYear() - 1}?
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total Cuerdas"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  ¿Cuál fue el total de cuerdas sembradas de café arábigo para el {new Date().getFullYear() - 1}?&emsp;
+                  <input type="number" min="0" placeholder="Total Cuerdas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
 
@@ -161,13 +140,8 @@ const CoffeeQuestionnaire: React.FC = () => {
                   el {new Date().getFullYear() - 1}, anual u otra unidad de tiempo
                 </th>
                 <th>
-                  <input
-                    type="number"
-                    min="0"
-                    placeholder="Total $"
-                    style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px" }}
-                  />
-                  <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px" }}>
+                  <input type="number" min="0" placeholder="Total $" style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px" }}/>
+                  <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px", color: "gray" }}>
                     <option value="">Seleccione un período</option>
                     <option value="Semanal">Semanal</option>
                     <option value="Mensual">Mensual</option>
@@ -187,13 +161,8 @@ const CoffeeQuestionnaire: React.FC = () => {
                   por el alquiler? Por favor, especifique si el pago es mensual, anual u otra unidad de tiempo.
                 </th>
                 <th>
-                  <input
-                    type="number"
-                    min="0"
-                    placeholder="Total $"
-                    style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px" }}
-                  />
-                  <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px" }}>
+                  <input type="number" min="0" placeholder="Total $" style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px", color: "gray" }}/>
+                  <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px", color: "gray" }}>
                     <option value="">Seleccione un período</option>
                     <option value="Semanal">Semanal</option>
                     <option value="Mensual">Mensual</option>
@@ -206,20 +175,14 @@ const CoffeeQuestionnaire: React.FC = () => {
               
               <br/><br/><br/>
 
-
               <tr> {/* Nueva pregunta */}
                 <th>
                     Si usted es propietario de su finca y fuera alquilar <strong>una cuerda</strong> 
                     de su finca, ¿Cuánto usted hubiese cobrado en el {new Date().getFullYear() - 1} ($) por el 
                     alquiler? Por favor, especifique si el pago es mensual, anual u otra unidad de tiempo.</th>
                 <th>
-                  <input
-                    type="number"
-                    min="0"
-                    placeholder="Total $"
-                    style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px" }}
-                    />
-                    <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px" }}>
+                  <input type="number" min="0" placeholder="Total $" style={{ border: "1px solid black", marginRight: "10px", padding: "5px", width: "100px" }} />
+                    <select style={{ border: "1px solid black", padding: "5px", fontSize: "16px", color: "gray" }}>
                     <option value="">Seleccione un período</option>
                       <option value="Semanal">Semanal</option>
                       <option value="Mensual">Mensual</option>
@@ -1312,8 +1275,7 @@ const CoffeeQuestionnaire: React.FC = () => {
             <table>
               <tr>
                 <th>
-                  ¿Cuántos fondos de reconstrucción recibió en el año 
-                  {new Date().getFullYear() - 1} de las siguientes agencias a raíz de 
+                  ¿Cuántos fondos de reconstrucción recibió en el año {new Date().getFullYear() - 1} de las siguientes agencias a raíz de 
                   algún evento atmosférico?
                 </th>
               </tr>
