@@ -341,13 +341,12 @@ const CoffeeQuestionnaire: React.FC = () => {
               <br/><br/><br/>
             </table>
 
-            <table>
-              <tr >
-                  <th>
-                    En base a los precios del año {new Date().getFullYear() - 1}, ¿Cuánto usted 
-                    gastaría ($) para adquirir los siguientes insumos de café en su finca?
-                  </th>
-                </tr>
+            
+            <p> 
+                <strong>En base a los precios del año {new Date().getFullYear() - 1}, ¿Cuánto usted 
+                gastaría ($) para adquirir los siguientes insumos de café en su finca?</strong><br/><br/>
+            </p>
+              <table style={{textAlign:"right"}}>
                 <tr>
                   <th></th>
                   <th style={{textAlign:"center"}}>
@@ -389,7 +388,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                 </tr>
                 <tr>
-                  <th style={{textAlign:"right"}}>
+                  <th>
                     Superfosfato Triple&emsp;
                   </th>
                   <th>
@@ -403,7 +402,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                 </tr>
                 <tr>
-                  <th style={{textAlign:"right"}}>
+                  <th>
                     Insecticida&emsp;
                   </th>
                   <th>
@@ -417,7 +416,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                 </tr>
                 <tr>
-                  <th style={{textAlign:"right"}}>
+                  <th>
                     Fungicida&emsp;
                   </th>
                   <th>
@@ -431,7 +430,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                 </tr>
                 <tr>
-                  <th style={{textAlign:"right"}}>
+                  <th>
                     Herbicida&emsp;
                   </th>
                   <th>
@@ -445,7 +444,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                 </tr>
                 <tr>
-                  <th style={{textAlign:"right"}}>
+                  <th>
                     Micotrol&emsp;
                   </th>
                   <th>
@@ -459,109 +458,75 @@ const CoffeeQuestionnaire: React.FC = () => {
                   </th>
                 </tr>
                 <tr>
-                  <th style={{textAlign:"right"}}>
+                  <th>
                     Trampas/Alcohol&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Gasolina
+                    Gasolina&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Equipo (Timer, Mochilas, Bombas de _____ Machetes, Palas, etc)
+                    Equipo (Timer, Mochilas, Bombas de _____ Machetes, Palas, etc)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Transportación (pickup u otro)
+                    Transportación (pickup u otro)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px"}}/>
                   </th>
                 </tr>
             </table>
 
             <br/><br/><br/>
 
-            <table>
-              <tr>
-                  <th>
-                    En base a los precios del año {new Date().getFullYear() - 1}, ¿Cuánto usted 
-                    gastaría ($) para adquirir los siguientes servicios para la producción de café
-                    en su finca?
-                  </th>
-                </tr>
+            
+
+            <p>
+              <strong>En base a los precios del año {new Date().getFullYear() - 1}, ¿Cuánto usted 
+            gastaría ($) para adquirir los siguientes servicios para la producción de café
+            en su finca?</strong>
+            <br/><br/>
+            </p>
+
+              <table style={{textAlign:"right"}}>
                 <tr>
                   <th></th>
                   <th style={{textAlign:"center"}}>
@@ -576,245 +541,156 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Seguro de Cosecha y Plantación ($)
+                    Seguro de Cosecha y Plantación ($)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Gastos Administrativos ($) (Libretas, Bolígrafos, Libreta Recibos)
+                    Gastos Administrativos ($) (Libretas, Bolígrafos, Libreta Recibos)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Alquiler de equipo ($)
+                    Alquiler de equipo ($)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Reparación de equipo y maquinaria ($)
+                    Reparación de equipo y maquinaria ($)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Servicios para el control de plagas y enfermedades ($)
+                    Servicios para el control de plagas y enfermedades ($)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Servicios de contabilidad ($)
+                    Servicios de contabilidad ($)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Servicios legales ($)
+                    Servicios legales ($)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Servicios de gestoría ($)
+                    Servicios de gestoría ($)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Computadora ($)
+                    Computadora ($)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Gastos misceláneos (alimentos/meriendas para trabajadores)
+                    Gastos misceláneos (alimentos/meriendas para trabajadores)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
               </table>
 
               <br/><br/><br/>
 
-              <table>
-              <tr>
-                  <th>
-                    <strong>(PREGUNTA OPCIONAL) </strong>¿Cuántos días de trabajo se dedican a 
-                    las siguientes tareas para la producción de café en su finca?
-                  </th>
-                </tr>
+
+              <p>
+                <strong>(PREGUNTA OPCIONAL) </strong>¿Cuántos días de trabajo se dedican a las siguientes tareas para la producción de café en su finca?
+              </p>
+
+              <br/>
+
+              <table style={{textAlign:"right"}}>
                 <tr>
                   <th></th>
                   <th style={{textAlign:"center"}}>
@@ -829,163 +705,101 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Preparación de Terreno (incluye construir o reparar caminos)
+                    Preparación de Terreno (incluye construir o reparar caminos)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Alineado de Siembra (o siembras a contorno)
+                    Alineado de Siembra (o siembras a contorno)&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Cargar Arbolito para Siembra en Predio
+                    Cargar Arbolito para Siembra en Predio&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Ahoyado y Siembra
+                    Ahoyado y Siembra&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Resiembra
+                    Resiembra&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Desyerbo
+                    Desyerbo&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Abonamiento
+                    Abonamiento&emsp;
+                  </th>
+                  <th>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  </th>
+                  <th>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
                     <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                  </th>
-                  <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                  </th>
-                  <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
