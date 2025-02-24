@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <h1>Click below to find the coffee questionnaire</h1>
+      {/* <h1>Presi</h1> */}
 
 <div className="card" style={{
   display: 'flex',
@@ -34,7 +34,7 @@ function App() {
             <p>Click below to find the coffee questionnaire</p>
             <Link to="/coffee">
               <button style={{
-                backgroundColor: '#4CAF50', // You can customize the button style
+                backgroundColor: '#4CAF50',
                 color: 'white',
                 padding: '10px 20px',
                 border: 'none',
@@ -42,7 +42,7 @@ function App() {
                 fontSize: '16px',
                 borderRadius: '5px',
               }}>
-                Go to Coffee Questionnaire
+                Cuestionario de Café
               </button>
             </Link>
           </div>
