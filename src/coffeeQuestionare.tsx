@@ -804,140 +804,86 @@ const CoffeeQuestionnaire: React.FC = () => {
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Encalado
+                    Encalado&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input 
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input  type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Aplicar Superfosfato Triple
+                    Aplicar Superfosfato Triple&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Aplicación Insecticida
+                    Aplicación Insecticida&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Aplicación de Herbicida
+                    Aplicación de Herbicida&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Aplicación de Fungicida
+                    Aplicación de Fungicida&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
                 <tr>
                   <th>
-                    &emsp;&emsp;&emsp;Control Broca
+                    Control Broca&emsp;
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                   <th>
-                    <input
-                    type="number" min="0"
-                    placeholder="Total $"
-                    style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                    <input type="number" min="0" placeholder="Total $" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                   </th>
                 </tr>
             </table>
@@ -968,8 +914,8 @@ const CoffeeQuestionnaire: React.FC = () => {
                   &emsp;&emsp;&emsp;<input type="checkbox" name="cafe" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="fema">FEMA</label><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="cafe" className="checkbox-spacing" style={{marginRight:"10px"}}/>
-                  &emsp;&emsp;&emsp;<label htmlFor="otro">Otra (especificar)&emsp;</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+                  &emsp;&emsp;&emsp;<label htmlFor="otro">Otra (especificar)</label>
+                  &emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="cafe" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="ninguna">Ninguna</label><br/>
                 </th>
@@ -1022,7 +968,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   &emsp;&emsp;&emsp;<label htmlFor="programas_fsa">Programas FSA (Farm Service Agency)</label><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="programa" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="otra">Otro</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique"></input><br/>
+                  &emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="ninguna">Ninguna</label><br/>
                 </th>
@@ -1031,109 +977,81 @@ const CoffeeQuestionnaire: React.FC = () => {
 
             <br/><br/><br/>
 
-            <table>
+            <p>
+                <strong>En el año {new Date().getFullYear() - 1} ¿Cuántos almudes de su cosecha de café perdió por las siguientes razones?</strong>
+            </p>
+
+            <table style={{textAlign:"right"}}>
               <tr>
                 <th>
-                  En el año {new Date().getFullYear() - 1} ¿Cuántos almudes de su cosecha de café perdió por las siguientes razones?
+                  Plagas&emsp;
+                </th>
+                <th>
+                  <input type="number" min="0" placeholder="Total almudes" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                  &emsp;&emsp;&emsp;Plagas
+                  Sequías&emsp;
                 </th>
                 <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almudes"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Total almudes" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                  &emsp;&emsp;&emsp;Sequías
+                  Inundaciones&emsp;
                 </th>
                 <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almudes"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Total almudes" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                  &emsp;&emsp;&emsp;Inundaciones
+                  Enfermedad del Dueño&emsp;
                 </th>
                 <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almudes"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Total almudes" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                  &emsp;&emsp;&emsp;Enfermedad del Dueño
+                  Falta de Mano de Obra&emsp;
                 </th>
                 <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almudes"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Total almudes" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                  &emsp;&emsp;&emsp;Falta de Mano de Obra
+                  Mal manejo&emsp;
                 </th>
                 <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almudes"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Total almudes" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                  &emsp;&emsp;&emsp;Mal manejo
+                  Rob0&emsp;
                 </th>
                 <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almudes"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Total almudes" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                  &emsp;&emsp;&emsp;Robo
+                  Otra (especificar)&emsp;
                 </th>
                 <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almudes"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
               <tr>
                 <th>
-                  &emsp;&emsp;&emsp;Otra (especificar)
+                  Total&emsp;
                 </th>
                 <th>
-                  <input
-                  type="text"
-                  placeholder="Especifique"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  &emsp;&emsp;&emsp;Total
-                </th>
-                <th>
-                  <input
-                  type="number" min="0"
-                  placeholder="Total almudes"
-                  style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
+                  <input type="number" min="0" placeholder="Total almudes" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
             </table>
@@ -1160,25 +1078,24 @@ const CoffeeQuestionnaire: React.FC = () => {
                   &emsp;&emsp;&emsp;<label htmlFor="a_roja">Arañita Roja</label><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="cafe" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="otra">Otra</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+                  &emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
 
                 </th>
               </tr>
-            </table>            
+            </table>     
+
+            <br/><br/><br/>       
 
 
             <table>
             <tr>
                 <th>
-                  ¿Cuál es el zipcode de la residencia del administrador de la finca?&emsp;&emsp;&emsp;&emsp;
-                  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                  ¿Cuál es el zipcode de la residencia del administrador de la finca?&emsp;
                   <input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/>
 
                 </th>
-                {/* <th> */}
-                {/* <input type="number" min="0" max="9999" placeholder="Zipcode finca" style={{border: "1px solid black", marginRight: "10px", padding:"1px", width: "80px"}}/> */}
-                {/* </th> */}
               </tr>
+
             <br/><br/><br/>
 
             <tr>
@@ -1200,7 +1117,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                   &emsp;&emsp;&emsp;<label htmlFor="invadida">Invadida</label><br/>
                   &emsp;&emsp;&emsp;<input type="radio" name="titularidad" className="radio-spacing" />
                   &emsp;&emsp;&emsp;<label htmlFor="otra">Otra</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+                  &emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
                 </th>
               </tr>
 
@@ -1224,13 +1141,13 @@ const CoffeeQuestionnaire: React.FC = () => {
                   &emsp;&emsp;&emsp;<label htmlFor="citricos">Cítricos</label><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="cultivo" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="otros_frutales">Otros frutales o farináceos (si le aplica, favor de especificar cuales son)</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique frutales" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+                  &emsp;<input type="text" placeholder="Especifique frutales" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="cultivo" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="hortalizas">Hortalizas (si le aplica, favor de especificar cuales son)</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique hortalizas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+                  &emsp;<input type="text" placeholder="Especifique hortalizas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="cultivo" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="animales">Animales</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique frutales" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+                  &emsp;<input type="text" placeholder="Especifique frutales" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
                 </th>
               </tr>
 
@@ -1243,19 +1160,20 @@ const CoffeeQuestionnaire: React.FC = () => {
             <table>
               <tr>
                 <th>
-                  ¿Cuál es el número de teléfono del administrador de la finca?&emsp;&emsp;&emsp;
+                  ¿Cuál es el número de teléfono del administrador de la finca?&emsp;
                 </th>
                 <th>
                   <input type="string" placeholder="Teléfono" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
                 </th>
               </tr>
-            
+          </table>
 
             <br/><br/><br/>
 
+            <table>
               <tr>
                 <th>
-                  ¿Cuál es la edad del administrador de la finca?&emsp;&emsp;
+                  ¿Cuál es la edad del administrador de la finca?&emsp;
                 </th>
                 <th>
                   <input type="number" min="0" placeholder="Edad" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
@@ -1285,7 +1203,7 @@ const CoffeeQuestionnaire: React.FC = () => {
                 &emsp;&emsp;&emsp;<label htmlFor="cupones">Cupones y transferencias del gobierno</label><br/>
                 &emsp;&emsp;&emsp;<input type="radio" name="fuente_principal" className="radio-spacing" />
                 &emsp;&emsp;&emsp;<label htmlFor="otra">Otra</label>
-                &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+                &emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
               </th>
             </tr>
 
@@ -1376,18 +1294,20 @@ const CoffeeQuestionnaire: React.FC = () => {
                   &emsp;&emsp;&emsp;<label htmlFor="incapacidad">Incapacidad Física</label><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="otra">Otra</label>
-                  &emsp;&emsp;&emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
+                  &emsp;<input type="text" placeholder="Especifique" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}></input><br/>
                   &emsp;&emsp;&emsp;<input type="checkbox" name="enfermedad" className="checkbox-spacing" style={{marginRight:"10px"}}/>
                   &emsp;&emsp;&emsp;<label htmlFor="ninguna">Ninguna</label><br/>
                 </th>
               </tr>
+            </table>
 
               <br/><br/><br/>
 
+            <table>
               <tr>
                 <th>
                   ¿Cuántas personas viven en el hogar del administrador de la finca? 
-                  (incluyendo a usted)&emsp;&emsp;&emsp;
+                  (incluyendo a usted)&emsp;
                 </th>
                 <th>
                   <input type="number" min="0" placeholder="Total personas" style={{border: "1px solid black", marginRight: "10px", padding:"1px"}}/>
