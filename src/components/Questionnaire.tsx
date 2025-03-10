@@ -72,7 +72,7 @@ const Questionnaire: React.FC = () => {
   const question = questions[currentIndex];
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen p-6">
+    <div className="h-full w-full flex flex-col justify-center items-center p-6">
       {/* Barra de progreso */}
       <div className="w-full max-w-lg bg-gray-200 rounded-full h-2 mt-4 mb-6">
         <div
