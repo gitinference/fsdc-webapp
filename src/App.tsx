@@ -1,35 +1,31 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Questionnaire from "./components/Questionnaire";
+import GraphPage from "./pages/GraphPage"; 
 import "./App.css";
 
 function App() {
-  const [startQuiz, setStartQuiz] = useState(false);
-
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-6">
-      {!startQuiz ? (
-        <div className="text-center">
-          <h1 className="text-3xl font-bold mb-2">Escala de Seguridad Alimentaria</h1>
-          <h2 className="text-xl text-gray-700 mb-4">para Puerto Rico</h2>
+    <Router>
+      <div className="h-screen w-screen flex flex-col">
+        {/* Navigation Bar */}
+        <nav className="w-full bg-gray-200 p-4 flex justify-center space-x-6 shadow-md">
+          <Link to="/" className="text-blue-600 hover:underline text-lg">
+            📋 Cuestionario
+          </Link>
+          <Link to="/graph" className="text-blue-600 hover:underline text-lg">
+            📊 Ver Gráfica
+          </Link>
+        </nav>
 
-          <p className="text-lg text-gray-600 mb-4">
-            📝 Responda las siguientes preguntas sobre su seguridad alimentaria.
-          </p>
-          <p className="text-md text-gray-500 mb-6">
-            📌 Lea cada pregunta y seleccione la opción que mejor refleje su situación.
-          </p>
-
-          <button
-            className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg text-lg"
-            onClick={() => setStartQuiz(true)}
-          >
-            Comenzar Cuestionario
-          </button>
+        {/* Page Content */}
+        <div className="flex-1 flex justify-center items-center w-full">
+          <Routes>
+            <Route path="/" element={<Questionnaire />} />
+            <Route path="/graph" element={<GraphPage />} />
+          </Routes>
         </div>
-      ) : (
-        <Questionnaire />
-      )}
-    </div>
+      </div>
+    </Router>
   );
 }
 
