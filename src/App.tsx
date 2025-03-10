@@ -13,7 +13,7 @@ function App() {
             📋 Cuestionario
           </Link>
           <Link to="/graph" className="text-blue-600 hover:underline text-lg">
-            📊 Ver Gráfica
+            📊 Ver Gráficas
           </Link>
         </nav>
 

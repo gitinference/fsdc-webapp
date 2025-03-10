@@ -15,16 +15,18 @@ import("vega-embed").then((module) => {
 
 interface GraphComponentProps {
   endpoint: string; // api endpoint to fetch graph.
+  params?: Record<string, string | number>; // optional parameters for the api endpoint.
+ 
 }
 
-function GraphComponent({endpoint}: GraphComponentProps){
-
+function GraphComponent({endpoint, params}: GraphComponentProps){ 
   const [graphHtml, setGraphHtml] = useState<string | null>(null); // stores the graph html
   const[error, setError] = useState<string|null>(null); // stores error messages
-
+  
   
   useEffect(() => {
-    const apiUrl = `https://fsdc.econlabs.net${endpoint}`;
+    const queryString = params ? "?" + new URLSearchParams(params as any).toString() : ""; // Convert params to query string
+    const apiUrl = `https://fsdc.econlabs.net${endpoint}${queryString}`; // Construct the API URL
     console.log("Fetching:", apiUrl);
   
     fetch(apiUrl, {
@@ -95,14 +97,14 @@ function GraphComponent({endpoint}: GraphComponentProps){
           window.vegaEmbed("#vis", spec)
             .then(() => console.log(" Vega chart rendered!"))
             .catch((err: any) => console.error(" Vega error:", err));
-        }
+        } 
       }, 500);
     })
     .catch((error) => {
       console.error(" Error fetching graph:", error);
       setError(error.message);
     });
-}, [endpoint]);
+}, [endpoint, params]);
 
   
 
