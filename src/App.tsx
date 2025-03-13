@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import CoffeeQuestionnaire from './coffeeQuestionare';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -31,7 +28,7 @@ function App() {
         path="/"
         element={
           <div style={{ textAlign: 'center' }}>
-            <p>Click below to find the coffee questionnaire</p>
+            <p>Presione el cuadro de abajo para trasladarse al cuestionario de café</p>
             <Link to="/coffee">
               <button style={{
                 backgroundColor: '#4CAF50',

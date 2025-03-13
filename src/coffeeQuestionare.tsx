@@ -13,7 +13,7 @@ const CoffeeQuestionnaire: React.FC = () => {
 
   return (
     <div style={{ padding: "2px", fontFamily: "Arial, sans-serif", maxWidth: "100%", margin: "auto" }}>
-      <h1>Coffee Questionnaire</h1>
+      <h1>Cuestionario de Café</h1>
       <br/><br/><br/>
       <div>
         <p style={{fontSize: 30}}>
