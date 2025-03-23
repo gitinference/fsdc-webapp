@@ -16,23 +16,23 @@ function GraphPage() {
 
   if (selectedGraph === "security") {
     graphEndpoint = "/graph/security";
-    graphParams = {year, var: selectedVar };
+    graphParams = { year, var: selectedVar };
   } else if (selectedGraph === "food") {
     graphEndpoint = "/graph/food";
     graphParams = { var: selectedVar, year, qtr, title: "Food Data" };
-  }else if(selectedGraph === "price"){
+  } else if (selectedGraph === "price") {
     graphEndpoint = "/graph/price";
-    graphParams = undefined; 
+    graphParams = undefined;
 
   }
-    
+
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center p-6">
       <h1 className="text-3xl font-bold mb-6">📊 Gráfica de Datos</h1>
 
       {/* Buttons to toggle graphs */}
       <div className="flex space-x-4 mb-6">
-      <button
+        <button
           onClick={() => setSelectedGraph("price")}
           className={`px-4 py-2 rounded ${selectedGraph === "price" ? "bg-blue-500 text-white" : "bg-gray-300"}`}
         >
@@ -77,10 +77,10 @@ function GraphPage() {
           </select>
         </div>
 
-        
 
-        
-      ): null}
+
+
+      ) : null}
 
       {/* Input for selecting `qtr` when Food Graph is selected */}
       {selectedGraph === "food" && (
