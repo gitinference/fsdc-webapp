@@ -12,18 +12,17 @@ def get_db_credentials() -> list:
     DATABASE = str(os.environ.get("POSTGRES_DB")).strip()
     SECRET_KEY = str(os.getenv("SECRET_KEY")).strip()
     DEBUG = bool(os.getenv("DEBUG"))
+    PASSWORD = str(os.getenv("POSTGRES_PASSWORD")).strip()
 
     if not all([HOST, USER, DATABASE, SECRET_KEY, PORT]):
         raise ValueError("Database credentials not set")
     if os.environ.get("DEV") == "True":
         HOST = "localhost"
-        PASSWORD = str(os.getenv("POSTGRES_PASSWORD")).strip()
         DATABASE_URL = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
         API_URL = str(os.getenv("API_URL")).strip()
     else:
         HOST = "database"
         PORT = "5432"
-        PASSWORD = str(read_secret_file("/run/secrets/db-password")).strip()
         DATABASE_URL = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
         API_URL = "api"
     return [
