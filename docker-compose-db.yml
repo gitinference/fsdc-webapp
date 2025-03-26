@@ -6,11 +6,11 @@ services:
     secrets:
       - db-password
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT}:5432
     environment:
-      POSTGRES_USER: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD_FILE: /run/secrets/db-password
-      POSTGRES_DB: postgres
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - database_volume:/var/lib/postgresql/data
     networks:
@@ -29,10 +29,10 @@ services:
     secrets:
       - db-password
     environment:
-      POSTGRES_USER: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD_FILE: /run/secrets/db-password
-      POSTGRES_DB: postgres
-      POSTGRES_PORT: 5555
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: ${POSTGRES_PORT}
 
 networks:
   api_network:

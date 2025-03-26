@@ -4,5 +4,7 @@ asgiref==3.8.1
     # via django
 django==5.1.7
     # via fsdc-webapp (pyproject.toml)
+python-dotenv==1.1.0
+    # via fsdc-webapp (pyproject.toml)
 sqlparse==0.5.3
     # via django
