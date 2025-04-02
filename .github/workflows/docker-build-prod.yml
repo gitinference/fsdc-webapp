@@ -33,4 +33,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/econlabs/econlabs/fsdc-webapp:production
+          tags: ghcr.io/gitinference/gitinference/fsdc-webapp:production
