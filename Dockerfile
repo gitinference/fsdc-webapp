@@ -1,14 +1,13 @@
-
-FROM node:20-alpine
+FROM python:3.12
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY requirements.txt .
 
-RUN npm install
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
+EXPOSE 8000
 
 COPY . .
 
-EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
