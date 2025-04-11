@@ -35,7 +35,7 @@ SECRET_KEY = "django-insecure-ryoxbk8y@5xf6aspnk0fn%#cgx$lsyp!4jkriei*(=-c*1y5v^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["webapp.econlabs.net"]
 
 
 # Application definition
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "forms",
-    'formtools', 
+    "formtools",
     "data_apps",
 ]
 
