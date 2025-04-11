@@ -20,19 +20,6 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
-  api:
-    container_name: FastAPI
-    image: ghcr.io/gitinference/gitinference/fsdc-api:staging 
-    ports:
-      - 5071:8000
-    restart: always
-    secrets:
-      - db-password
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD_FILE: /run/secrets/db-password
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_PORT: ${POSTGRES_PORT}
 
 networks:
   api_network:
