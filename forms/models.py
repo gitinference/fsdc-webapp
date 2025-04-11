@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.postgres.fields import JSONField  # or models.JSONField for Django 3.1+
+from django.contrib.postgres.fields import JSONField 
 
 class SurveySubmission(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)

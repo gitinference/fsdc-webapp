@@ -102,7 +102,7 @@ def escala_part3_view(request):
             return redirect('escala_part4')
     else:
         form = PRPart3Form()
-    return render(request, 'forms/pr_part3.html', {'form': form})
+    return render(request, 'forms/escala_part3.html', {'form': form})
 
 
 def escala_part4_view(request):
@@ -120,4 +120,4 @@ def escala_part4_view(request):
             return redirect('gracias')
     else:
         form = PRPart4Form()
-    return render(request, 'forms/pr_part4.html', {'form': form})
+    return render(request, 'forms/escala_part4.html', {'form': form})
