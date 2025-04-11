@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Parte 1 - Acceso a Alimentos</title>
+</head>
+<body>
+  <h1>Parte 1: Acceso a Alimentos</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Siguiente</button>
+  </form>
+</body>
+</html>

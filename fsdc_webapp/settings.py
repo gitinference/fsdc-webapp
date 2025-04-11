@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "forms",
+    'formtools', 
     "data_apps",
 ]
 

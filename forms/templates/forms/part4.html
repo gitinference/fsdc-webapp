@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Parte 4 - Accesibilidad</title>
+</head>
+<body>
+  <h1>Parte 4: Accesibilidad de alimentos</h1>
+  <p>
+    Seleccione la opción que MEJOR se acerque a su caso. Las siguientes preguntas se refieren a su accesibilidad de alimentos en los últimos 30 días.
+  </p>
+  <p>
+    Piense en los últimos 30 días. ¿Con qué frecuencia visita los siguientes lugares para comprar comestibles o alimentos preparados?
+  </p>
+  <p>
+    Piense en los últimos 30 días. ¿Con qué frecuencia las siguientes circunstancias le han dificultado obtener alimentos?
+  </p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>

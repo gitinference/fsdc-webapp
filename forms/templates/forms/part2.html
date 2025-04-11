@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Parte 2 - Uso del dinero</title>
+</head>
+<body>
+  <h1>Parte 2: Gastos en lugar de comida</h1>
+  <p>
+    Durante los últimos 30 días, ¿con qué frecuencia gastó dinero en los siguientes casos en lugar de usarlo para comprar comida?
+  </p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Siguiente</button>
+  </form>
+</body>
+</html>
