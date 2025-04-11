@@ -1,19 +1,18 @@
 from django.urls import path
 from .views import (
-    part1_view, part2_view, part3_view, part4_view, gracias_view
+    gracias_view
 )
 from .views import (
     escala_part1_view, escala_part2_view, escala_part3_view, escala_part4_view
 )
+from .views import EscalaWizard, escala_forms
+
+from .views import ConsentimientoWizard, consentimiento_forms
+
 
 urlpatterns = [
-    path('parte1/', part1_view, name='parte1'),
-    path('parte2/', part2_view, name='parte2'),
-    path('parte3/', part3_view, name='parte3'),
-    path('parte4/', part4_view, name='parte4'),
+    path('consentimiento/', ConsentimientoWizard.as_view(consentimiento_forms), name='consentimiento_wizard'),
     path('gracias/', gracias_view, name='gracias'),
-    path('escala_part1/', escala_part1_view, name='escala_part1'),
-    path('escala_part2/', escala_part2_view, name='escala_part2'),
-    path('escala_part3/', escala_part3_view, name='escala_part3'),
-    path('escala_part4/', escala_part4_view, name='escala_part4'),
+    path('escala/', EscalaWizard.as_view(escala_forms), name='escala_wizard'),
+
 ]

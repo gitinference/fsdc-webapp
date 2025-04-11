@@ -1,0 +1,40 @@
+{% extends 'forms/wizard_base.html' %}
+
+{% block content %}
+
+  {# ——— Title Logic ——— #}
+  {% if wizard.steps.current == "consentimiento1" %}
+  <h2>Parte 1: Consentimiento Informado</h2>
+    {% elif wizard.steps.current == "consentimiento2" %}
+    <h2>Parte 2: Hábitos Alimentarios</h2>
+    {% elif wizard.steps.current == "consentimiento3" %}
+    <h2>Parte 3: Fuentes de Alimentos</h2>
+    {% elif wizard.steps.current == "consentimiento4" %}
+    <h2>Parte 4: Barreras de Acceso</h2>
+    {% elif wizard.steps.current == "escala1" %}
+    <h2>Parte 1: Acceso a Alimentos</h2>
+    {% elif wizard.steps.current == "escala2" %}
+    <h2>Parte 2: Experiencias del Hogar</h2>
+    {% elif wizard.steps.current == "escala3" %}
+    <h2>Parte 3: Niños en el Hogar</h2>
+    {% elif wizard.steps.current == "escala4" %}
+    <h2>Parte 4: Final</h2>
+    {% else %}
+    <h2>Formulario Paso {{ wizard.steps.step1 }} de {{ wizard.steps.count }}</h2>
+    {% endif %}
+
+
+  <form method="post">
+    {% csrf_token %}
+    {{ wizard.management_form }}
+    {{ wizard.form.as_p }}
+
+    {# ——— Button ——— #}
+    {% if wizard.steps.step1 == wizard.steps.count %}
+      <button type="submit">Finalizar</button>
+    {% else %}
+      <button type="submit">Siguiente</button>
+    {% endif %}
+  </form>
+
+{% endblock %}
