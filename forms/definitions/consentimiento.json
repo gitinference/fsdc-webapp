@@ -1,0 +1,103 @@
+{
+    "wizard_name": "consentimiento",
+    "parts": [
+      {
+        "step": "consentimiento1",
+        "title": "Parte 1: Consentimiento Informado",
+        "fields": [
+          { "id": "p1_q1",  "label": "La comida que compro simplemente no me da y no tengo dinero adicional para comprar más alimentos.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p1_q2",  "label": "No tengo el dinero suficiente para que la mayor parte de mis comidas sean unas saludables y balanceadas.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p1_q3",  "label": "Me preocupa que se me acabe la comida antes de volver a tener dinero para comprar más.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p1_q4",  "label": "¿Ha tenido que reducir la cantidad de alimentos que consume o saltar comidas por que el dinero no le es suficiente?", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p1_q5",  "label": "¿Alguna vez no comió durante un día entero porque no tenía suficiente dinero para comida?", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p1_q6",  "label": "¿Comiste menos de lo que sientes que deberías porque no tenías suficiente dinero para comida?", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p1_q7",  "label": "¿Hubo ocasiones en las cuales tenías hambre, pero no comiste porque no tenías suficiente dinero para comida?", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p1_child_a", "label": "En mi familia, la comida que compraban simplemente no daba y no tenían dinero adicional para comprar más alimentos.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p1_child_b", "label": "En mi familia, no tenían el dinero suficiente para que la mayor parte de las comidas fuesen unas saludables y balanceadas.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p1_child_c", "label": "En mi familia, siempre nos preocupaba que la comida se acabara antes de que tuviéramos dinero adicional para comprar más.", "type": "choice", "choices": "FREQUENCY" }
+        ]
+      },
+  
+      {
+        "step": "consentimiento2",
+        "title": "Parte 2: Hábitos Alimentarios",
+        "fields": [
+          { "id": "p2_hospedaje",          "label": "Gastó dinero en gastos de hospedaje en lugar de usar dinero para comprar comida.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p2_universitarios",     "label": "Gastó dinero en gastos universitarios en lugar de usar dinero para comprar comida.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p2_alcohol",            "label": "Compró alcohol en lugar de usar dinero para comprar comida", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p2_drogas",             "label": "Compró drogas recreativas en lugar de usar dinero para comprar comida", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p2_reparaciones_auto",  "label": "Gastó dinero en reparaciones de automóviles en lugar de usar dinero para comprar comida.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p2_gasolina",           "label": "Gastó dinero en gasolina en lugar de usar dinero para comprar comida.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p2_transporte_publico", "label": "Gastó dinero en transporte público en lugar de usar dinero para comprar comida.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p2_cuidado_mascotas",   "label": "Gastó dinero en el cuidado de mascotas en lugar de usar dinero para comprar comida.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p2_tatuajes",           "label": "Gastó dinero en tatuajes en lugar de usar dinero para comprar comida.", "type": "choice", "choices": "FREQUENCY" }
+        ]
+      },
+  
+      {
+        "step": "consentimiento3",
+        "title": "Parte 3: Fuentes de Ingreso/Adaptaciones",
+        "fields": [
+          { "id": "p3_1",  "label": "Vendí posesiones personales para obtener dinero para comprar alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_2",  "label": "Tomé menos clases para ahorrar dinero en matrícula y poder comprar alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_3",  "label": "Comparto el alquiler con otras personas para economizar y poder comprar alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_4",  "label": "Tengo uno o más trabajos de medio tiempo o tiempo completo para poder comprar alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_5",  "label": "Usó una tarjeta de crédito para comprar alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_6",  "label": "Participé en un estudio de investigación o ensayo clínico para poder comprar alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_7",  "label": "Tomé dinero prestado de familiares o amigos para poder comprar alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_8",  "label": "Asistí a eventos en el campus o en la comunidad donde había comida gratis", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_9",  "label": "Obtuve comida de un banco de alimentos o despensa de alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_10", "label": "Intercambié servicios o artículos para obtener comida", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_11", "label": "Participo de algún programa federal o estatal de asistencia alimentaria (por ejemplo, cupones, WIC, etc.)", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_12", "label": "No compré medicamentos para ahorrar dinero y poder comprar alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_13", "label": "No asistí a citas médicas para ahorrar dinero y poder comprar alimentos", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_14", "label": "Comparto comestibles y/o comidas con compañeros de hospedaje", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_15", "label": "Obtuve comida de un basurero o de la basura", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_16", "label": "Comí más de lo normal cuando había abundancia de comida", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_17", "label": "Me uní a una iglesia u otro grupo organizacional donde proporcionan comidas gratis", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_18", "label": "Comí comidas menos saludables para poder comer más cantidad", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_19", "label": "Compro comida barata y procesada (por ejemplo, fideos ramen, pizza congelada, dulces, etc.) porque no tengo dinero suficiente", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_20", "label": "Visito a mi familia en fines de semana para llevarme comida de regreso al hospedaje", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_21", "label": "Tuve que recurrir a robar alimentos en supermercados o tiendas de conveniencia para poder comer.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_22", "label": "Tuve que recurrir a robar alimentos de mi lugar de trabajo para poder comer", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_23", "label": "Tuve que escoger entre utilizar mi dinero para comprar comida o pagar gastos de hospedaje.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_24", "label": "Tuve que escoger entre utilizar mi dinero para comprar comida o pagar gastos universitarios.", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_25", "label": "No visité a mi familia para tener dinero para comprar comida", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_26", "label": "No participé de actividades recreativas para economizar dinero para la compra de comida", "type": "choice", "choices": "FREQUENCY" },
+          { "id": "p3_27", "label": "No participé de actividades deportivas para economizar dinero para la compra de comida", "type": "choice", "choices": "FREQUENCY" }
+        ]
+      },
+  
+      {
+        "step": "consentimiento4",
+        "title": "Parte 4: Barreras de Acceso",
+        "fields": [
+          { "id": "cafeteria_universidad",      "label": "Cafetería de la universidad",                                                         "type": "choice", "choices": "FREQUENCY" },
+          { "id": "restaurantes_foodtrucks",    "label": "Otros restaurantes de comida en la universidad tales como “foodtrucks”",             "type": "choice", "choices": "FREQUENCY" },
+          { "id": "comida_rapida",              "label": "Restaurantes de comida rápida",                                                      "type": "choice", "choices": "FREQUENCY" },
+          { "id": "restaurantes",               "label": "Restaurantes",                                                                       "type": "choice", "choices": "FREQUENCY" },
+          { "id": "asistencia_universidad",     "label": "Programa de asistencia de alimentos en la universidad",                              "type": "choice", "choices": "FREQUENCY" },
+          { "id": "asistencia_municipio",       "label": "Programa de asistencia de alimentos del municipio",                                  "type": "choice", "choices": "FREQUENCY" },
+          { "id": "asistencia_privadas",        "label": "Programa de asistencia de alimentos de entidades privadas",                          "type": "choice", "choices": "FREQUENCY" },
+          { "id": "supermercados",              "label": "Supermercados",                                                                     "type": "choice", "choices": "FREQUENCY" },
+          { "id": "megatiendas",                "label": "Megatiendas (Walmart, Sam’s Club, Costco)",                                         "type": "choice", "choices": "FREQUENCY" },
+          { "id": "tiendas_conveniencia",       "label": "Tiendas de conveniencia",                                                           "type": "choice", "choices": "FREQUENCY" },
+          { "id": "plaza_mercado",              "label": "Plaza del Mercado",                                                                 "type": "choice", "choices": "FREQUENCY" },
+          { "id": "casa_padres",                "label": "Casa de los padres o familiares",                                                   "type": "choice", "choices": "FREQUENCY" },
+          { "id": "casa_amistades",             "label": "Casa de amistades",                                                                 "type": "choice", "choices": "FREQUENCY" },
+          { "id": "eventos_gratuitos",          "label": "Eventos donde ofrezcan comida gratuita",                                             "type": "choice", "choices": "FREQUENCY" },
+          { "id": "falta_tiempo_comprar",       "label": "Falta de tiempo para comprar alimentos",                                            "type": "choice", "choices": "FREQUENCY" },
+          { "id": "falta_tiempo_preparar",      "label": "Falta de tiempo para preparar alimentos",                                           "type": "choice", "choices": "FREQUENCY" },
+          { "id": "falta_facilidades_cocina",   "label": "Falta de facilidades (cocina) para cocinar sus alimentos",                          "type": "choice", "choices": "FREQUENCY" },
+          { "id": "falta_metodos_transportacion","label": "Falta de métodos de transportación",                                              "type": "choice", "choices": "FREQUENCY" },
+          { "id": "falta_dinero_gas",           "label": "Falta de dinero para comprar gas propano",                                          "type": "choice", "choices": "FREQUENCY" },
+          { "id": "costos_alimentos",           "label": "Costos de los alimentos",                                                           "type": "choice", "choices": "FREQUENCY" },
+          { "id": "localizacion_sucursales",    "label": "Localización de sucursales de comida en la universidad",                            "type": "choice", "choices": "FREQUENCY" },
+          { "id": "horario_sucursales",         "label": "Horas de operación de sucursales de comida en la universidad",                      "type": "choice", "choices": "FREQUENCY" },
+          { "id": "localizacion_supermercados", "label": "Localización de supermercados, tiendas de conveniencia o megatiendas",              "type": "choice", "choices": "FREQUENCY" },
+          { "id": "horario_supermercados",      "label": "Horas de operación de supermercados, tiendas de conveniencia o megatiendas",        "type": "choice", "choices": "FREQUENCY" }
+        ]
+      }
+    ]
+  }
+  
