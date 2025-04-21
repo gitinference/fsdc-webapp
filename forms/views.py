@@ -1,166 +1,61 @@
-from django.shortcuts import render, redirect
-from .forms import (
-    Part1Consentimiento,
-    Part2Consentimiento,
-    Part3Consentimiento,
-    Part4Consentimiento,
-)
-from .forms import EscalaPart1Form, EscalaPart2Form, EscalaPart3Form, EscalaPart4Form
-from .models import SurveySubmission
+from pathlib import Path
+from django.shortcuts import redirect, render
 from formtools.wizard.views import SessionWizardView
+from .form_builder import load_definition
+from .models import SurveySubmission
+
+BASE_DIR = Path(__file__).resolve().parent
+
+consentimiento_spec, consentimiento_forms = load_definition(
+    BASE_DIR / "definitions" / "consentimiento.json"
+)
+escala_spec, escala_forms = load_definition(
+    BASE_DIR / "definitions" / "escala.json"
+)
+
+class BaseSurveyWizard(SessionWizardView):
+    template_name = "forms/wizard_step.html"
+    survey_spec = None         # se asigna en la subclase
+    form_list_cfg = None
+
+    def get_form_list(self):
+        return dict(self.form_list_cfg)
+
+    def get_context_data(self, form, **kwargs):
+        ctx = super().get_context_data(form=form, **kwargs)
+        part = self.survey_spec["parts_by_step"][self.steps.current]
+        ctx["part_title"] = part["title"]
+        return ctx
+
+    def get_next_step(self):
+        current_step = self.steps.current
+        cleaned_data = self.get_cleaned_data_for_step(current_step)
+
+        part = self.survey_spec["parts_by_step"].get(current_step, {})
+        for rule in part.get("routing", []):
+            actual_value = str(cleaned_data.get(rule["trigger"], "")).strip().upper()
+            expected_value = str(rule["value"]).strip().upper()
+            if actual_value == expected_value:
+                return rule["next"]
+
+        return super().get_next_step()
 
 
 
-escala_forms = [
-    ("escala1", EscalaPart1Form),
-    ("escala2", EscalaPart2Form),
-    ("escala3", EscalaPart3Form),
-    ("escala4", EscalaPart4Form),
-]
-
-
-consentimiento_forms = [
-    ("consentimiento1", Part1Consentimiento),
-    ("consentimiento2", Part2Consentimiento),
-    ("consentimiento3", Part3Consentimiento),
-    ("consentimiento4", Part4Consentimiento),
-]
-
-class ConsentimientoWizard(SessionWizardView):
-    template_name = "forms/wizard_step.html"  # we'll create this next
     def done(self, form_list, **kwargs):
-        final_data = {}
-        for form in form_list:
-            final_data.update(form.cleaned_data)
-        SurveySubmission.objects.create(data=final_data)
-        return redirect("gracias")  # this should already exist
+        data = {}
+        for frm in form_list:
+            data.update(frm.cleaned_data)
+        SurveySubmission.objects.create(data=data)
+        return redirect("gracias")
 
-class EscalaWizard(SessionWizardView):
-    template_name = 'forms/wizard_step.html'
+class ConsentimientoWizard(BaseSurveyWizard):
+    survey_spec = consentimiento_spec
+    form_list_cfg = consentimiento_forms
 
-    def done(self, form_list, **kwargs):
-        final_data = {}
-        for form in form_list:
-            final_data.update(form.cleaned_data)
-        SurveySubmission.objects.create(data=final_data)
-        return redirect('gracias')
-
-def part1_view(request):
-    if request.method == "POST":
-        form = Part1Consentimiento(request.POST)
-        if form.is_valid():
-            request.session["part1"] = form.cleaned_data
-            return redirect("parte2")
-    else:
-        form = Part1Consentimiento()
-    return render(request, "forms/part1.html", {"form": form})
-
-
-def part2_view(request):
-    if request.method == "POST":
-        form = Part2Consentimiento(request.POST)
-        if form.is_valid():
-            request.session["part2"] = form.cleaned_data
-            return redirect("parte3")
-    else:
-        form = Part2Consentimiento()
-    return render(request, "forms/part2.html", {"form": form})
-
-
-def part3_view(request):
-    if request.method == "POST":
-        form = Part3Consentimiento(request.POST)
-        if form.is_valid():
-            request.session["part3"] = form.cleaned_data
-            return redirect("parte4")
-    else:
-        form = Part3Consentimiento()
-    return render(request, "forms/part3.html", {"form": form})
-
-
-def part4_view(request):
-    if request.method == "POST":
-        form = Part4Consentimiento(request.POST)
-        if form.is_valid():
-            request.session["part4"] = form.cleaned_data
-            # Aquí podrías guardar todas las respuestas combinadas
-            full_data = {
-                **request.session.get("part1", {}),
-                **request.session.get("part2", {}),
-                **request.session.get("part3", {}),
-                **form.cleaned_data,
-            }
-            request.session["final_data"] = full_data
-            return redirect("gracias")
-    else:
-        form = Part4Consentimiento()
-    return render(request, "forms/part4.html", {"form": form})
-
+class EscalaWizard(BaseSurveyWizard):
+    survey_spec = escala_spec
+    form_list_cfg = escala_forms
 
 def gracias_view(request):
     return render(request, "forms/gracias.html")
-
-
-def escala_part1_view(request):
-    if request.method == "POST":
-        form = EscalaPart1Form(request.POST)
-        if form.is_valid():
-            request.session["escala_part1"] = form.cleaned_data
-            return redirect("escala_part2")
-    else:
-        form = EscalaPart1Form()
-    return render(request, "forms/escala_part1.html", {"form": form})
-
-
-def escala_part2_view(request):
-    if request.method == "POST":
-        form = EscalaPart2Form(request.POST)
-        print("Form submitted.")  # ✅ Check if POST is happening
-
-        if form.is_valid():
-            print("Form is valid.")  # ✅ Confirm validation
-            request.session["parte2"] = form.cleaned_data
-            has_kids = form.cleaned_data.get("a10")
-            print("User selected:", has_kids)
-
-            if has_kids == "SI":
-                return redirect("escala_part3")
-            else:
-                return redirect("escala_part4")
-        else:
-            print("Form is NOT valid.")
-            print(form.errors)  # 🔥 Print the actual validation errors
-
-    else:
-        form = EscalaPart2Form()
-
-    return render(request, "forms/escala_part2.html", {"form": form})
-
-
-def escala_part3_view(request):
-    if request.method == "POST":
-        form = EscalaPart3Form(request.POST)
-        if form.is_valid():
-            request.session["escala_part3"] = form.cleaned_data
-            return redirect("escala_part4")
-    else:
-        form = EscalaPart3Form()
-    return render(request, "forms/escala_part3.html", {"form": form})
-
-
-def escala_part4_view(request):
-    if request.method == "POST":
-        form = EscalaPart4Form(request.POST)
-        if form.is_valid():
-            request.session["pr_part4"] = form.cleaned_data
-            final_data = {
-                **request.session.get("pr_part1", {}),
-                **request.session.get("pr_part2", {}),
-                **request.session.get("pr_part3", {}),
-                **request.session.get("pr_part4", {}),
-            }
-            SurveySubmission.objects.create(data=final_data)
-            return redirect("gracias")
-    else:
-        form = EscalaPart4Form()
-    return render(request, "forms/escala_part4.html", {"form": form})
