@@ -11,3 +11,7 @@ python-dotenv==1.1.0
 sqlparse==0.5.3
     # via django
 django-formtools==2.5.1
+
+django-crispy-forms
+crispy-bootstrap5
+
