@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "forms",
     'formtools', 
+    'crispy_forms',
+    'crispy_bootstrap5',
     "data_apps",
 ]
 
@@ -89,11 +91,11 @@ WSGI_APPLICATION = "fsdc_webapp.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": DATABASE,
-        "USER": USER,
-        "PASSWORD": PASSWORD,
-        "HOST": HOST,
-        "PORT": PORT,
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "dbuser",
+        "HOST": "localhost",
+        "PORT": "8998",
     }
 }
 
@@ -141,3 +143,7 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# tells cripsy to use the Bootstrap 5 pack
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
