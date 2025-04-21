@@ -1,0 +1,46 @@
+services:
+  database:
+    image: postgres:17
+    container_name: api_database
+    restart: always
+    secrets:
+      - db-password
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD_FILE: /run/secrets/db-password
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - database_volume:/var/lib/postgresql/data
+    networks:
+      - api_network
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+  api:
+    container_name: FastAPI
+    image: ghcr.io/gitinference/gitinference/fsdc-api:staging 
+    ports:
+      - 5071:8000
+    restart: always
+    secrets:
+      - db-password
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD_FILE: /run/secrets/db-password
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+
+networks:
+  api_network:
+
+volumes:
+  database_volume:
+  data_folder:
+
+secrets:
+  db-password:
+    file: password.txt
