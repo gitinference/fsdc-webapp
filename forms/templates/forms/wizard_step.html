@@ -1,0 +1,28 @@
+{% extends "forms/wizard_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-body">
+      <h2 class="card-title">{{ part_title }}</h2>
+
+      <!-- Optional: a simple progress indicator -->
+      <div class="mb-4">
+        Paso {{ wizard.steps.step1 }} de {{ wizard.steps.count }}
+      </div>
+
+      <form method="post">
+        {% csrf_token %}
+        {{ wizard.management_form }}
+        {{ wizard.form|crispy }}
+        <button class="btn btn-primary">
+          {% if wizard.steps.step1 == wizard.steps.count %}
+            Finalizar
+          {% else %}
+            Siguiente
+          {% endif %}
+        </button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
