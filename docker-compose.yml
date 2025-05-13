@@ -1,56 +1,32 @@
 services:
-  database:
-    image: postgres:17
-    container_name: database
-    restart: always
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-
-    volumes:
-      - database_volume:/var/lib/postgresql/data
-    networks:
-      - fsdc_net
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "${POSTGRES_DB}", "-d", "${POSTGRES_DB}"]
-      interval: 5s
-      timeout: 3s
-      retries: 5
-
-  django:
-    container_name: django_server
+  django_staging:
+    container_name: fsdc_webapp_staging
     build:
       context: .
+    restart: always
+    ports:
+      - 5071:3000
     environment:
       DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME}
       DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL}
       DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD}
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_HOST: database
+      POSTGRES_DB: fsdc_db_staging
       POSTGRES_PORT: 5432
-      DEBUG: True
+      POSTGRES_HOST: postgres
+      DEV: False
+      DEBUG: False
     command: >
       sh -c "python manage.py migrate &&
              python manage.py shell -c 'from django.contrib.auth.models import User; User.objects.filter(username=\"${DJANGO_SUPERUSER_USERNAME}\").exists() or User.objects.create_superuser(\"${DJANGO_SUPERUSER_USERNAME}\", \"${DJANGO_SUPERUSER_EMAIL}\", \"${DJANGO_SUPERUSER_PASSWORD}\")' &&
              python manage.py makemigrations &&
              python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
-    ports: 
-      - 8057:8000
+             gunicorn fsdc_webapp.wsgi:application --bind 0.0.0.0:8000"
     networks:
-      - fsdc_net
-    depends_on:
-      database:
-        condition: service_healthy
-
+      - postgres_network
+    volumes:
+      - ./data:/app/data
 networks:
-  fsdc_net:
-
-volumes:
-  database_volume:
-  data_folder:
+  postgres_network:
+    external: true
