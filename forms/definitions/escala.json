@@ -1,56 +1,58 @@
 {
-    "wizard_name": "escala",
-    "parts": [
-      {
-        "step": "escala1",
-        "title": "Parte 1: Acceso a Alimentos",
-        "fields": [
-          { "id": "a1", "label": "A1. En algún momento durante los pasados 3 meses, ¿Le preocupó que se acabara la compra y no poder ir a comprar más alimentos, por falta de dinero?", "type": "choice", "choices": "PR_FREQUENCY" },
-          { "id": "a2", "label": "A2. En algún momento durante los pasados 3 meses, ¿Se acabó la compra antes del mes y no pudo comprar más alimentos por falta de dinero?", "type": "choice", "choices": "PR_FREQUENCY" },
-          { "id": "a3", "label": "A3. En algún momento durante los pasados 3 meses, ¿No pudo comer saludablemente/nutritivamente por falta de dinero?", "type": "choice", "choices": "PR_FREQUENCY" }
-        ]
-      },
-  
-      {
-        "step": "escala2",
-        "title": "Parte 2: Experiencias del Hogar",
-        "fields": [
-          { "id": "a4",  "label": "A4. ¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, se sirvió menos cantidad de alimentos de lo que debía comer, por falta de dinero para comprar más?", "type": "choice", "choices": "YES_NO_NORECUERDO" },
-          { "id": "a5",  "label": "A5. ¿En algún momento durante los pasados 3 meses, Usted o algún otro adulto en la casa, no pudo hacer o comer alguna de las comidas principales del día ...?", "type": "choice", "choices": "YES_NO_NORECUERDO" },
-          { "id": "a6",  "label": "A6. ¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, tuvo hambre pero no comió ...?", "type": "choice", "choices": "YES_NO_NORECUERDO" },
-          { "id": "a7",  "label": "A7. ¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, bajó de peso por falta de dinero ...?", "type": "choice", "choices": "YES_NO_NORECUERDO" },
-          { "id": "a8",  "label": "A8. ¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, no comió durante todo un día ...?", "type": "choice", "choices": "YES_NO_NORECUERDO" },
-          { "id": "a9",  "label": "A9. ¿En algún momento durante los pasados 3 meses, usted o algún otro adulto en la casa, tuvo que ir a comer a casa de algún familiar ...?", "type": "choice", "choices": "YES_NO_NORECUERDO" },
-          { "id": "a10", "label": "A10. ¿En su hogar viven niños o jóvenes menores de 18 años?", "type": "choice", "choices": [ ["SI", "SI (Pase a Parte 3)"], ["NO", "NO (Pase a la Parte 4)"] ], "required": true }
-        ],
-  
-        "routing": [
-          { "trigger": "a10", "value": "SI", "next": "escala3" },
-          { "trigger": "a10", "value": "NO", "next": "escala4" }
-        ]
-      },
-  
-      {
-        "step": "escala3",
-        "title": "Parte 3: Niños en el Hogar",
-        "fields": [
-          { "id": "n1", "label": "N1. ¿En algún momento durante los pasados 3 meses, tuvo que darle a sus hijos un menú poco variado ...?", "type": "choice", "choices": "PR_FREQUENCY" },
-          { "id": "n2", "label": "N2. ¿En algún momento durante los pasados 3 meses, tuvo que prepararle a sus hijos comidas no balanceadas ...?", "type": "choice", "choices": "PR_FREQUENCY" },
-          { "id": "n3", "label": "N3. ¿En algún momento durante los pasados 3 meses, tuvo que servirle menos cantidad de comida a sus hijos ...?", "type": "choice", "choices": "YES_NO_NORECUERDO" },
-          { "id": "n4", "label": "N4. ¿En algún momento durante los pasados 3 meses, no le pudo dar alguna de las comidas principales del día ...?", "type": "choice", "choices": [ ["si", "Si (Pase a la pregunta N4a)"], ["no", "No"], ["no_recuerdo", "No recuerdo"] ] },
-          { "id": "n5", "label": "N5. ¿En algún momento durante los pasados 3 meses, tuvo que llevar a sus hijos a comer a casa de algún familiar ...?", "type": "choice", "choices": "YES_NO_NORECUERDO" },
-          { "id": "n6", "label": "N6. ¿En algún momento durante los pasados 3 meses, sus hijos tuvieron hambre y no tenía dinero ...?", "type": "choice", "choices": "YES_NO_NORECUERDO" },
-          { "id": "n7", "label": "N7. ¿En algún momento durante los pasados 3 meses, sus hijos no comieron por todo un día ...?", "type": "choice", "choices": "YES_NO_NORECUERDO" }
-        ]
-      },
-  
-      {
-        "step": "escala4",
-        "title": "Parte 4: Final",
-        "fields": [
-          { "id": "fin", "label": "Fin del Cuestionario", "type": "char", "widget": "hidden", "required": false }
-        ]
-      }
-    ]
-  }
-  
+  "wizard_name": "escala",
+  "parts": [
+    {
+      "step": "escala1",
+      "title": "Parte 1 – Situaciones sobre la alimentación en su hogar",
+      "intro": "Las siguientes preguntas se refieren a la alimentación en su hogar y a si pudo adquirir los alimentos que necesitaba. Indique si en algún momento, durante los últimos 3 meses, le ocurrió lo siguiente:",
+      "fields": [
+        { "id": "a1", "label": "A1. ¿Le preocupó que se acabara la compra y no poder ir a comprar más alimentos, por falta de dinero?", "type": "choice", "choices": "PR_FREQUENCY" },
+        { "id": "a2", "label": "A2. ¿Se acabó la compra antes del mes y no pudo comprar más alimentos por falta de dinero?", "type": "choice", "choices": "PR_FREQUENCY" },
+        { "id": "a3", "label": "A3. ¿No pudo comer saludablemente/nutritivamente por falta de dinero?", "type": "choice", "choices": "PR_FREQUENCY" }
+      ]
+    },
+
+    {
+      "step": "escala2",
+      "title": "Parte 2 – Situaciones en adultos del hogar",
+      "intro": "A continuación se muestran varias situaciones. Indique si alguna de ellas le ocurrió, en algún momento, durante los **últimos 3 meses**:",
+      "fields": [
+        { "id": "a4",  "label": "A4. Usted o algún otro adulto en la casa se sirvió menos cantidad de alimentos de lo que debía comer, por falta de dinero para comprar más.", "type": "choice", "choices": "YES_NO_NORECUERDO" },
+        { "id": "a5",  "label": "A5. Usted o algún otro adulto en la casa no pudo hacer o comer alguna de las comidas principales del día (desayuno, almuerzo o cena) por falta de dinero.", "type": "choice", "choices": "YES_NO_NORECUERDO" },
+        { "id": "a6",  "label": "A6. Usted o algún otro adulto en la casa tuvo hambre pero no comió por falta de dinero para comprar alimentos/comida.", "type": "choice", "choices": "YES_NO_NORECUERDO" },
+        { "id": "a7",  "label": "A7. Usted o algún otro adulto en la casa bajó de peso por falta de dinero para comprar alimentos/comida.", "type": "choice", "choices": "YES_NO_NORECUERDO" },
+        { "id": "a8",  "label": "A8. Usted o algún otro adulto en la casa no comió durante todo un día por falta de dinero para comprar alimentos/comida.", "type": "choice", "choices": "YES_NO_NORECUERDO" },
+        { "id": "a9",  "label": "A9. Usted o algún otro adulto en la casa tuvo que ir a comer a casa de algún familiar por falta de dinero para comprar alimentos/comida.", "type": "choice", "choices": "YES_NO_NORECUERDO" },
+        { "id": "a10", "label": "A10. ¿En su hogar viven niños o jóvenes menores de 18 años?", "type": "choice",
+          "choices": [
+            ["SI", "SI (pase a Parte 3)"],
+            ["NO", "NO (fin del cuestionario)"]
+          ],
+          "required": true }
+      ],
+      "routing": [
+        { "trigger": "a10", "value": "SI", "next": "escala3" }
+      ]
+    },
+
+    {
+      "step": "escala3",
+      "title": "Parte 3 – Situaciones con los niños en el hogar",
+      "intro": "Las siguientes preguntas se refieren a los **niños o jóvenes menores de 18 años** que viven en su hogar. Indique si, durante los últimos 3 meses, le ocurrió lo siguiente:",
+      "fields": [
+        { "id": "n1", "label": "N1. Tuvo que darle a sus hijos un menú poco variado (el mismo tipo de comida) por falta de dinero.", "type": "choice", "choices": "PR_FREQUENCY" },
+        { "id": "n2", "label": "N2. Tuvo que prepararles a sus hijos comidas no balanceadas/no nutritivas por falta de dinero.", "type": "choice", "choices": "PR_FREQUENCY" },
+        { "id": "n3", "label": "N3. Tuvo que servirles menos cantidad de comida a sus hijos porque no había suficiente y no había dinero para comprar más.", "type": "choice", "choices": "YES_NO_NORECUERDO" },
+        { "id": "n4", "label": "N4. No les pudo dar alguna de las comidas principales del día (desayuno, almuerzo o cena) a sus hijos por falta de dinero.", "type": "choice",
+          "choices": [
+            ["si", "Sí"],
+            ["no", "No (pase a la pregunta N5)"],
+            ["no_recuerdo", "No recuerdo (pase a la pregunta N5)"]
+          ] },
+        { "id": "n5", "label": "N5. Tuvo que llevar a sus hijos a comer a casa de algún familiar por falta de dinero para comprar alimentos/comidas.", "type": "choice", "choices": "YES_NO_NORECUERDO" },
+        { "id": "n6", "label": "N6. Sus hijos tuvieron hambre y no tenía dinero para comprar algo de comer.", "type": "choice", "choices": "YES_NO_NORECUERDO" },
+        { "id": "n7", "label": "N7. Sus hijos no comieron por todo un día porque no hubo dinero para comprar alimentos/comida.", "type": "choice", "choices": "YES_NO_NORECUERDO" }
+      ]
+    }
+  ]
+}
