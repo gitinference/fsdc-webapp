@@ -43,6 +43,19 @@ services:
     volumes:
       - ./data:/app/data
 
+  fastapi_staging:
+    container_name: FastAPI
+    image: ghcr.io/gitinference/gitinference/fsdc-api:staging
+    ports:
+      - 5071:8000
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: ${POSTGRES_PORT}
+
 volumes:
   pgdata_staging:
 
