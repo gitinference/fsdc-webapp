@@ -1,0 +1,47 @@
+<!-- templates/entry_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Records</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        thead {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Records</h1>
+
+    {% if records %}
+        <table>
+            <thead>
+                <tr>
+                    {% for key in records.0.keys %}
+                        <th>{{ key|capfirst }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        {% for value in record.values %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No records available or failed to fetch data.</p>
+    {% endif %}
+</body>
+</html>
