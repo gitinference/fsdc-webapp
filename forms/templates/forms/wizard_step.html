@@ -1,27 +1,52 @@
 {% extends "forms/wizard_base.html" %}
-{% load crispy_forms_tags %}
+
+{% block title %}{{ part_title|default:"Formulario" }}{% endblock %}
 
 {% block content %}
-  <div class="card mx-auto" style="max-width: 600px;">
-    <div class="card-body">
-      <h2 class="card-title">{{ part_title }}</h2>
+  {% with total=wizard.steps.count current=wizard.steps.step1 %}
+    {% widthratio current total 100 as pct %}
+  {% endwith %}
 
-      <!-- Optional: a simple progress indicator -->
-      <div class="mb-4">
-        Paso {{ wizard.steps.step1 }} de {{ wizard.steps.count }}
-      </div>
+  <div class="card wizard-card mt-4 shadow-sm">
+    <div class="card-header bg-primary text-white text-center">
+      <h2 class="h4 mb-0">{{ part_title }}</h2>
+    </div>
+    <div class="card-body">
+      {% if part_intro %}
+        <p class="mb-4" style="white-space: pre-wrap;">{{ part_intro }}</p>
+      {% endif %}
 
       <form method="post">
         {% csrf_token %}
         {{ wizard.management_form }}
-        {{ wizard.form|crispy }}
-        <button class="btn btn-primary">
-          {% if wizard.steps.step1 == wizard.steps.count %}
-            Finalizar
+
+        {% for field in form %}
+          <div class="mb-3">
+            <label class="form-label fw-semibold">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+              <div class="text-danger small">
+                {{ field.errors }}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        <div class="d-flex justify-content-between mt-4">
+          {% if wizard.steps.prev %}
+            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}" class="btn btn-outline-secondary">
+              Anterior
+            </button>
           {% else %}
-            Siguiente
+            <div></div>
           {% endif %}
-        </button>
+
+          {% if wizard.steps.current == wizard.steps.last %}
+            <button type="submit" class="btn btn-success">Enviar</button>
+          {% else %}
+            <button type="submit" class="btn btn-primary">Siguiente</button>
+          {% endif %}
+        </div>
       </form>
     </div>
   </div>
