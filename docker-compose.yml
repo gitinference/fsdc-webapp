@@ -1,11 +1,26 @@
 services:
+  postgres:
+    container_name: fsdc_postgres_staging
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: fsdc_db_staging
+    ports:
+      - "5432:5432" # Optional: exposes Postgres to host at localhost:5432
+    volumes:
+      - pgdata_staging:/var/lib/postgresql/data
+    networks:
+      - postgres_network
+
   django_staging:
     container_name: fsdc_webapp_staging
     build:
       context: .
     restart: always
     ports:
-      - 5071:3000
+      - "8000:8000"
     environment:
       DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME}
       DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL}
@@ -14,9 +29,9 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: fsdc_db_staging
       POSTGRES_PORT: 5432
-      POSTGRES_HOST: postgres
-      DEV: False
-      DEBUG: False
+      POSTGRES_HOST: postgres # Internal name (not localhost)
+      DEV: True
+      DEBUG: True
     command: >
       sh -c "python manage.py migrate &&
              python manage.py shell -c 'from django.contrib.auth.models import User; User.objects.filter(username=\"${DJANGO_SUPERUSER_USERNAME}\").exists() or User.objects.create_superuser(\"${DJANGO_SUPERUSER_USERNAME}\", \"${DJANGO_SUPERUSER_EMAIL}\", \"${DJANGO_SUPERUSER_PASSWORD}\")' &&
@@ -27,6 +42,11 @@ services:
       - postgres_network
     volumes:
       - ./data:/app/data
+
+volumes:
+  pgdata_staging:
+
+
 networks:
   postgres_network:
-    external: true
+    driver: bridge

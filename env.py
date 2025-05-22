@@ -6,32 +6,35 @@ load_dotenv()
 
 # Get the Database credentials
 def get_db_credentials() -> list:
-    USER = str(os.environ.get("POSTGRES_USER")).strip()
-    HOST = str(os.getenv("POSTGRES_HOST")).strip()
-    PORT = str(os.environ.get("POSTGRES_PORT")).strip()
-    DATABASE = str(os.environ.get("POSTGRES_DB")).strip()
-    PASSWORD = str(os.getenv("POSTGRES_PASSWORD")).strip()
-    SECRET_KEY = str(os.getenv("SECRET_KEY")).strip()
-    DEBUG = os.getenv("DEBUG")
+    USER = os.getenv("POSTGRES_USER", "").strip()
+    PASSWORD = os.getenv("POSTGRES_PASSWORD", "").strip()
+    HOST = os.getenv("POSTGRES_HOST", "").strip()
+    PORT = os.getenv("POSTGRES_PORT", "5432").strip()
+    DATABASE = os.getenv("POSTGRES_DB", "").strip()
+    SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key").strip()
+    DEBUG = os.getenv("DEBUG", "False").strip()
+    DEV = os.getenv("DEV", "False").strip()
+    API_URL = os.getenv("API_URL", "http://localhost:8000").strip()
 
-    if not all([HOST, USER, DATABASE, SECRET_KEY, PORT, PASSWORD]):
-        raise ValueError("Database credentials not set")
-    if os.environ.get("DEV") == "True":
-        HOST = "localhost"
-        DATABASE_URL = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
-        API_URL = str(os.getenv("API_URL")).strip()
-    else:
-        HOST = "postgres"
-        DATABASE_URL = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
-        API_URL = "FastAPI"
+    # Fail early if any required values are missing
+    required = [USER, PASSWORD, DATABASE, PORT]
+    if not all(required):
+        raise ValueError("Missing one or more required environment variables: POSTGRES_*")
+
+    # # Override host for local development
+    # if DEV.lower() == "true":
+    #     HOST = "localhost"
+
+    DATABASE_URL = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+
     return [
-        USER,
-        PASSWORD,
-        HOST,
-        DATABASE,
-        DATABASE_URL,
-        SECRET_KEY,
-        API_URL,
-        PORT,
-        DEBUG,
+        USER,         # 0
+        PASSWORD,     # 1
+        HOST,         # 2
+        DATABASE,     # 3
+        DATABASE_URL, # 4
+        SECRET_KEY,   # 5
+        API_URL,      # 6
+        PORT,         # 7
+        DEBUG         # 8
     ]
