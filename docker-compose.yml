@@ -34,7 +34,7 @@ services:
 
   api:
     container_name: FastAPI
-    image: fsdc_api:test
+    image: ghcr.io/gitinference/gitinference/fsdc-api:staging
     ports:
       - 5071:8000
     restart: always
