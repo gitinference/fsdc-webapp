@@ -1,4 +1,3 @@
-<!-- templates/entry_list.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +25,9 @@
         h1 {
             margin-bottom: 1.5rem;
         }
+        #searchInput {
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -33,21 +35,54 @@
         <h1 class="text-center">Research Records</h1>
 
         {% if records %}
+            <input
+                type="text"
+                id="searchInput"
+                class="form-control"
+                placeholder="Search by any column..."
+                onkeyup="filterTable()"
+            />
+
             <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
+                <table id="recordsTable" class="table table-bordered table-hover table-striped align-middle">
                     <thead class="table-light">
                         <tr>
-                            {% for key in records.0.keys %}
-                                <th scope="col">{{ key|capfirst }}</th>
-                            {% endfor %}
+                            <th>ID</th>
+                            <th>Date Started</th>
+                            <th>Date Ended</th>
+                            <th>Description</th>
+                            <th>Bibliography</th>
+                            <th>Subdiscipline</th>
+                            <th>Researcher</th>
+                            <th>Codebook</th>
+                            <th>Dataset</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for record in records %}
                             <tr>
-                                {% for value in record.values %}
-                                    <td>{{ value }}</td>
-                                {% endfor %}
+                                <td>{{ record.id }}</td>
+                                <td>{{ record.date_started }}</td>
+                                <td>{{ record.date_ended }}</td>
+                                <td>{{ record.description }}</td>
+                                <td>{{ record.bibliography }}</td>
+                                <td>
+                                    {{ record.subdiscipline.name }}<br/>
+                                    <small class="text-muted">{{ record.subdiscipline.description }}</small>
+                                </td>
+                                <td>
+                                    {{ record.researcher.fname }} {{ record.researcher.lname }}<br/>
+                                    <small class="text-muted">{{ record.researcher.education }}</small><br/>
+                                    <small>{{ record.researcher.email }}</small>
+                                </td>
+                                <td>
+                                    {{ record.codebook.file }}<br/>
+                                    <small class="text-muted">{{ record.codebook.uploaded_at }}</small>
+                                </td>
+                                <td>
+                                    {{ record.dataset.file }}<br/>
+                                    <small class="text-muted">{{ record.dataset.uploaded_at }}</small>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -60,7 +95,32 @@
         {% endif %}
     </div>
 
-    <!-- Bootstrap JS (Optional if you need dropdowns, modals, etc.) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Filter Script -->
+    <script>
+        function filterTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("recordsTable");
+            const rows = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let rowContainsText = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    const cellText = cells[j].textContent || cells[j].innerText;
+                    if (cellText.toLowerCase().includes(filter)) {
+                        rowContainsText = true;
+                        break;
+                    }
+                }
+
+                rows[i].style.display = rowContainsText ? "" : "none";
+            }
+        }
+    </script>
 </body>
 </html>
