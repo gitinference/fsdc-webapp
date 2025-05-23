@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Records</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet"
+    />
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 2rem;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            margin-bottom: 1.5rem;
+        }
+        #searchInput {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Research Records</h1>
+
+        {% if records %}
+            <input
+                type="text"
+                id="searchInput"
+                class="form-control"
+                placeholder="Search by any column..."
+                onkeyup="filterTable()"
+            />
+
+            <div class="table-responsive">
+                <table id="recordsTable" class="table table-bordered table-hover table-striped align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Date Started</th>
+                            <th>Date Ended</th>
+                            <th>Description</th>
+                            <th>Bibliography</th>
+                            <th>Subdiscipline</th>
+                            <th>Researcher</th>
+                            <th>Codebook</th>
+                            <th>Dataset</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in records %}
+                            <tr>
+                                <td>{{ record.id }}</td>
+                                <td>{{ record.date_started }}</td>
+                                <td>{{ record.date_ended }}</td>
+                                <td>{{ record.description }}</td>
+                                <td>{{ record.bibliography }}</td>
+                                <td>
+                                    {{ record.subdiscipline.name }}<br/>
+                                    <small class="text-muted">{{ record.subdiscipline.description }}</small>
+                                </td>
+                                <td>
+                                    {{ record.researcher.fname }} {{ record.researcher.lname }}<br/>
+                                    <small class="text-muted">{{ record.researcher.education }}</small><br/>
+                                    <small>{{ record.researcher.email }}</small>
+                                </td>
+                                <td>
+                                    {{ record.codebook.file }}<br/>
+                                    <small class="text-muted">{{ record.codebook.uploaded_at }}</small>
+                                </td>
+                                <td>
+                                    {{ record.dataset.file }}<br/>
+                                    <small class="text-muted">{{ record.dataset.uploaded_at }}</small>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning text-center" role="alert">
+                No records available or failed to fetch data.
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Filter Script -->
+    <script>
+        function filterTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("recordsTable");
+            const rows = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let rowContainsText = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    const cellText = cells[j].textContent || cells[j].innerText;
+                    if (cellText.toLowerCase().includes(filter)) {
+                        rowContainsText = true;
+                        break;
+                    }
+                }
+
+                rows[i].style.display = rowContainsText ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
