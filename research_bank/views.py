@@ -6,7 +6,7 @@ import requests
 
 
 def record_list_view(request):
-    endpoint_url = get_api_endpoint()
+    endpoint_url = f"{get_api_endpoint()}/research-entries"
 
     try:
         response = requests.get(endpoint_url, timeout=5)
