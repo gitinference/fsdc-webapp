@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "data_apps",
     "research_bank",
+    "dashboard",
 ]
 
 MIDDLEWARE = [
@@ -70,7 +71,7 @@ ROOT_URLCONF = "fsdc_webapp.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS":  [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -148,3 +149,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # tells cripsy to use the Bootstrap 5 pack
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Authentication redirects
+LOGIN_URL          = "dashboard:login"   # ▼ use namespaced route
+LOGIN_REDIRECT_URL = "dashboard:home"
+LOGOUT_REDIRECT_URL= "dashboard:login"
