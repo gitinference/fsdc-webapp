@@ -17,16 +17,18 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("polls/", include("data_apps.urls")),
-    path("forms/", include("forms.urls")),
-    path("research/", include("research_bank.urls")),
+    path("polls/", include(("data_apps.urls", "data_apps"), namespace="polls")),
+    path("forms/", include(("forms.urls", "forms"), namespace="forms")),
+    path(
+        "research/",
+        include(("research_bank.urls", "research_bank"), namespace="research"),
+    ),
     path("dashboard/", include(("dashboard.urls", "dashboard"), namespace="dashboard")),
 ]
 
