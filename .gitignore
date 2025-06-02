@@ -179,3 +179,6 @@ notebooks/*
 !notebooks/*.qmd
 # vscode
 .vscode
+
+# static files
+static
