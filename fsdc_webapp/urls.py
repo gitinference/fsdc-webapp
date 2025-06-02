@@ -28,7 +28,6 @@ urlpatterns = [
     path("forms/", include("forms.urls")),
     path("research/", include("research_bank.urls")),
     path("dashboard/", include(("dashboard.urls", "dashboard"), namespace="dashboard")),
-    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 ]
 
 if settings.DEV:
