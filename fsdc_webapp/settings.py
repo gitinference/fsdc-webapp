@@ -21,6 +21,7 @@ DATABASE = creds[3]
 DATABASE_URL = creds[4]
 SECRET_KEY = creds[5]
 PORT = creds[7]
+DEV = creds[9]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -71,7 +72,7 @@ ROOT_URLCONF = "fsdc_webapp.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS":  [],
+        "DIRS": [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -151,6 +152,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Authentication redirects
-LOGIN_URL          = "dashboard:login"   # ▼ use namespaced route
+LOGIN_URL = "dashboard:login"  # ▼ use namespaced route
 LOGIN_REDIRECT_URL = "dashboard:home"
-LOGOUT_REDIRECT_URL= "dashboard:login"
+LOGOUT_REDIRECT_URL = "dashboard:login"
