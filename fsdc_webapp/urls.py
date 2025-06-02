@@ -27,7 +27,7 @@ urlpatterns = [
     path("polls/", include("data_apps.urls")),
     path("forms/", include("forms.urls")),
     path("research/", include("research_bank.urls")),
-    path("", include(("dashboard.urls", "dashboard"), namespace="dashboard")),
+    path("dashboard/", include(("dashboard.urls", "dashboard"), namespace="dashboard")),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 ]
 
