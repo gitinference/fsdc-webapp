@@ -20,10 +20,15 @@ logger = logging.getLogger("default")
 API_URL = settings.API_URL
 
 
-def fetch_choices(endpoint):
-    raise NotImplementedError(
-        "This function should be implemented to fetch choices from the API."
-    )
+def fetch_from_api(endpoint):
+    res = requests.get(f"{API_URL}/{endpoint}/")
+    if not res.ok:
+        logger.error(
+            f"Failed to fetch {endpoint} from API: {res.status_code} {res.text}"
+        )
+        return []
+
+    return res.json()
 
 
 def upload_file_to_api(endpoint, uploaded_file):
@@ -55,10 +60,7 @@ class ApproveEntryView(ApprovalTeamRequiredMixin, View):
     template_name = "dashboard/approval_panel.html"
 
     def get(self, request):
-        # res = requests.get(f"{API_URL}/research-entries/?approved=false")
-        res = requests.get(
-            f"{API_URL}/research-entries/"
-        )  # TODO: Fix this to filter unapproved entries
+        res = requests.get(f"{API_URL}/research-entries/?approved=false")
 
         unapproved = res.json() if res.ok else []
         if not unapproved:
@@ -74,7 +76,7 @@ class ListEntriesView(View):
     template_name = "dashboard/entry_list.html"
 
     def get(self, request):
-        res = requests.get(f"{API_URL}/research-entries/")
+        res = requests.get(f"{API_URL}/research-entries/approved=true")
 
         entries = res.json() if res.ok else []
         if not entries:
@@ -93,12 +95,16 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
         sub_form = SubdisciplineForm()
         res_form = ResearcherForm()
 
-        sub_form.fields["use_existing"].choices = [
-            ("", "-- Add New --")
-        ] + fetch_choices("subdisciplines")
-        res_form.fields["use_existing"].choices = [
-            ("", "-- Add New --")
-        ] + fetch_choices("researchers")
+        existing_subs = fetch_from_api("subdisciplines")
+        existing_researchers = fetch_from_api("researchers")
+
+        sub_form.fields["use_existing"].choices = [("", "-- Add New --")] + [
+            (sub["id"], sub["name"]) for sub in existing_subs
+        ]
+        res_form.fields["use_existing"].choices = [("", "-- Add New --")] + [
+            (res["id"], f"{res['fname']} {res['lname']}")
+            for res in existing_researchers
+        ]
 
         context = {
             "entry_form": ResearchEntryForm(),
@@ -116,6 +122,17 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
         codebook_form = CodebookForm(request.POST, request.FILES)
         dataset_form = DatasetForm(request.POST, request.FILES)
 
+        # Reassign choices to prevent validation errors on resubmission
+        existing_subs = fetch_from_api("subdisciplines")
+        existing_researchers = fetch_from_api("researchers")
+        sub_form.fields["use_existing"].choices = [("", "-- Add New --")] + [
+            (sub["id"], sub["name"]) for sub in existing_subs
+        ]
+        res_form.fields["use_existing"].choices = [("", "-- Add New --")] + [
+            (res["id"], f"{res['fname']} {res['lname']}")
+            for res in existing_researchers
+        ]
+
         if entry_form.is_valid():
 
             def resolve_related(form, kind, fields):
@@ -125,12 +142,19 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
                 r = requests.post(f"{API_URL}/{kind}s/", json=payload)
                 return r.json()["id"] if r.ok else None
 
-            sub_id = resolve_related(sub_form, "subdiscipline", ["name", "description"])
-            res_id = resolve_related(
-                res_form,
-                "researcher",
-                ["fname", "lname", "education", "phone", "email"],
-            )
+            sub_id = sub_form.cleaned_data.get("use_existing")
+            if not sub_id:
+                sub_id = resolve_related(
+                    sub_form, "subdiscipline", ["name", "description"]
+                )
+
+            res_id = res_form.cleaned_data.get("use_existing")
+            if not res_id:
+                res_id = resolve_related(
+                    res_form,
+                    "researcher",
+                    ["fname", "lname", "education", "phone", "email"],
+                )
 
             codebook_id = None
             if codebook_form.cleaned_data.get("file"):
