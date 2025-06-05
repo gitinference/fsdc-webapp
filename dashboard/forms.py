@@ -25,7 +25,7 @@ class DatasetForm(forms.Form):
 
 
 class ResearchEntryForm(forms.Form):
-    date_started = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    date_ended = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    date_started = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
+    date_ended = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
     description = forms.CharField(widget=forms.Textarea)
     bibliography = forms.CharField()
