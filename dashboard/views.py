@@ -87,7 +87,7 @@ class ListEntriesView(View):
     template_name = "dashboard/entry_list.html"
 
     def get(self, request):
-        res = requests.get(f"{API_URL}/research-entries/approved=true")
+        res = requests.get(f"{API_URL}/research-entries/?approved=true")
 
         entries = res.json() if res.ok else []
         if not entries:
