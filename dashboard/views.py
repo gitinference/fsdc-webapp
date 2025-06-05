@@ -133,7 +133,15 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
             for res in existing_researchers
         ]
 
-        if entry_form.is_valid():
+        if all(
+            [
+                entry_form.is_valid(),
+                sub_form.is_valid(),
+                res_form.is_valid(),
+                codebook_form.is_valid(),
+                dataset_form.is_valid(),
+            ]
+        ):
 
             def resolve_related(form, kind, fields):
                 payload = {
