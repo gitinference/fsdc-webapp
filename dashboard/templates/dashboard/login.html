@@ -1,0 +1,17 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card shadow-sm p-4" style="min-width: 300px;">
+    <h2 class="text-center mb-4">Sign in</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-grid">
+          <button class="btn btn-primary" type="submit">Log in</button>
+        </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
