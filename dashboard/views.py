@@ -18,7 +18,12 @@ from .forms import (
     SubdisciplineForm,
 )
 
+# Logging setup
 logger = logging.getLogger("default")
+FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
+logging.basicConfig(format=FORMAT)
+logger.setLevel(logging.DEBUG)
+
 API_URL = settings.API_URL
 
 
