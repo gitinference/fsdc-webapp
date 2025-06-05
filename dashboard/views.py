@@ -90,8 +90,14 @@ class ListEntriesView(View):
         res = requests.get(f"{API_URL}/research-entries/?approved=true")
 
         entries = res.json() if res.ok else []
+        if not res.ok:
+            logger.error(
+                "Failed to fetch research entries from API",
+                exc_info=True,
+            )
+
         if not entries:
-            logger.error("Failed to fetch research entries from API")
+            logger.warning("No approved research entries found.")
 
         context = {
             "records": entries,
