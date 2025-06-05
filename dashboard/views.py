@@ -206,10 +206,12 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
             payload["date_ended"] = str(payload["date_ended"])
 
             post_res = requests.post(f"{API_URL}/research-entries/", json=payload)
-            if post_res.ok:
-                return redirect("dashboard:entry-list")
-            else:
-                raise
+            if not post_res.ok:
+                logger.info(
+                    f"Failed to post to entry: {post_res.status_code} {post_res.text}"
+                )
+
+            return redirect("dashboard:entry-list")
 
         context = {
             "entry_form": entry_form,
