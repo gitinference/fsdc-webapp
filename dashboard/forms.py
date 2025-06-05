@@ -17,9 +17,11 @@ class ResearcherForm(forms.Form):
         widget=forms.Select(attrs={"id": "id_use_existing_researcher"}),
         required=False,
     )
-    education = forms.CharField(required=False)
-    phone = forms.CharField(required=False)
-    email = forms.EmailField(required=False)
+    fname = forms.CharField(label="First Name", required=False)
+    lname = forms.CharField(label="Last Name", required=False)
+    education = forms.CharField(label="Education", required=False)
+    phone = forms.CharField(label="Phone Number", required=False)
+    email = forms.EmailField(label="E-mail Address", required=False)
 
 
 class CodebookForm(forms.Form):
