@@ -24,7 +24,7 @@ def fetch_from_api(endpoint):
     res = requests.get(f"{API_URL}/{endpoint}/")
     if not res.ok:
         logger.error(
-            f"Failed to fetch {endpoint} from API: {res.status_code} {res.text}"
+            f"Failed to fetch {endpoint} from {API_URL}: {res.status_code} {res.text}"
         )
         return []
 
