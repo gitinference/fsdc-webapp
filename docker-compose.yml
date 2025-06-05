@@ -1,6 +1,5 @@
 services:
   postgres:
-    container_name: fsdc_postgres_staging
     image: postgres:14
     restart: always
     env_file:
@@ -13,7 +12,6 @@ services:
       - postgres_network
 
   django:
-    container_name: fsdc_webapp_staging
     build:
       context: .
     restart: always
@@ -36,19 +34,21 @@ services:
       - .:/app
 
   api:
-    container_name: FastAPI
     image: ghcr.io/gitinference/gitinference/fsdc-api:staging
     ports:
-      - 5071:8000
+      - 5073:8000
     restart: always
     env_file:
       - .env
     networks:
       - postgres_network
+    volumes:
+      - files:/app/${MEDIA_ROOT}
     command: uvicorn src.main:app --host 0.0.0.0 --port 8000
 
 volumes:
   pgdata_staging:
+  files:
 
 
 networks:
