@@ -1,6 +1,7 @@
 import logging
 
 import requests
+from django.core.files.uploadedfile import UploadedFile
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
@@ -31,16 +32,20 @@ def fetch_from_api(endpoint):
     return res.json()
 
 
-def upload_file_to_api(endpoint, uploaded_file):
-    files = {"file": (uploaded_file.name, uploaded_file.read())}
+def upload_file_to_api(endpoint, uploaded_file: UploadedFile):
+    file_tuple = (
+        uploaded_file.name,
+        uploaded_file.file,
+        uploaded_file.content_type or "application/octet-stream",
+    )
+    files = {"file": file_tuple}
+
     res = requests.post(f"{API_URL}/{endpoint}/", files=files)
 
     if not res.ok:
-        raise ValueError(
-            f"Failed to upload file to {API_URL}/{endpoint}/: {res.status_code} {res.text}"
-        )
+        raise ValueError(f"File upload failed: {res.status_code} {res.text}")
 
-    return res.json()["id"] if res.ok else None
+    return res.json()
 
 
 class CustomLoginView(LoginView):
