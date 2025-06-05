@@ -2,15 +2,21 @@ from django import forms
 
 
 class SubdisciplineForm(forms.Form):
-    use_existing = forms.ChoiceField(label="Subdiscipline", required=False)
+    use_existing = forms.ChoiceField(
+        label="Subdiscipline",
+        widget=forms.Select(attrs={"id": "id_use_existing_subdiscipline"}),
+        required=False,
+    )
     name = forms.CharField(required=False)
     description = forms.CharField(required=False)
 
 
 class ResearcherForm(forms.Form):
-    use_existing = forms.ChoiceField(label="Researcher", required=False)
-    fname = forms.CharField(required=False)
-    lname = forms.CharField(required=False)
+    use_existing = forms.ChoiceField(
+        label="Researcher",
+        widget=forms.Select(attrs={"id": "id_use_existing_researcher"}),
+        required=False,
+    )
     education = forms.CharField(required=False)
     phone = forms.CharField(required=False)
     email = forms.EmailField(required=False)
