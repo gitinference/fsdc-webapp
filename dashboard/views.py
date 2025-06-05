@@ -1,10 +1,11 @@
+import json
 import logging
 
 import requests
-from django.core.files.uploadedfile import UploadedFile
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
+from django.core.files.uploadedfile import UploadedFile
 from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import TemplateView
@@ -173,13 +174,13 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
             if codebook_form.cleaned_data.get("file"):
                 codebook_id = upload_file_to_api(
                     "codebooks", codebook_form.cleaned_data["file"]
-                )
+                )["id"]
 
             dataset_id = None
             if dataset_form.cleaned_data.get("file"):
                 dataset_id = upload_file_to_api(
                     "datasets", dataset_form.cleaned_data["file"]
-                )
+                )["id"]
 
             payload = {
                 **entry_form.cleaned_data,
@@ -189,9 +190,15 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
                 "dataset_id": dataset_id,
             }
 
-            post_res = requests.post(f"{API_URL}/entries/", json=payload)
+            # Serialize dates manually
+            payload["date_started"] = str(payload["date_started"])
+            payload["date_ended"] = str(payload["date_ended"])
+
+            post_res = requests.post(f"{API_URL}/research-entries/", json=payload)
             if post_res.ok:
-                return redirect("entry-list")
+                return redirect("dashboard:entry-list")
+            else:
+                raise
 
         context = {
             "entry_form": entry_form,
