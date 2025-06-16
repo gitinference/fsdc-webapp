@@ -46,8 +46,12 @@
                             <small class="text-muted">{{ record.researcher.education }}</small><br/>
                             <small>{{ record.researcher.email }}</small>
                         </td>
-                        <td>{{ record.codebook.file }}</td>
-                        <td>{{ record.dataset.file }}</td>
+                        <td>
+                            <span class="codebook-link" data-id="{{ record.codebook.id }}">{{ record.codebook.file_name }}</span>
+                        </td>
+                        <td>
+                            <span class="dataset-link" data-id="{{ record.dataset.id }}">{{ record.dataset.file_name }}</span>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -81,5 +85,37 @@
             rows[i].style.display = match ? "" : "none";
         }
     }
+
+    function convertLinks() {
+        const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+        const API_BASE_URL = isLocalhost
+            ? "http://localhost:5073"
+            : "https://fsdc.econlabs.net";
+
+        document.querySelectorAll('.codebook-link').forEach(function(span) {
+            const id = span.getAttribute('data-id');
+            const text = span.textContent;
+            if (id && id !== "None" && text && text !== "None") {
+                const a = document.createElement('a');
+                a.href = `${API_BASE_URL}/codebooks/${id}`;
+                a.target = "_blank";
+                a.textContent = text;
+                span.parentNode.replaceChild(a, span);
+            }
+        });
+        document.querySelectorAll('.dataset-link').forEach(function(span) {
+            const id = span.getAttribute('data-id');
+            const text = span.textContent;
+            if (id && id !== "None" && text && text !== "None") {
+                const a = document.createElement('a');
+                a.href = `${API_BASE_URL}/datasets/${id}`;
+                a.target = "_blank";
+                a.textContent = text;
+                span.parentNode.replaceChild(a, span);
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", convertLinks);
 </script>
 {% endblock %}

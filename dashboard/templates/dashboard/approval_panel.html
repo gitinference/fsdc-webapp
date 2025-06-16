@@ -10,12 +10,35 @@
         </div>
         <ul class="list-group list-group-flush" id="unapproved-entries">
             {% for entry in unapproved_entries %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <div>
-                        <strong>{{ entry.description|truncatechars:80 }}</strong><br>
-                        <small>{{ entry.date_started }} – {{ entry.date_ended }}</small>
+                <li class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                    <div class="w-100">
+                        <div><strong>Description:</strong> {{ entry.description|truncatechars:80 }}</div>
+                        <div><strong>Date Started:</strong> {{ entry.date_started }}</div>
+                        <div><strong>Date Ended:</strong> {{ entry.date_ended }}</div>
+                        <div><strong>Bibliography:</strong> {{ entry.bibliography }}</div>
+                        <div>
+                            <strong>Subdiscipline:</strong>
+                            {{ entry.subdiscipline.name }}<br/>
+                            <small class="text-muted">{{ entry.subdiscipline.description }}</small>
+                        </div>
+                        <div>
+                            <strong>Researcher:</strong>
+                            {{ entry.researcher.fname }} {{ entry.researcher.lname }}<br/>
+                            <small class="text-muted">{{ entry.researcher.education }}</small><br/>
+                            <small>{{ entry.researcher.email }}</small>
+                        </div>
+                        <div>
+                            <strong>Codebook:</strong>
+                            <span class="codebook-link" data-id="{{ entry.codebook.id }}">{{ entry.codebook.file_name }}</span>
+                        </div>
+                        <div>
+                            <strong>Dataset:</strong>
+                            <span class="dataset-link" data-id="{{ entry.dataset.id }}">{{ entry.dataset.file_name }}</span>
+                        </div>
                     </div>
-                    <button class="btn btn-sm btn-success" onclick="approveEntry('{{ entry.id }}', this)">Approve</button>
+                    <div class="mt-2 mt-md-0 ms-md-3">
+                        <button class="btn btn-sm btn-success" onclick="approveEntry('{{ entry.id }}', this)">Approve</button>
+                    </div>
                 </li>
             {% empty %}
                 <li class="list-group-item text-center text-muted">No unapproved entries.</li>
@@ -50,5 +73,35 @@
             alert("Approval failed.");
         }
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+        const API_BASE_URL = isLocalhost
+            ? "http://localhost:5073"
+            : "https://fsdc.econlabs.net";
+
+        document.querySelectorAll('.codebook-link').forEach(function(span) {
+            const id = span.getAttribute('data-id');
+            const text = span.textContent;
+            if (id && text && text !== "None") {
+                const a = document.createElement('a');
+                a.href = `${API_BASE_URL}/codebooks/${id}`;
+                a.target = "_blank";
+                a.textContent = text;
+                span.replaceWith(a);
+            }
+        });
+        document.querySelectorAll('.dataset-link').forEach(function(span) {
+            const id = span.getAttribute('data-id');
+            const text = span.textContent;
+            if (id && text && text !== "None") {
+                const a = document.createElement('a');
+                a.href = `${API_BASE_URL}/datasets/${id}`;
+                a.target = "_blank";
+                a.textContent = text;
+                span.replaceWith(a);
+            }
+        });
+    });
 </script>
 {% endblock %}
