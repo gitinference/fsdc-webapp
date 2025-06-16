@@ -52,11 +52,17 @@
 <script>
     async function approveEntry(entryId, button) {
 
-        const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-
-        const API_BASE_URL = isLocalhost
-        ? "http://localhost:5073"
-        : "https://fsdc.econlabs.net";
+        let API_BASE_URL;
+        if (
+            window.location.hostname === "localhost" ||
+            window.location.hostname === "127.0.0.1"
+        ) {
+            API_BASE_URL = "http://localhost:5073";
+        } else if (window.location.hostname.includes("dev")) {
+            API_BASE_URL = "https://fsdc-dev.econlabs.net";
+        } else {
+            API_BASE_URL = "https://fsdc.econlabs.net";
+        }
 
         const res = await fetch(`${API_BASE_URL}/research-entries/${entryId}`, {
             method: 'PUT',
