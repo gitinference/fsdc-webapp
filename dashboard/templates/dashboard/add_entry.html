@@ -13,21 +13,30 @@
 <form method="post" enctype="multipart/form-data" id="entryForm">
   {% csrf_token %}
 
-  <div class="row mb-4">
-    <div class="col-md-6">
-      {{ entry_form.date_started.label_tag }} {{ entry_form.date_started }}
-    </div>
-    <div class="col-md-6">
-      {{ entry_form.date_ended.label_tag }} {{ entry_form.date_ended }}
-    </div>
+  <!-- Entry Details -->
+  <div class="alert alert-info mb-4">
+    <strong>Note:</strong> Please ensure all fields are filled out correctly.
   </div>
+  
+  <fieldset class="border p-3 mb-4">
+    <legend>Entry Details</legend>
+    
+    <div class="row mb-4">
+      <div class="col-md-6">
+        {{ entry_form.date_started.label_tag }} {{ entry_form.date_started }}
+      </div>
+      <div class="col-md-6">
+        {{ entry_form.date_ended.label_tag }} {{ entry_form.date_ended }}
+      </div>
+    </div>
 
-  <div class="mb-3">
-    {{ entry_form.res_entry_description.label_tag }} {{ entry_form.res_entry_description }}
-  </div>
-  <div class="mb-4">
-    {{ entry_form.bibliography.label_tag }} {{ entry_form.bibliography }}
-  </div>
+    <div class="mb-3">
+      {{ entry_form.res_entry_description.label_tag }} {{ entry_form.res_entry_description }}
+    </div>
+    <div class="mb-4">
+      {{ entry_form.bibliography.label_tag }} {{ entry_form.bibliography }}
+    </div>
+  </fieldset>
 
   <!-- Subdiscipline -->
   <fieldset class="border p-3 mb-4">
