@@ -26,18 +26,37 @@ logger.setLevel(logging.DEBUG)
 API_URL = settings.API_URL
 
 
-def fetch_from_api(endpoint):
+def fetch_from_api(endpoint) -> dict:
+    """
+    Fetch data from the API endpoint and return the JSON response.
+    Logs errors if the request fails.
+    Args:
+        endpoint (str): The API endpoint to fetch data from.
+    Returns:
+        dict: The JSON response from the API, or an empty dict if the request fails.
+    """
     res = requests.get(f"{API_URL}/{endpoint}/")
     if not res.ok:
         logger.error(
             f"Failed to fetch {endpoint} from {API_URL}: {res.status_code} {res.text}"
         )
-        return []
+        return {}
 
     return res.json()
 
 
 def upload_file_to_api(endpoint, uploaded_file: UploadedFile):
+    """
+    Upload a file to the API endpoint.
+    Args:
+        endpoint (str): The API endpoint to upload the file to.
+        uploaded_file (UploadedFile): The file to upload.
+    Returns:
+        dict: The JSON response from the API, or raises ValueError if the upload fails.
+    """
+
+    # Have to use a tuple for the file upload
+    # HTTP requires a tuple of (filename, fileobj, content_type)
     file_tuple = (
         uploaded_file.name,
         uploaded_file.file,
@@ -62,11 +81,23 @@ class HomeView(TemplateView):
 
 
 class ApprovalTeamRequiredMixin(UserPassesTestMixin):
+    """
+    Mixin to ensure that only users with the approval team role can access
+    views that require approval permissions.
+    This is a placeholder for role-based access control.
+    """
+
+    # TODO: Add roles or permissions check here
     def test_func(self):
         return self.request.user.is_staff or self.request.user.username == "test_user"
 
 
 class ApproveEntryView(ApprovalTeamRequiredMixin, View):
+    """View to handle the approval of research entries.
+    This view fetches unapproved research entries from the API and allows
+    the approval team to review and approve them.
+    """
+
     template_name = "dashboard/approval_panel.html"
 
     def get(self, request):
@@ -82,6 +113,11 @@ class ApproveEntryView(ApprovalTeamRequiredMixin, View):
 
 
 class ListEntriesView(View):
+    """View to list all approved research entries.
+    This view fetches all approved research entries from the API and displays them.
+    It is accessible to all users, including those without approval permissions.
+    """
+
     template_name = "dashboard/entry_list.html"
 
     def get(self, request):
@@ -104,15 +140,32 @@ class ListEntriesView(View):
 
 
 class AddEntryView(ApprovalTeamRequiredMixin, View):
+    """View to add a new research entry.
+    This view allows users to create a new research entry by filling out
+    a form that includes subdiscipline, researcher, codebook, and dataset
+    information. It fetches existing subdisciplines and researchers from the API
+    to allow users to select from existing entries or create new ones.
+    If the form is valid, it sends the data to the API to create a new research entry.
+    """
+
     template_name = "dashboard/add_entry.html"
 
     def get(self, request):
         sub_form = SubdisciplineForm()
         res_form = ResearcherForm()
 
+        # Fetch existing subdisciplines and researchers from the API
+        logger.info(f"Fetching existing subdisciplines and researchers from {API_URL}")
+
         existing_subs = fetch_from_api("subdisciplines")
         existing_researchers = fetch_from_api("researchers")
 
+        if not existing_subs:
+            logger.warning("No existing subdisciplines found.")
+        if not existing_researchers:
+            logger.warning("No existing researchers found.")
+
+        # Set choices for existing subdisciplines and researchers
         sub_form.fields["use_existing_subdiscipline"].choices = [
             ("", "-- Add New --")
         ] + [(sub["id"], sub["name"]) for sub in existing_subs]
@@ -135,6 +188,12 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
         existing_subs = fetch_from_api("subdisciplines")
         existing_researchers = fetch_from_api("researchers")
 
+        if not existing_subs:
+            logger.warning("No existing subdisciplines found.")
+        if not existing_researchers:
+            logger.warning("No existing researchers found.")
+
+        # Reassign choices for existing subdisciplines and researchers
         sub_choices = [("", "-- Add New --")] + [
             (sub["id"], sub["name"]) for sub in existing_subs
         ]
@@ -161,7 +220,9 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
                 dataset_form.is_valid(),
             ]
         ):
-
+            # Resolves related subdiscipline and researcher
+            # by checking if an existing one is selected or creating a new one
+            # using the API
             def resolve_related(form, kind, fields):
                 payload = {
                     f: form.cleaned_data[f] for f in fields if form.cleaned_data.get(f)
@@ -171,7 +232,11 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
 
             sub_id = sub_form.cleaned_data.get("use_existing_subdiscipline")
             if not sub_id:
-                # Rename field 'sub_description' to 'description' to match API expectations
+                # If no existing subdiscipline is selected, create a new one
+                # Note: The API expects 'name' and 'description' fields
+                # 'sub_description' is used in the form to avoid conflicts with Django's field name
+                # and to match the API's expected field name
+
                 sub_form.cleaned_data["description"] = sub_form.cleaned_data.pop(
                     "sub_description", ""
                 )
@@ -181,12 +246,16 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
 
             res_id = res_form.cleaned_data.get("use_existing_researcher")
             if not res_id:
+                # If no existing researcher is selected, create a new one
+                # Note: The API expects 'fname', 'lname', 'education', 'phone', and 'email'
+
                 res_id = resolve_related(
                     res_form,
                     "researcher",
                     ["fname", "lname", "education", "phone", "email"],
                 )
 
+            # Handle file uploads for codebook and dataset
             codebook_id = None
             if codebook_form.cleaned_data.get("file"):
                 codebook_id = upload_file_to_api(
@@ -200,7 +269,7 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
                 )["id"]
 
             payload = {
-                **entry_form.cleaned_data,
+                **entry_form.cleaned_data,  # Python magic to unpack the form data
                 "subdiscipline_id": sub_id,
                 "researcher_id": res_id,
                 "codebook_id": codebook_id,
@@ -210,7 +279,7 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
             # Rename description field to match API expectations
             payload["description"] = payload.pop("res_entry_description", "")
 
-            # Serialize dates manually
+            # Serialize dates manually, as Django's DateField does not serialize to string by default
             payload["date_started"] = str(payload["date_started"])
             payload["date_ended"] = str(payload["date_ended"])
 
@@ -222,7 +291,9 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
                 logger.error(
                     f"Failed to create research entry: {post_res.status_code} {post_res.text}"
                 )
-                entry_form.add_error(None, "Failed to create research entry.")
+                entry_form.add_error(
+                    None, f"Failed to create research entry: {post_res.text}"
+                )
 
         context = {
             "entry_form": entry_form,
