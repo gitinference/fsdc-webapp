@@ -71,13 +71,14 @@ class ApproveEntryView(ApprovalTeamRequiredMixin, View):
     template_name = "dashboard/approval_panel.html"
 
     def get(self, request):
+        logger.info(f"Fetching unapproved research entries from {API_URL}")
         res = requests.get(f"{API_URL}/research-entries/?approved=false")
 
         unapproved = res.json() if res.ok else []
         if not unapproved:
             logger.error("Failed to fetch unapproved entries from API")
 
-        context = {"unapproved_entries": unapproved, "args": {"API_URL": API_URL}}
+        context = {"unapproved_entries": unapproved}
         return render(request, self.template_name, context)
 
 
@@ -113,10 +114,10 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
         existing_subs = fetch_from_api("subdisciplines")
         existing_researchers = fetch_from_api("researchers")
 
-        sub_form.fields["use_existing"].choices = [("", "-- Add New --")] + [
-            (sub["id"], sub["name"]) for sub in existing_subs
-        ]
-        res_form.fields["use_existing"].choices = [("", "-- Add New --")] + [
+        sub_form.fields["use_existing_subdiscipline"].choices = [
+            ("", "-- Add New --")
+        ] + [(sub["id"], sub["name"]) for sub in existing_subs]
+        res_form.fields["use_existing_researcher"].choices = [("", "-- Add New --")] + [
             (res["id"], f"{res['fname']} {res['lname']}")
             for res in existing_researchers
         ]
@@ -131,7 +132,6 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
         return render(request, self.template_name, context)
 
     def post(self, request):
-
         # Reassign choices to prevent validation errors
         existing_subs = fetch_from_api("subdisciplines")
         existing_researchers = fetch_from_api("researchers")
@@ -150,8 +150,8 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
         codebook_form = CodebookForm(request.POST, request.FILES)
         dataset_form = DatasetForm(request.POST, request.FILES)
 
-        sub_form.fields["use_existing"].choices = sub_choices
-        res_form.fields["use_existing"].choices = res_choices
+        sub_form.fields["use_existing_subdiscipline"].choices = sub_choices
+        res_form.fields["use_existing_researcher"].choices = res_choices
 
         if all(
             [
@@ -170,13 +170,17 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
                 r = requests.post(f"{API_URL}/{kind}s/", json=payload)
                 return r.json()["id"] if r.ok else None
 
-            sub_id = sub_form.cleaned_data.get("use_existing")
+            sub_id = sub_form.cleaned_data.get("use_existing_subdiscipline")
             if not sub_id:
+                # Rename field 'sub_description' to 'description' to match API expectations
+                sub_form.cleaned_data["description"] = sub_form.cleaned_data.pop(
+                    "sub_description", ""
+                )
                 sub_id = resolve_related(
                     sub_form, "subdiscipline", ["name", "description"]
                 )
 
-            res_id = res_form.cleaned_data.get("use_existing")
+            res_id = res_form.cleaned_data.get("use_existing_researcher")
             if not res_id:
                 res_id = resolve_related(
                     res_form,
@@ -204,17 +208,22 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
                 "dataset_id": dataset_id,
             }
 
+            # Rename description field to match API expectations
+            payload["description"] = payload.pop("res_entry_description", "")
+
             # Serialize dates manually
             payload["date_started"] = str(payload["date_started"])
             payload["date_ended"] = str(payload["date_ended"])
 
             post_res = requests.post(f"{API_URL}/research-entries/", json=payload)
-            if not post_res.ok:
-                logger.info(
-                    f"Failed to post to entry: {post_res.status_code} {post_res.text}"
+            if post_res.ok:
+                logger.info("Research entry created successfully.")
+                return redirect("dashboard:entry-list")
+            else:
+                logger.error(
+                    f"Failed to create research entry: {post_res.status_code} {post_res.text}"
                 )
-
-            return redirect("dashboard:entry-list")
+                entry_form.add_error(None, "Failed to create research entry.")
 
         context = {
             "entry_form": entry_form,
