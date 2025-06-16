@@ -1,9 +1,8 @@
-import json
 import logging
 
 import requests
 from django.conf import settings
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import LoginView
 from django.core.files.uploadedfile import UploadedFile
 from django.shortcuts import redirect, render
