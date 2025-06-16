@@ -2,17 +2,17 @@ from django import forms
 
 
 class SubdisciplineForm(forms.Form):
-    use_existing = forms.ChoiceField(
+    use_existing_subdiscipline = forms.ChoiceField(
         label="Subdiscipline",
         widget=forms.Select(attrs={"id": "id_use_existing_subdiscipline"}),
         required=False,
     )
     name = forms.CharField(required=False)
-    description = forms.CharField(required=False)
+    sub_description = forms.CharField(required=False, label="Description")
 
 
 class ResearcherForm(forms.Form):
-    use_existing = forms.ChoiceField(
+    use_existing_researcher = forms.ChoiceField(
         label="Researcher",
         widget=forms.Select(attrs={"id": "id_use_existing_researcher"}),
         required=False,
@@ -35,5 +35,17 @@ class DatasetForm(forms.Form):
 class ResearchEntryForm(forms.Form):
     date_started = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
     date_ended = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
-    description = forms.CharField(widget=forms.Textarea)
-    bibliography = forms.CharField()
+    res_entry_description = forms.CharField(
+        widget=forms.Textarea,
+        required=True,
+        error_messages={
+            "required": "This field is required.",
+        },
+        label="Description",
+    )
+    bibliography = forms.CharField(
+        required=True,
+        error_messages={
+            "required": "This field is required.",
+        },
+    )

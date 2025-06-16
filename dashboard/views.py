@@ -77,9 +77,7 @@ class ApproveEntryView(ApprovalTeamRequiredMixin, View):
         if not unapproved:
             logger.error("Failed to fetch unapproved entries from API")
 
-        context = {
-            "unapproved_entries": unapproved,
-        }
+        context = {"unapproved_entries": unapproved, "args": {"API_URL": API_URL}}
         return render(request, self.template_name, context)
 
 
@@ -133,22 +131,27 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
         return render(request, self.template_name, context)
 
     def post(self, request):
-        entry_form = ResearchEntryForm(request.POST)
-        sub_form = SubdisciplineForm(request.POST)
-        res_form = ResearcherForm(request.POST)
-        codebook_form = CodebookForm(request.POST, request.FILES)
-        dataset_form = DatasetForm(request.POST, request.FILES)
 
-        # Reassign choices to prevent validation errors on resubmission
+        # Reassign choices to prevent validation errors
         existing_subs = fetch_from_api("subdisciplines")
         existing_researchers = fetch_from_api("researchers")
-        sub_form.fields["use_existing"].choices = [("", "-- Add New --")] + [
+
+        sub_choices = [("", "-- Add New --")] + [
             (sub["id"], sub["name"]) for sub in existing_subs
         ]
-        res_form.fields["use_existing"].choices = [("", "-- Add New --")] + [
+        res_choices = [("", "-- Add New --")] + [
             (res["id"], f"{res['fname']} {res['lname']}")
             for res in existing_researchers
         ]
+
+        sub_form = SubdisciplineForm(request.POST)
+        res_form = ResearcherForm(request.POST)
+        entry_form = ResearchEntryForm(request.POST)
+        codebook_form = CodebookForm(request.POST, request.FILES)
+        dataset_form = DatasetForm(request.POST, request.FILES)
+
+        sub_form.fields["use_existing"].choices = sub_choices
+        res_form.fields["use_existing"].choices = res_choices
 
         if all(
             [
@@ -219,5 +222,13 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
             "res_form": res_form,
             "codebook_form": codebook_form,
             "dataset_form": dataset_form,
+            "form_errors": {
+                "entry": entry_form.errors,
+                "sub": sub_form.errors,
+                "res": res_form.errors,
+                "codebook": codebook_form.errors,
+                "dataset": dataset_form.errors,
+            },
         }
+
         return render(request, self.template_name, context)

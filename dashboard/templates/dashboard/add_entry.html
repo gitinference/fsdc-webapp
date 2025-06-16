@@ -4,6 +4,12 @@
 {% block content %}
 <h2 class="mb-4">Add New Research Entry</h2>
 
+{% for key, errors in form_errors.items %}
+    {% for field, error_list in errors.items %}
+        <div class="alert alert-danger">{{ key }}.{{ field }}: {{ error_list }}</div>
+    {% endfor %}
+{% endfor %}
+
 <form method="post" enctype="multipart/form-data" id="entryForm">
   {% csrf_token %}
 
@@ -17,7 +23,7 @@
   </div>
 
   <div class="mb-3">
-    {{ entry_form.description.label_tag }} {{ entry_form.description }}
+    {{ entry_form.res_entry_description.label_tag }} {{ entry_form.res_entry_description }}
   </div>
   <div class="mb-4">
     {{ entry_form.bibliography.label_tag }} {{ entry_form.bibliography }}
@@ -27,11 +33,11 @@
   <fieldset class="border p-3 mb-4">
     <legend>Subdiscipline</legend>
     <div class="mb-2">
-      {{ sub_form.use_existing.label_tag }} {{ sub_form.use_existing }}
+      {{ sub_form.use_existing_subdiscipline.label_tag }} {{ sub_form.use_existing_subdiscipline }}
     </div>
     <div id="sub_new_fields" class="row d-none">
       <div class="col-md-6">{{ sub_form.name.label_tag }} {{ sub_form.name }}</div>
-      <div class="col-md-6">{{ sub_form.description.label_tag }} {{ sub_form.description }}</div>
+      <div class="col-md-6">{{ sub_form.sub_description.label_tag }} {{ sub_form.sub_description }}</div>
     </div>
   </fieldset>
 
@@ -39,7 +45,7 @@
   <fieldset class="border p-3 mb-4">
     <legend>Researcher</legend>
     <div class="mb-2">
-      {{ res_form.use_existing.label_tag }} {{ res_form.use_existing }}
+      {{ res_form.use_existing_researcher.label_tag }} {{ res_form.use_existing_researcher }}
     </div>
     <div id="res_new_fields" class="row d-none">
       <div class="col-md-6 my-1">{{ res_form.fname.label_tag }} {{ res_form.fname }}</div>
@@ -76,10 +82,12 @@
     const resFields = document.getElementById("res_new_fields");
 
     function toggleFields(select, fieldGroup) {
-      if (!select.value) {
-        fieldGroup.classList.remove("d-none");
-      } else {
-        fieldGroup.classList.add("d-none");
+      if (select && fieldGroup) {
+        if (!select.value || select.value === "") {
+          fieldGroup.classList.remove("d-none");
+        } else {
+          fieldGroup.classList.add("d-none");
+        }
       }
     }
 
