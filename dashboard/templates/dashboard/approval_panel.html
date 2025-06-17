@@ -52,17 +52,7 @@
 <script>
     async function approveEntry(entryId, button) {
 
-        let API_BASE_URL;
-        if (
-            window.location.hostname === "localhost" ||
-            window.location.hostname === "127.0.0.1"
-        ) {
-            API_BASE_URL = "http://localhost:5073";
-        } else if (window.location.hostname.includes("dev")) {
-            API_BASE_URL = "https://fsdc-dev.econlabs.net";
-        } else {
-            API_BASE_URL = "https://fsdc.econlabs.net";
-        }
+        let API_BASE_URL = "{{ API_URL|escapejs }}"
 
         const res = await fetch(`${API_BASE_URL}/research-entries/${entryId}`, {
             method: 'PUT',
@@ -81,10 +71,8 @@
     }
 
     document.addEventListener("DOMContentLoaded", function() {
-        const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-        const API_BASE_URL = isLocalhost
-            ? "http://localhost:5073"
-            : "https://fsdc.econlabs.net";
+        
+        let API_BASE_URL = "{{ API_URL|escapejs }}"
 
         document.querySelectorAll('.codebook-link').forEach(function(span) {
             const id = span.getAttribute('data-id');

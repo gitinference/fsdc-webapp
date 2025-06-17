@@ -108,7 +108,7 @@ class ApproveEntryView(ApprovalTeamRequiredMixin, View):
         if not unapproved:
             logger.error("Failed to fetch unapproved entries from API")
 
-        context = {"unapproved_entries": unapproved}
+        context = {"unapproved_entries": unapproved, "API_URL": API_URL}
         return render(request, self.template_name, context)
 
 
@@ -135,6 +135,7 @@ class ListEntriesView(View):
 
         context = {
             "records": entries,
+            "API_URL": API_URL,
         }
         return render(request, self.template_name, context)
 
@@ -180,6 +181,7 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
             "res_form": res_form,
             "codebook_form": CodebookForm(),
             "dataset_form": DatasetForm(),
+            "API_URL": API_URL,
         }
         return render(request, self.template_name, context)
 
@@ -308,6 +310,7 @@ class AddEntryView(ApprovalTeamRequiredMixin, View):
                 "codebook": codebook_form.errors,
                 "dataset": dataset_form.errors,
             },
+            "API_URL": API_URL,
         }
 
         return render(request, self.template_name, context)
