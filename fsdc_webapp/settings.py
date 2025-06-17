@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "formtools",
     "crispy_forms",
     "crispy_bootstrap5",
+    "corsheaders",
     "data_apps",
     "research_bank",
     "dashboard",
@@ -62,6 +63,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -180,3 +182,10 @@ LOGGING = {
         },
     },
 }
+
+# CORS settings
+CORS_ALLOWED_ORIGINS = [
+    "https://fsdc.econlabs.net",
+    "https://fsdc-dev.econlabs.net",
+    "https://fsdc-webapp.econlabs.net",
+]
