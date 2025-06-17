@@ -1,0 +1,58 @@
+services:
+  django:
+    image: ghcr.io/gitinference/gitinference/fsdc-webapp:staging
+    ports:
+      - 8000:8000
+    environment:
+      POSTGRES_USER: fsdc_user
+      POSTGRES_PASSWORD: fsdc_password
+      POSTGRES_DB: fsdc_db_demo
+      POSTGRES_PORT: 5432
+      POSTGRES_HOST: host.docker.internal
+      DJANGO_SUPERUSER_USERNAME: admin
+      DJANGO_SUPERUSER_EMAIL: admin@example.com
+      DJANGO_SUPERUSER_PASSWORD: changeme123
+      SECRET_KEY: dev-secret-key
+      API_URL: https://fsdc-dev.econlabs.net
+      DEBUG: "True"
+      DEV: "True"
+    command: >
+      sh -c "python manage.py migrate &&
+        python manage.py shell -c 'from django.contrib.auth.models import User; User.objects.filter(username=\"${DJANGO_SUPERUSER_USERNAME}\").exists() or User.objects.create_superuser(\"${DJANGO_SUPERUSER_USERNAME}\", \"${DJANGO_SUPERUSER_EMAIL}\", \"${DJANGO_SUPERUSER_PASSWORD}\")' &&
+        python manage.py makemigrations &&
+        python manage.py migrate &&
+        python manage.py collectstatic --noinput &&
+        python manage.py runserver 0.0.0.0:8000"
+    networks:
+      - postgres_network
+    volumes:
+      - pgdata_staging:/app/data
+
+  api:
+    image: ghcr.io/gitinference/gitinference/fsdc-api:staging
+    ports:
+      - 5073:8000
+    restart: always
+    environment:
+      POSTGRES_USER: fsdc_user
+      POSTGRES_PASSWORD: fsdc_password
+      POSTGRES_DB: fsdc_db_demo
+      POSTGRES_PORT: 5432
+      POSTGRES_HOST: host.docker.internal
+      SECRET_KEY: dev-secret-key
+      API_URL: https://fsdc-dev.econlabs.net
+      DEBUG: "True"
+      DEV: "True"
+    networks:
+      - postgres_network
+    volumes:
+      - files:/app/${MEDIA_ROOT}
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000
+
+volumes:
+  pgdata_staging:
+  files:
+
+networks:
+  postgres_network:
+    driver: bridge
