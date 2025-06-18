@@ -39,6 +39,7 @@ def get_db_credentials() -> list:
         API_URL,  # 6
         PORT,  # 7
         DEBUG,  # 8
+        DEV,  # 9
     ]
 
 

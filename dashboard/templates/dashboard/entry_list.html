@@ -1,0 +1,118 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}All Records{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-4">Research Records</h1>
+
+{% if records %}
+    <input
+        type="text"
+        id="searchInput"
+        class="form-control mb-3"
+        placeholder="Search by any column..."
+        onkeyup="filterTable()"
+    />
+
+    <div class="table-responsive">
+        <table id="recordsTable" class="table table-bordered table-hover table-striped align-middle">
+            <thead class="table-light">
+                <tr>
+                    {% comment %} <th>ID</th> {% endcomment %}
+                    <th>Date Started</th>
+                    <th>Date Ended</th>
+                    <th>Description</th>
+                    <th>Bibliography</th>
+                    <th>Subdiscipline</th>
+                    <th>Researcher</th>
+                    <th>Codebook</th>
+                    <th>Dataset</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        {% comment %} <td>{{ record.id }}</td> {% endcomment %}
+                        <td>{{ record.date_started }}</td>
+                        <td>{{ record.date_ended }}</td>
+                        <td>{{ record.description }}</td>
+                        <td>{{ record.bibliography }}</td>
+                        <td>
+                            {{ record.subdiscipline.name }}<br/>
+                            <small class="text-muted">{{ record.subdiscipline.description }}</small>
+                        </td>
+                        <td>
+                            {{ record.researcher.fname }} {{ record.researcher.lname }}<br/>
+                            <small class="text-muted">{{ record.researcher.education }}</small><br/>
+                            <small>{{ record.researcher.email }}</small>
+                        </td>
+                        <td>
+                            <span class="codebook-link" data-id="{{ record.codebook.id }}">{{ record.codebook.file_name }}</span>
+                        </td>
+                        <td>
+                            <span class="dataset-link" data-id="{{ record.dataset.id }}">{{ record.dataset.file_name }}</span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-warning text-center" role="alert">
+        No records available or failed to fetch data.
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function filterTable() {
+        const input = document.getElementById("searchInput");
+        const filter = input.value.toLowerCase();
+        const table = document.getElementById("recordsTable");
+        const rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName("td");
+            let match = false;
+            for (let j = 0; j < cells.length; j++) {
+                const text = cells[j].textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    match = true;
+                    break;
+                }
+            }
+            rows[i].style.display = match ? "" : "none";
+        }
+    }
+
+    function convertLinks() {
+        let API_BASE_URL = "{{ API_URL|escapejs }}"
+
+        document.querySelectorAll('.codebook-link').forEach(function(span) {
+            const id = span.getAttribute('data-id');
+            const text = span.textContent;
+            if (id && id !== "None" && text && text !== "None") {
+                const a = document.createElement('a');
+                a.href = `${API_BASE_URL}/codebooks/${id}`;
+                a.target = "_blank";
+                a.textContent = text;
+                span.parentNode.replaceChild(a, span);
+            }
+        });
+        document.querySelectorAll('.dataset-link').forEach(function(span) {
+            const id = span.getAttribute('data-id');
+            const text = span.textContent;
+            if (id && id !== "None" && text && text !== "None") {
+                const a = document.createElement('a');
+                a.href = `${API_BASE_URL}/datasets/${id}`;
+                a.target = "_blank";
+                a.textContent = text;
+                span.parentNode.replaceChild(a, span);
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", convertLinks);
+</script>
+{% endblock %}

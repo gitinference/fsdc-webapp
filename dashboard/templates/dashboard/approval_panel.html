@@ -1,0 +1,101 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Approval Panel{% endblock %}
+
+{% block content %}
+
+{% if user.is_staff or user.username == "test_user" %}
+    <div class="card mb-4">
+        <div class="card-header bg-warning">
+            <strong>Unapproved Entries</strong>
+        </div>
+        <ul class="list-group list-group-flush" id="unapproved-entries">
+            {% for entry in unapproved_entries %}
+                <li class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+                    <div class="w-100">
+                        <div><strong>Description:</strong> {{ entry.description|truncatechars:80 }}</div>
+                        <div><strong>Date Started:</strong> {{ entry.date_started }}</div>
+                        <div><strong>Date Ended:</strong> {{ entry.date_ended }}</div>
+                        <div><strong>Bibliography:</strong> {{ entry.bibliography }}</div>
+                        <div>
+                            <strong>Subdiscipline:</strong>
+                            {{ entry.subdiscipline.name }}<br/>
+                            <small class="text-muted">{{ entry.subdiscipline.description }}</small>
+                        </div>
+                        <div>
+                            <strong>Researcher:</strong>
+                            {{ entry.researcher.fname }} {{ entry.researcher.lname }}<br/>
+                            <small class="text-muted">{{ entry.researcher.education }}</small><br/>
+                            <small>{{ entry.researcher.email }}</small>
+                        </div>
+                        <div>
+                            <strong>Codebook:</strong>
+                            <span class="codebook-link" data-id="{{ entry.codebook.id }}">{{ entry.codebook.file_name }}</span>
+                        </div>
+                        <div>
+                            <strong>Dataset:</strong>
+                            <span class="dataset-link" data-id="{{ entry.dataset.id }}">{{ entry.dataset.file_name }}</span>
+                        </div>
+                    </div>
+                    <div class="mt-2 mt-md-0 ms-md-3">
+                        <button class="btn btn-sm btn-success" onclick="approveEntry('{{ entry.id }}', this)">Approve</button>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-center text-muted">No unapproved entries.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+{% endblock %} 
+
+{% block scripts %}
+<script>
+    async function approveEntry(entryId, button) {
+
+        let API_BASE_URL = "{{ API_URL|escapejs }}"
+
+        const res = await fetch(`${API_BASE_URL}/research-entries/${entryId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ approved: true })
+        });
+
+        if (res.ok) {
+            button.closest('li').remove();
+        } else {
+            alert("Approval failed.");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        let API_BASE_URL = "{{ API_URL|escapejs }}"
+
+        document.querySelectorAll('.codebook-link').forEach(function(span) {
+            const id = span.getAttribute('data-id');
+            const text = span.textContent;
+            if (id && text && text !== "None") {
+                const a = document.createElement('a');
+                a.href = `${API_BASE_URL}/codebooks/${id}`;
+                a.target = "_blank";
+                a.textContent = text;
+                span.replaceWith(a);
+            }
+        });
+        document.querySelectorAll('.dataset-link').forEach(function(span) {
+            const id = span.getAttribute('data-id');
+            const text = span.textContent;
+            if (id && text && text !== "None") {
+                const a = document.createElement('a');
+                a.href = `${API_BASE_URL}/datasets/${id}`;
+                a.target = "_blank";
+                a.textContent = text;
+                span.replaceWith(a);
+            }
+        });
+    });
+</script>
+{% endblock %}

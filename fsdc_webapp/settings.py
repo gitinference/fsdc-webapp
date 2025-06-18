@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from env import get_db_credentials
+import os
 
 creds = get_db_credentials()
 USER = creds[0]
@@ -20,7 +21,9 @@ HOST = creds[2]
 DATABASE = creds[3]
 DATABASE_URL = creds[4]
 SECRET_KEY = creds[5]
+API_URL = creds[6]
 PORT = creds[7]
+DEV = creds[9]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,13 +54,16 @@ INSTALLED_APPS = [
     "formtools",
     "crispy_forms",
     "crispy_bootstrap5",
+    "corsheaders",
     "data_apps",
     "research_bank",
+    "dashboard",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -148,3 +154,38 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # tells cripsy to use the Bootstrap 5 pack
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Authentication redirects
+LOGIN_URL = "dashboard:login"  # ▼ use namespaced route
+LOGIN_REDIRECT_URL = "dashboard:home"
+LOGOUT_REDIRECT_URL = "dashboard:login"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "filters": ["require_debug_true"],
+        },
+    },
+    "loggers": {
+        "default": {
+            "handlers": ["console"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": True,
+        },
+    },
+}
+
+# CORS settings
+CORS_ALLOWED_ORIGINS = [
+    "https://fsdc.econlabs.net",
+    "https://fsdc-dev.econlabs.net",
+    "https://fsdc-webapp.econlabs.net",
+]

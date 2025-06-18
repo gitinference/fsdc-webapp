@@ -1,13 +1,13 @@
 FROM python:3.12
 
-WORKDIR /app
+COPY requirements.txt /app/requirements.txt
 
-COPY requirements.txt .
+WORKDIR /app
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-EXPOSE 8000
+COPY . /app
 
-COPY . .
+EXPOSE 8000
 
 

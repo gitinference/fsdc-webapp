@@ -1,0 +1,114 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Add Entry{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Add New Research Entry</h2>
+
+{% for key, errors in form_errors.items %}
+    {% for field, error_list in errors.items %}
+        <div class="alert alert-danger">{{ key }}.{{ field }}: {{ error_list }}</div>
+    {% endfor %}
+{% endfor %}
+
+<form method="post" enctype="multipart/form-data" id="entryForm">
+  {% csrf_token %}
+
+  <!-- Entry Details -->
+  <div class="alert alert-info mb-4">
+    <strong>Note:</strong> Please ensure all fields are filled out correctly.
+  </div>
+  
+  <fieldset class="border p-3 mb-4">
+    <legend>Entry Details</legend>
+    
+    <div class="row mb-4">
+      <div class="col-md-6">
+        {{ entry_form.date_started.label_tag }} {{ entry_form.date_started }}
+      </div>
+      <div class="col-md-6">
+        {{ entry_form.date_ended.label_tag }} {{ entry_form.date_ended }}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      {{ entry_form.res_entry_description.label_tag }} {{ entry_form.res_entry_description }}
+    </div>
+    <div class="mb-4">
+      {{ entry_form.bibliography.label_tag }} {{ entry_form.bibliography }}
+    </div>
+  </fieldset>
+
+  <!-- Subdiscipline -->
+  <fieldset class="border p-3 mb-4">
+    <legend>Subdiscipline</legend>
+    <div class="mb-2">
+      {{ sub_form.use_existing_subdiscipline.label_tag }} {{ sub_form.use_existing_subdiscipline }}
+    </div>
+    <div id="sub_new_fields" class="row d-none">
+      <div class="col-md-6">{{ sub_form.name.label_tag }} {{ sub_form.name }}</div>
+      <div class="col-md-6">{{ sub_form.sub_description.label_tag }} {{ sub_form.sub_description }}</div>
+    </div>
+  </fieldset>
+
+  <!-- Researcher -->
+  <fieldset class="border p-3 mb-4">
+    <legend>Researcher</legend>
+    <div class="mb-2">
+      {{ res_form.use_existing_researcher.label_tag }} {{ res_form.use_existing_researcher }}
+    </div>
+    <div id="res_new_fields" class="row d-none">
+      <div class="col-md-6 my-1">{{ res_form.fname.label_tag }} {{ res_form.fname }}</div>
+      <div class="col-md-6 my-1">{{ res_form.lname.label_tag }} {{ res_form.lname }}</div>
+      <div class="col-md-6 my-1">{{ res_form.education.label_tag }} {{ res_form.education }}</div>
+      <div class="col-md-6 my-1">{{ res_form.phone.label_tag }} {{ res_form.phone }}</div>
+      <div class="col-12 my-1">{{ res_form.email.label_tag }} {{ res_form.email }}</div>
+    </div>
+  </fieldset>
+
+  <!-- Codebook -->
+  <fieldset class="border p-3 mb-4">
+    <legend>Codebook File</legend>
+    {{ codebook_form.file.label_tag }} {{ codebook_form.file }}
+  </fieldset>
+
+  <!-- Dataset -->
+  <fieldset class="border p-3 mb-4">
+    <legend>Dataset File</legend>
+    {{ dataset_form.file.label_tag }} {{ dataset_form.file }}
+  </fieldset>
+
+  <button type="submit" class="btn btn-success">Submit Entry</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const subSelect = document.getElementById("id_use_existing_subdiscipline");
+    const subFields = document.getElementById("sub_new_fields");
+
+    const resSelect = document.getElementById("id_use_existing_researcher");
+    const resFields = document.getElementById("res_new_fields");
+
+    function toggleFields(select, fieldGroup) {
+      if (select && fieldGroup) {
+        if (!select.value || select.value === "") {
+          fieldGroup.classList.remove("d-none");
+        } else {
+          fieldGroup.classList.add("d-none");
+        }
+      }
+    }
+
+    if (subSelect && subFields) {
+      subSelect.addEventListener("change", () => toggleFields(subSelect, subFields));
+      toggleFields(subSelect, subFields);  // Initialize on load
+    }
+
+    if (resSelect && resFields) {
+      resSelect.addEventListener("change", () => toggleFields(resSelect, resFields));
+      toggleFields(resSelect, resFields);  // Initialize on load
+    }
+  });
+</script>
+{% endblock %}
