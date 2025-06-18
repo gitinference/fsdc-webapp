@@ -23,6 +23,7 @@ DATABASE_URL = creds[4]
 SECRET_KEY = creds[5]
 API_URL = creds[6]
 PORT = creds[7]
+DEBUG = creds[8]
 DEV = creds[9]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,12 +34,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ryoxbk8y@5xf6aspnk0fn%#cgx$lsyp!4jkriei*(=-c*1y5v^"
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["fsdc-webapp.econlabs.net"]
 
 
 # Application definition
