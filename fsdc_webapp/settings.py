@@ -190,3 +190,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://fsdc-dev.econlabs.net",
     "https://fsdc-webapp.econlabs.net",
 ]
+
+# CSRF trusted origins
+CSRF_TRUSTED_ORIGINS = [
+    "https://fsdc.econlabs.net",
+    "https://fsdc-dev.econlabs.net",
+    "https://fsdc-webapp.econlabs.net",
+]
