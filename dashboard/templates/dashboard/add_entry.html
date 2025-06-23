@@ -30,11 +30,41 @@
       </div>
     </div>
 
+    <div class="row mb-4">
+      <div class="col-md-6">
+        {{ entry_form.title.label_tag }} {{ entry_form.title }}
+      </div>
+      <div class="col-md-6">
+        {{ entry_form.time_period.label_tag }} {{ entry_form.time_period }}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      {{ entry_form.project_summary.label_tag }} {{ entry_form.project_summary }}
+    </div>
     <div class="mb-3">
       {{ entry_form.res_entry_description.label_tag }} {{ entry_form.res_entry_description }}
     </div>
-    <div class="mb-4">
+    <div class="mb-3">
       {{ entry_form.bibliography.label_tag }} {{ entry_form.bibliography }}
+    </div>
+    <div class="mb-3">
+      {{ entry_form.thesis_advisor_name.label_tag }} {{ entry_form.thesis_advisor_name }}
+    </div>
+    <div class="mb-3">
+      {{ entry_form.thesis_advisor_email.label_tag }} {{ entry_form.thesis_advisor_email }}
+    </div>
+    <div class="mb-3">
+      {{ entry_form.thesis_advisor_phone.label_tag }} {{ entry_form.thesis_advisor_phone }}
+    </div>
+    <div class="mb-3">
+      {{ entry_form.postal_address.label_tag }} {{ entry_form.postal_address }}
+    </div>
+    <div class="mb-3">
+      {{ entry_form.department_and_faculty.label_tag }} {{ entry_form.department_and_faculty }}
+    </div>
+    <div class="mb-3">
+      {{ entry_form.orcid.label_tag }} {{ entry_form.orcid }}
     </div>
   </fieldset>
 

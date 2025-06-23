@@ -12,27 +12,32 @@
             {% for entry in unapproved_entries %}
                 <li class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center">
                     <div class="w-100">
+                        <div><strong>Title:</strong> {{ entry.title }}</div>
+                        <div><strong>Project Summary:</strong> {{ entry.project_summary }}</div>
+                        <div><strong>Time Period:</strong> {{ entry.time_period }}</div>
                         <div><strong>Description:</strong> {{ entry.description|truncatechars:80 }}</div>
+                        <div><strong>Bibliography:</strong> {{ entry.bibliography }}</div>
+                        <div><strong>Thesis Advisor Name:</strong> {{ entry.thesis_advisor_name }}</div>
+                        <div><strong>Thesis Advisor Email:</strong> {{ entry.thesis_advisor_email }}</div>
+                        <div><strong>Thesis Advisor Phone:</strong> {{ entry.thesis_advisor_phone }}</div>
+                        <div><strong>Postal Address:</strong> {{ entry.postal_address }}</div>
+                        <div><strong>Department & Faculty:</strong> {{ entry.department_and_faculty }}</div>
+                        <div><strong>ORCID:</strong> {{ entry.orcid }}</div>
                         <div><strong>Date Started:</strong> {{ entry.date_started }}</div>
                         <div><strong>Date Ended:</strong> {{ entry.date_ended }}</div>
-                        <div><strong>Bibliography:</strong> {{ entry.bibliography }}</div>
-                        <div>
-                            <strong>Subdiscipline:</strong>
+                        <div><strong>Subdiscipline:</strong>
                             {{ entry.subdiscipline.name }}<br/>
                             <small class="text-muted">{{ entry.subdiscipline.description }}</small>
                         </div>
-                        <div>
-                            <strong>Researcher:</strong>
+                        <div><strong>Researcher:</strong>
                             {{ entry.researcher.fname }} {{ entry.researcher.lname }}<br/>
                             <small class="text-muted">{{ entry.researcher.education }}</small><br/>
                             <small>{{ entry.researcher.email }}</small>
                         </div>
-                        <div>
-                            <strong>Codebook:</strong>
+                        <div><strong>Codebook:</strong>
                             <span class="codebook-link" data-id="{{ entry.codebook.id }}">{{ entry.codebook.file_name }}</span>
                         </div>
-                        <div>
-                            <strong>Dataset:</strong>
+                        <div><strong>Dataset:</strong>
                             <span class="dataset-link" data-id="{{ entry.dataset.id }}">{{ entry.dataset.file_name }}</span>
                         </div>
                     </div>

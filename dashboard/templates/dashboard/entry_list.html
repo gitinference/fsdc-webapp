@@ -18,11 +18,19 @@
         <table id="recordsTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="table-light">
                 <tr>
-                    {% comment %} <th>ID</th> {% endcomment %}
                     <th>Date Started</th>
                     <th>Date Ended</th>
+                    <th>Title</th>
+                    <th>Project Summary</th>
+                    <th>Time Period</th>
                     <th>Description</th>
                     <th>Bibliography</th>
+                    <th>Thesis Advisor Name</th>
+                    <th>Thesis Advisor Email</th>
+                    <th>Thesis Advisor Phone</th>
+                    <th>Postal Address</th>
+                    <th>Department & Faculty</th>
+                    <th>ORCID</th>
                     <th>Subdiscipline</th>
                     <th>Researcher</th>
                     <th>Codebook</th>
@@ -32,11 +40,19 @@
             <tbody>
                 {% for record in records %}
                     <tr>
-                        {% comment %} <td>{{ record.id }}</td> {% endcomment %}
                         <td>{{ record.date_started }}</td>
                         <td>{{ record.date_ended }}</td>
+                        <td>{{ record.title }}</td>
+                        <td>{{ record.project_summary }}</td>
+                        <td>{{ record.time_period }}</td>
                         <td>{{ record.description }}</td>
                         <td>{{ record.bibliography }}</td>
+                        <td>{{ record.thesis_advisor_name }}</td>
+                        <td>{{ record.thesis_advisor_email }}</td>
+                        <td>{{ record.thesis_advisor_phone }}</td>
+                        <td>{{ record.postal_address }}</td>
+                        <td>{{ record.department_and_faculty }}</td>
+                        <td>{{ record.orcid }}</td>
                         <td>
                             {{ record.subdiscipline.name }}<br/>
                             <small class="text-muted">{{ record.subdiscipline.description }}</small>

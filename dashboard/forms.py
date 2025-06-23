@@ -84,3 +84,12 @@ class ResearchEntryForm(forms.Form):
             "required": "This field is required.",
         },
     )
+    title = forms.CharField(required=True)
+    project_summary = forms.CharField(widget=forms.Textarea, required=True)
+    time_period = forms.CharField(required=True)
+    thesis_advisor_name = forms.CharField(required=False)
+    thesis_advisor_email = forms.EmailField(required=False)
+    thesis_advisor_phone = forms.CharField(required=False)
+    postal_address = forms.CharField(required=False)
+    department_and_faculty = forms.CharField(required=False)
+    orcid = forms.CharField(required=False)
