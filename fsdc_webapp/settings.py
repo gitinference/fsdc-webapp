@@ -39,7 +39,7 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = DEBUG
 
-ALLOWED_HOSTS = ["fsdc-webapp.econlabs.net"]
+ALLOWED_HOSTS = ["fsdc-webapp.econlabs.net", "localhost"]
 
 
 # Application definition
