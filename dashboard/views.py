@@ -9,6 +9,8 @@ from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import TemplateView
 
+from django.views.decorators.clickjacking import xframe_options_exempt
+
 from .forms import (
     CodebookForm,
     DatasetForm,
@@ -147,6 +149,14 @@ class NoNavBarListEntriesView(ListEntriesView):
     """
 
     template_name = "dashboard/entry_list_no_nav.html"
+
+    @xframe_options_exempt
+    def get(self, request):
+        """
+        Overrides the get method to allow this view to be embedded in an iframe.
+        This is useful for embedding the entry list in other pages without a full dashboard.
+        """
+        return super().get(request)
 
 
 class AddEntryView(ApprovalTeamRequiredMixin, View):
