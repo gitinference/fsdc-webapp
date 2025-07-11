@@ -25,14 +25,12 @@
                     <th>Time Period</th>
                     <th>Description</th>
                     <th>Bibliography</th>
-                    <th>Thesis Advisor Name</th>
-                    <th>Thesis Advisor Email</th>
-                    <th>Thesis Advisor Phone</th>
+                    <th colspan="3" class="text-center">Thesis Advisor</th>
                     <th>Postal Address</th>
                     <th>Department & Faculty</th>
                     <th>ORCID</th>
                     <th>Subdiscipline</th>
-                    <th>Researcher</th>
+                    <th colspan="3" class="text-center">Researcher</th>
                     <th>Codebook</th>
                     <th>Dataset</th>
                 </tr>
@@ -57,11 +55,9 @@
                             {{ record.subdiscipline.name }}<br/>
                             <small class="text-muted">{{ record.subdiscipline.description }}</small>
                         </td>
-                        <td>
-                            {{ record.researcher.fname }} {{ record.researcher.lname }}<br/>
-                            <small class="text-muted">{{ record.researcher.education }}</small><br/>
-                            <small>{{ record.researcher.email }}</small>
-                        </td>
+                        <td>{{ record.researcher.fname }}</td>
+                        <td>{{ record.researcher.lname }}</td>
+                        <td>{{ record.researcher.email }}</td>
                         <td>
                             <span class="codebook-link" data-id="{{ record.codebook.id }}">{{ record.codebook.file_name }}</span>
                         </td>

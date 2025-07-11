@@ -17,22 +17,17 @@
                         <div><strong>Time Period:</strong> {{ entry.time_period }}</div>
                         <div><strong>Description:</strong> {{ entry.description|truncatechars:80 }}</div>
                         <div><strong>Bibliography:</strong> {{ entry.bibliography }}</div>
-                        <div><strong>Thesis Advisor Name:</strong> {{ entry.thesis_advisor_name }}</div>
-                        <div><strong>Thesis Advisor Email:</strong> {{ entry.thesis_advisor_email }}</div>
-                        <div><strong>Thesis Advisor Phone:</strong> {{ entry.thesis_advisor_phone }}</div>
-                        <div><strong>Postal Address:</strong> {{ entry.postal_address }}</div>
-                        <div><strong>Department & Faculty:</strong> {{ entry.department_and_faculty }}</div>
-                        <div><strong>ORCID:</strong> {{ entry.orcid }}</div>
-                        <div><strong>Date Started:</strong> {{ entry.date_started }}</div>
-                        <div><strong>Date Ended:</strong> {{ entry.date_ended }}</div>
-                        <div><strong>Subdiscipline:</strong>
-                            {{ entry.subdiscipline.name }}<br/>
-                            <small class="text-muted">{{ entry.subdiscipline.description }}</small>
+                        <div class="mb-2"><strong>Thesis Advisor</strong></div>
+                        <div class="ps-3">
+                            <div><strong>Name:</strong> {{ entry.thesis_advisor_name }}</div>
+                            <div><strong>Email:</strong> {{ entry.thesis_advisor_email }}</div>
+                            <div><strong>Phone:</strong> {{ entry.thesis_advisor_phone }}</div>
                         </div>
-                        <div><strong>Researcher:</strong>
-                            {{ entry.researcher.fname }} {{ entry.researcher.lname }}<br/>
-                            <small class="text-muted">{{ entry.researcher.education }}</small><br/>
-                            <small>{{ entry.researcher.email }}</small>
+                        <div class="mb-2"><strong>Researcher</strong></div>
+                        <div class="ps-3">
+                            <div><strong>Name:</strong> {{ entry.researcher.fname }} {{ entry.researcher.lname }}</div>
+                            <div><strong>Education:</strong> {{ entry.researcher.education }}</div>
+                            <div><strong>Email:</strong> {{ entry.researcher.email }}</div>
                         </div>
                         <div><strong>Codebook:</strong>
                             <span class="codebook-link" data-id="{{ entry.codebook.id }}">{{ entry.codebook.file_name }}</span>
@@ -57,7 +52,8 @@
 <script>
     async function approveEntry(entryId, button) {
 
-        let API_BASE_URL = "{{ API_URL|escapejs }}"
+        {% comment %} let API_BASE_URL = "{{ API_URL|escapejs }}" {% endcomment %}
+        let API_BASE_URL = "http://localhost:5073"
 
         const res = await fetch(`${API_BASE_URL}/research-entries/${entryId}`, {
             method: 'PUT',
