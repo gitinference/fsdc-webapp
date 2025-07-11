@@ -189,7 +189,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://fsdc.econlabs.net",
     "https://fsdc-dev.econlabs.net",
     "https://fsdc-webapp.econlabs.net",
-    "https://www.uprm.edu/foodsecuritydatacenter",
+    "https://www.uprm.edu",
 ]
 
 # CSRF trusted origins
