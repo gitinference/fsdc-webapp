@@ -140,6 +140,15 @@ class ListEntriesView(View):
         return render(request, self.template_name, context)
 
 
+class NoNavBarListEntriesView(ListEntriesView):
+    """View to list all approved research entries without a navigation bar.
+    This view is similar to ListEntriesView but does not include the navigation bar.
+    It is useful for embedding in other pages where a full dashboard is not needed.
+    """
+
+    template_name = "dashboard/entry_list_no_nav.html"
+
+
 class AddEntryView(ApprovalTeamRequiredMixin, View):
     """View to add a new research entry.
     This view allows users to create a new research entry by filling out
