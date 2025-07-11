@@ -30,6 +30,7 @@ urlpatterns = [
         include(("research_bank.urls", "research_bank"), namespace="research"),
     ),
     path("dashboard/", include(("dashboard.urls", "dashboard"), namespace="dashboard")),
+    path("data_apps/", include(("data_apps.urls", "data_apps"), namespace="data_apps")),
 ]
 
 if settings.DEV:

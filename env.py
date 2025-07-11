@@ -15,6 +15,7 @@ def get_db_credentials() -> list:
     DEBUG = os.getenv("DEBUG", "False").strip()
     DEV = os.getenv("DEV", "False").strip()
     API_URL = os.getenv("API_URL", "http://localhost:8000").strip()
+    API_URL_JP = os.getenv("API_URL_JP", "http://localhost:8000").strip()
 
     # Fail early if any required values are missing
     required = [USER, PASSWORD, DATABASE, PORT]
@@ -40,6 +41,7 @@ def get_db_credentials() -> list:
         PORT,  # 7
         DEBUG,  # 8
         DEV,  # 9
+        API_URL_JP,  # 10
     ]
 
 

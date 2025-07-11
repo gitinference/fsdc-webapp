@@ -15,59 +15,63 @@
     />
 
     <div class="table-responsive">
-        <table id="recordsTable" class="table table-bordered table-hover table-striped align-middle">
-            <thead class="table-light">
+        <table id="recordsTable" class="table table-bordered table-hover table-striped align-middle" style="font-size:0.85rem; table-layout:fixed; width:100%;">
+            <thead class="table-light" style="font-size:0.9rem;">
                 <tr>
-                    <th>Date Started</th>
-                    <th>Date Ended</th>
-                    <th>Title</th>
-                    <th>Project Summary</th>
-                    <th>Time Period</th>
-                    <th>Description</th>
-                    <th>Bibliography</th>
-                    <th>Thesis Advisor Name</th>
-                    <th>Thesis Advisor Email</th>
-                    <th>Thesis Advisor Phone</th>
-                    <th>Postal Address</th>
-                    <th>Department & Faculty</th>
-                    <th>ORCID</th>
-                    <th>Subdiscipline</th>
-                    <th>Researcher</th>
-                    <th>Codebook</th>
-                    <th>Dataset</th>
+                    <th onclick="sortTable(0)" id="th-0">Main Keyword</th>
+                    <th onclick="sortTable(1)" id="th-1">Researcher</th>
+                    <th onclick="sortTable(2)" id="th-2">Thesis Advisor</th>
+                    <th onclick="sortTable(3)" id="th-3">Date Started</th>
+                    <th onclick="sortTable(4)" id="th-4">Date Ended</th>
+                    <th onclick="sortTable(5)" id="th-5">Title</th>
+                    <th onclick="sortTable(6)" id="th-6">Project Summary</th>
+                    <th onclick="sortTable(7)" id="th-7">Time Period</th>
+                    <th onclick="sortTable(8)" id="th-8">Description</th>
+                    <th onclick="sortTable(9)" id="th-9">Bibliography</th>
+                    <th onclick="sortTable(10)" id="th-10">Postal Address</th>
+                    <th onclick="sortTable(11)" id="th-11">Department & Faculty</th>
+                    <th onclick="sortTable(12)" id="th-12">ORCID</th>
+                    <th onclick="sortTable(13)" id="th-13">Subdiscipline</th>
+                    <th onclick="sortTable(14)" id="th-14">Codebook</th>
+                    <th onclick="sortTable(15)" id="th-15">Dataset</th>
+                    <th onclick="sortTable(16)" id="th-16">Alternate Keywords</th>
                 </tr>
             </thead>
             <tbody>
                 {% for record in records %}
                     <tr>
-                        <td>{{ record.date_started }}</td>
-                        <td>{{ record.date_ended }}</td>
-                        <td>{{ record.title }}</td>
-                        <td>{{ record.project_summary }}</td>
-                        <td>{{ record.time_period }}</td>
-                        <td>{{ record.description }}</td>
-                        <td>{{ record.bibliography }}</td>
-                        <td>{{ record.thesis_advisor_name }}</td>
-                        <td>{{ record.thesis_advisor_email }}</td>
-                        <td>{{ record.thesis_advisor_phone }}</td>
-                        <td>{{ record.postal_address }}</td>
-                        <td>{{ record.department_and_faculty }}</td>
-                        <td>{{ record.orcid }}</td>
-                        <td>
-                            {{ record.subdiscipline.name }}<br/>
-                            <small class="text-muted">{{ record.subdiscipline.description }}</small>
-                        </td>
-                        <td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.main_keyword }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">
                             {{ record.researcher.fname }} {{ record.researcher.lname }}<br/>
                             <small class="text-muted">{{ record.researcher.education }}</small><br/>
                             <small>{{ record.researcher.email }}</small>
                         </td>
-                        <td>
+                        <td style="word-break:break-word; white-space:pre-line;">
+                            {{ record.thesis_advisor_name }}<br/>
+                            <small>{{ record.thesis_advisor_email }}</small><br/>
+                            <small>{{ record.thesis_advisor_phone }}</small>
+                        </td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.date_started }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.date_ended }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.title }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.project_summary }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.time_period }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.description }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.bibliography }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.postal_address }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.department_and_faculty }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.orcid }}</td>
+                        <td style="word-break:break-word; white-space:pre-line;">
+                            {{ record.subdiscipline.name }}<br/>
+                            <small class="text-muted">{{ record.subdiscipline.description }}</small>
+                        </td>
+                        <td style="word-break:break-word; white-space:pre-line;">
                             <span class="codebook-link" data-id="{{ record.codebook.id }}">{{ record.codebook.file_name }}</span>
                         </td>
-                        <td>
+                        <td style="word-break:break-word; white-space:pre-line;">
                             <span class="dataset-link" data-id="{{ record.dataset.id }}">{{ record.dataset.file_name }}</span>
                         </td>
+                        <td style="word-break:break-word; white-space:pre-line;">{{ record.alternate_keywords }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -82,6 +86,8 @@
 
 {% block scripts %}
 <script>
+    let currentSortCol = null;
+    let currentSortDir = null;
     function filterTable() {
         const input = document.getElementById("searchInput");
         const filter = input.value.toLowerCase();
@@ -101,7 +107,41 @@
             rows[i].style.display = match ? "" : "none";
         }
     }
-
+    function sortTable(n) {
+        const table = document.getElementById("recordsTable");
+        const tbody = table.tBodies[0];
+        const rows = Array.from(tbody.rows);
+        let asc = table.getAttribute('data-sort-dir-' + n) !== 'desc';
+        rows.sort((a, b) => {
+            let x = a.cells[n].textContent.trim().toLowerCase();
+            let y = b.cells[n].textContent.trim().toLowerCase();
+            if (!isNaN(Date.parse(x)) && !isNaN(Date.parse(y))) {
+                return asc ? new Date(x) - new Date(y) : new Date(y) - new Date(x);
+            }
+            if (!isNaN(x) && !isNaN(y)) {
+                return asc ? x - y : y - x;
+            }
+            return asc ? x.localeCompare(y) : y.localeCompare(x);
+        });
+        while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
+        rows.forEach(row => tbody.appendChild(row));
+        table.setAttribute('data-sort-dir-' + n, asc ? 'desc' : 'asc');
+        currentSortCol = n;
+        currentSortDir = asc ? 'asc' : 'desc';
+        updateSortIndicators();
+    }
+    function updateSortIndicators() {
+        for (let i = 0; i <= 16; i++) {
+            const th = document.getElementById('th-' + i);
+            if (!th) continue;
+            th.classList.remove('table-primary');
+            th.innerHTML = th.textContent.replace(/\s*[▲▼]$/, '');
+            if (i === currentSortCol) {
+                th.classList.add('table-primary');
+                th.innerHTML = th.textContent + (currentSortDir === 'asc' ? ' ▲' : ' ▼');
+            }
+        }
+    }
     function convertLinks() {
         let API_BASE_URL = "{{ API_URL|escapejs }}"
 
@@ -129,6 +169,9 @@
         });
     }
 
-    document.addEventListener("DOMContentLoaded", convertLinks);
+    document.addEventListener("DOMContentLoaded", function() {
+        convertLinks();
+        updateSortIndicators();
+    });
 </script>
 {% endblock %}
