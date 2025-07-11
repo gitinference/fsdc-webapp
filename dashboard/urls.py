@@ -4,6 +4,7 @@ from .views import (
     HomeView,
     AddEntryView,
     ListEntriesView,
+    NoNavBarListEntriesView,
     ApproveEntryView,
 )
 from django.contrib.auth.views import LogoutView
@@ -17,4 +18,7 @@ urlpatterns = [
     path("entries/add/", AddEntryView.as_view(), name="add-entry"),
     path("entries/", ListEntriesView.as_view(), name="entry-list"),
     path("entries/approve", ApproveEntryView.as_view(), name="approve-entry"),
+    path(
+        "entries/no-nav/", NoNavBarListEntriesView.as_view(), name="entry-list-no-nav"
+    ),
 ]
