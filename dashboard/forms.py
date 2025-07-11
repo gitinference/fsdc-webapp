@@ -93,3 +93,5 @@ class ResearchEntryForm(forms.Form):
     postal_address = forms.CharField(required=False)
     department_and_faculty = forms.CharField(required=False)
     orcid = forms.CharField(required=False)
+    main_keyword = forms.CharField(required=True)
+    alternate_keywords = forms.CharField(required=False)

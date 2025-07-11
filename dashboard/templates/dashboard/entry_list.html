@@ -18,6 +18,9 @@
         <table id="recordsTable" class="table table-bordered table-hover table-striped align-middle" style="font-size:0.85rem;">
             <thead class="table-light" style="font-size:0.9rem;">
                 <tr>
+                    <th>Main Keyword</th>
+                    <th>Researcher</th>
+                    <th>Thesis Advisor</th>
                     <th>Date Started</th>
                     <th>Date Ended</th>
                     <th>Title</th>
@@ -25,19 +28,29 @@
                     <th>Time Period</th>
                     <th>Description</th>
                     <th>Bibliography</th>
-                    <th colspan="3" class="text-center">Thesis Advisor</th>
                     <th>Postal Address</th>
                     <th>Department & Faculty</th>
                     <th>ORCID</th>
                     <th>Subdiscipline</th>
-                    <th colspan="3" class="text-center">Researcher</th>
                     <th>Codebook</th>
                     <th>Dataset</th>
+                    <th>Alternate Keywords</th>
                 </tr>
             </thead>
             <tbody>
                 {% for record in records %}
                     <tr>
+                        <td>{{ record.main_keyword }}</td>
+                        <td>
+                            {{ record.researcher.fname }} {{ record.researcher.lname }}<br/>
+                            <small class="text-muted">{{ record.researcher.education }}</small><br/>
+                            <small>{{ record.researcher.email }}</small>
+                        </td>
+                        <td>
+                            {{ record.thesis_advisor_name }}<br/>
+                            <small>{{ record.thesis_advisor_email }}</small><br/>
+                            <small>{{ record.thesis_advisor_phone }}</small>
+                        </td>
                         <td>{{ record.date_started }}</td>
                         <td>{{ record.date_ended }}</td>
                         <td>{{ record.title }}</td>
@@ -45,9 +58,6 @@
                         <td>{{ record.time_period }}</td>
                         <td>{{ record.description }}</td>
                         <td>{{ record.bibliography }}</td>
-                        <td>{{ record.thesis_advisor_name }}</td>
-                        <td>{{ record.thesis_advisor_email }}</td>
-                        <td>{{ record.thesis_advisor_phone }}</td>
                         <td>{{ record.postal_address }}</td>
                         <td>{{ record.department_and_faculty }}</td>
                         <td>{{ record.orcid }}</td>
@@ -55,15 +65,13 @@
                             {{ record.subdiscipline.name }}<br/>
                             <small class="text-muted">{{ record.subdiscipline.description }}</small>
                         </td>
-                        <td>{{ record.researcher.fname }}</td>
-                        <td>{{ record.researcher.lname }}</td>
-                        <td>{{ record.researcher.email }}</td>
                         <td>
                             <span class="codebook-link" data-id="{{ record.codebook.id }}">{{ record.codebook.file_name }}</span>
                         </td>
                         <td>
                             <span class="dataset-link" data-id="{{ record.dataset.id }}">{{ record.dataset.file_name }}</span>
                         </td>
+                        <td>{{ record.alternate_keywords }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

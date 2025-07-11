@@ -14,21 +14,25 @@
                     <div class="w-100" style="font-size:0.95rem;">
                         <div><strong>Title:</strong> {{ entry.title }}</div>
                         <div><strong>Project Summary:</strong> {{ entry.project_summary }}</div>
+                        <div><strong>Main Keyword:</strong> {{ entry.main_keyword }}</div>
                         <div><strong>Time Period:</strong> {{ entry.time_period }}</div>
                         <div><strong>Description:</strong> {{ entry.description|truncatechars:80 }}</div>
                         <div><strong>Bibliography:</strong> {{ entry.bibliography }}</div>
-                        <div class="mb-2"><strong>Thesis Advisor</strong></div>
-                        <div class="ps-3">
-                            <div><strong>Name:</strong> {{ entry.thesis_advisor_name }}</div>
-                            <div><strong>Email:</strong> {{ entry.thesis_advisor_email }}</div>
-                            <div><strong>Phone:</strong> {{ entry.thesis_advisor_phone }}</div>
-                        </div>
                         <div class="mb-2"><strong>Researcher</strong></div>
                         <div class="ps-3">
                             <div><strong>Name:</strong> {{ entry.researcher.fname }} {{ entry.researcher.lname }}</div>
                             <div><strong>Education:</strong> {{ entry.researcher.education }}</div>
                             <div><strong>Email:</strong> {{ entry.researcher.email }}</div>
                         </div>
+                        <div class="mb-2"><strong>Thesis Advisor</strong></div>
+                        <div class="ps-3">
+                            <div><strong>Name:</strong> {{ entry.thesis_advisor_name }}</div>
+                            <div><strong>Email:</strong> {{ entry.thesis_advisor_email }}</div>
+                            <div><strong>Phone:</strong> {{ entry.thesis_advisor_phone }}</div>
+                        </div>
+                        <div><strong>Date Started:</strong> {{ entry.date_started }}</div>
+                        <div><strong>Date Ended:</strong> {{ entry.date_ended }}</div>
+                        <div><strong>Alternate Keywords:</strong> {{ entry.alternate_keywords }}</div>
                         <div><strong>Codebook:</strong>
                             <span class="codebook-link" data-id="{{ entry.codebook.id }}">{{ entry.codebook.file_name }}</span>
                         </div>
