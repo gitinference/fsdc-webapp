@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 import requests
 from django.shortcuts import render
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from env import get_db_credentials
 
@@ -19,6 +20,7 @@ creds = get_db_credentials()
 API_URL = "https://api.econlabs.net"
 
 
+@xframe_options_exempt
 def web_app_imports_exports(request):
     # IMPORTS GRAPH
 
@@ -102,8 +104,8 @@ def web_app_imports_exports(request):
     return render(request, "imports_exports.html", context)
 
 
+@xframe_options_exempt
 def web_app_consumer_indices(request):
-
     # Indices Consumidor
     # -----------------------------------------------------------------#
     if request.method == "POST":
@@ -188,6 +190,7 @@ def web_app_consumer_indices(request):
     )
 
 
+@xframe_options_exempt
 def web_app_awards(request):
     # CATEGORY GRAPH
     if request.method == "POST":
