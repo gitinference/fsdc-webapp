@@ -30,7 +30,6 @@ services:
     networks:
       - postgres_network
     volumes:
-      - pgdata_staging:/app/data
       - .:/app
 
   api:
