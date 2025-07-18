@@ -4,6 +4,11 @@ from django.shortcuts import render
 
 from env import get_db_credentials
 
+# Set up logger
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
@@ -40,6 +45,11 @@ def web_app_imports_exports(request):
         )
 
     imports, hts_codes = imports_graph.json()
+
+    # Filter HTS codes up to 2299
+    filtered_codes = [code for code in hts_codes["hts_codes"] if int(code) <= 2299]
+    print("Filtered HTS Codes:", filtered_codes, "Count: ", len(filtered_codes))
+    hts_codes["hts_codes"] = filtered_codes
 
     # ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -125,6 +135,38 @@ def web_app_consumer_indices(request):
         f"{API_URL}/graph/consumer/?time_frame={frequency_3}&data_type=primera_diferencia&column={column_3}"
     ).json()
     primera_diferencia_html, context = response
+
+    # Keywords to identify agriculture-related items
+    agriculture_keywords = [
+        "carne",
+        "frutas",
+        "vegetales",
+        "huevos",
+        "lacteos",
+        "pescados",
+        "mariscos",
+        "cereales",
+        "azucares",
+        "grasas",
+        "aderezos",
+        "jugos",
+        "alimentos",
+        "bebidas",
+        "productos",
+        "horneados",
+    ]
+
+    # Convert keywords to lowercase for case-insensitive matching
+    agriculture_keywords = [kw.lower() for kw in agriculture_keywords]
+
+    # Filter the list
+    agriculture_related = [
+        item
+        for item in context["columns"]
+        if any(kw in item["label"].lower() for kw in agriculture_keywords)
+    ]
+
+    context["columns"] = agriculture_related
 
     return render(
         request,
