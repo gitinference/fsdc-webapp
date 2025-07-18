@@ -15,7 +15,8 @@ def index(request):
 
 
 creds = get_db_credentials()
-API_URL = creds[10]  # JP API URL
+# API_URL = creds[10]  # JP API URL
+API_URL = "https://api.econlabs.net"
 
 
 def web_app_imports_exports(request):
