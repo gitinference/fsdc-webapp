@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: rocky
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: write
