@@ -58,7 +58,7 @@
 
         {% comment %} let API_BASE_URL = "{{ API_URL|escapejs }}" {% endcomment %}
         // TODO: This should be pulled form the env files not hard coded
-        let API_BASE_URL = "https://fsdc-dev.econlabs.net/"
+        let API_BASE_URL = "https://fsdc-dev.econlabs.net"
 
         const res = await fetch(`${API_BASE_URL}/research-entries/${entryId}`, {
             method: 'PUT',
