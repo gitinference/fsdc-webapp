@@ -1,18 +1,18 @@
 
 [project]
 name = "fsdc-webapp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "crispy-bootstrap5>=2025.4",
-    "django>=5.1.7",
-    "django-cors-headers>=4.7.0",
-    "django-crispy-forms>=2.4",
-    "django-formtools>=2.5.1",
-    "gunicorn>=23.0.0",
-    "psycopg2-binary>=2.9.10",
-    "python-dotenv>=1.1.0",
-    "requests>=2.32.3",
+  "crispy-bootstrap5>=2025.4",
+  "django>=5.2.8",
+  "django-cors-headers>=4.7.0",
+  "django-crispy-forms>=2.4",
+  "django-formtools>=2.5.1",
+  "gunicorn>=23.0.0",
+  "psycopg2-binary>=2.9.10",
+  "python-dotenv>=1.1.0",
+  "requests>=2.32.3",
 ]
